@@ -27,8 +27,10 @@ namespace PokeDexApp
                 dexList = new ListNode();
                 dexStart = new ListNode();
 
+
                 for (int i = 0; i <= pokedexSize - 1; i++)
                 {
+
                     string[] dexData = new string[10];
                     dexData = Constructor.ConstructDexData(dexData, pokeTable.Rows[i]);
                     dexList = Constructor.ConstructLinkedList(dexList, dexData);
@@ -109,6 +111,46 @@ namespace PokeDexApp
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListNode searchNodeOne = dexStart;
+            ListNode searchNodeTwo = dexStart;
+            string search = txtSearch.Text;
+
+            if (search != dexStart.pokemon.name)
+            {
+                while (searchNodeOne.pokemon != null || searchNodeTwo.pokemon != null)
+                {
+                    if (searchNodeOne.pokemon.name == search)
+                    {
+                        dexStart = searchNodeOne;
+                        break;
+                    }
+
+                    if (searchNodeTwo.pokemon.name == search)
+                    {
+                        dexStart = searchNodeTwo;
+                        break;
+                    }
+
+                    if (searchNodeOne.next.pokemon != null)
+                    {
+                        searchNodeOne = searchNodeOne.next;
+                    }
+
+                    if (searchNodeTwo.prev.pokemon != null)
+                    {
+                        searchNodeTwo = searchNodeTwo.prev;
+                    }
+                }
+
+                UpdatePage();
+            }
+
+           
 
         }
     }

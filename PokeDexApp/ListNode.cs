@@ -12,7 +12,7 @@ namespace PokeDexApp
         public ListNode next;
         public ListNode prev;
 
-        public ListNode(Pokemon pokemon = null, ListNode next=null, ListNode prev=null)
+        public ListNode(Pokemon pokemon=null, ListNode next=null, ListNode prev=null)
         {
             this.pokemon = pokemon;
             this.next = next;

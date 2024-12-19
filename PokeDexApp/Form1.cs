@@ -20,7 +20,8 @@ namespace PokeDexApp
         {
             try
             {
-                string selectAllQuery = "Select id_poke, Name, id_type_one, id_type_two from Pokemon;";
+                string selectAllQuery = "Select id_poke, Name, id_type_one, id_type_two," +
+                    " HP, ATK, SPATK, DEF, SPDEF, SPD  from Pokemon;";
                 pokeTable = conn.SQLCommand(selectAllQuery);
                 int pokedexSize = pokeTable.Rows.Count;
                 dexList = new ListNode();
@@ -28,7 +29,7 @@ namespace PokeDexApp
 
                 for (int i = 0; i <= pokedexSize - 1; i++)
                 {
-                    string[] dexData = new string[4];
+                    string[] dexData = new string[10];
                     dexData = Constructor.ConstructDexData(dexData, pokeTable.Rows[i]);
                     dexList = Constructor.ConstructLinkedList(dexList, dexData);
                     if (i == 0)
@@ -72,6 +73,12 @@ namespace PokeDexApp
             lblTypeOne.Text = dexStart.pokemon.typeOne.ToString();
             lblTypeTwo.Text = dexStart.pokemon.typeTwo.ToString();
             pictureBox1.Image = dexStart.pokemon.image;
+            lblHP.Text = dexStart.pokemon.baseStats[0];
+            lblATK.Text = dexStart.pokemon.baseStats[1];
+            lblSPATK.Text = dexStart.pokemon.baseStats[2];
+            lblDEF.Text = dexStart.pokemon.baseStats[3];
+            lblSPDEF.Text = dexStart.pokemon.baseStats[4];
+            lblSPD.Text = dexStart.pokemon.baseStats[5];
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -96,6 +103,11 @@ namespace PokeDexApp
         }
 
         private void pctBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

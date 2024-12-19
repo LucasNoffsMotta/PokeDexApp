@@ -17,10 +17,31 @@ namespace PokeDexApp
             int poke_id = int.Parse(data[1]);
             string poke_type_one = data[2];
             string poke_type_two = data[3];
-            Image img = Image.FromFile($"C:\\Users\\lnoff\\source\\repos\\PokeDexApp\\PokeDexApp\\Images\\{poke_id}.png");
-            node.pokemon = new Pokemon(poke_name, poke_id, poke_type_one, poke_type_two, img);
+            Image img;
+            string[] baseStats = new string[6];
+            int count = 0;
+
+            for (int i = 4; i < data.Length; i++)
+            {
+                baseStats[count] = data[i];
+                count++;
+            }
+                
+
+            try
+            {
+                img = Image.FromFile($"C:\\Users\\lnoff\\source\\repos\\PokeDexApp\\PokeDexApp\\Images\\{poke_id}.png");
+            }
+
+            catch
+            {
+                img = null;
+            }
+           
+            node.pokemon = new Pokemon(poke_name, poke_id, poke_type_one, poke_type_two, img, baseStats);
             return node;
         }
+
 
         public static String[] ConstructDexData(string[] emptyData, DataRow row)
         {
@@ -39,13 +60,18 @@ namespace PokeDexApp
                 query_two = $"SELECT name_type FROM Types WHERE id_type = {row["id_type_two"]};";
                 type_two = conn.SQLCommand(query_two);
                 nameTypeTwo = type_two.Rows[0]["name_type"].ToString();
-            }
+            }      
 
-         
             emptyData[0] = row["Name"].ToString();
             emptyData[1] = row["id_poke"].ToString();
             emptyData[2] = nameTypeOne;
             emptyData[3] = nameTypeTwo;
+            emptyData[4] = row["HP"].ToString();
+            emptyData[5] = row["ATK"].ToString();
+            emptyData[6] = row["SPATK"].ToString();
+            emptyData[7] = row["DEF"].ToString();
+            emptyData[8] = row["SPDEF"].ToString();
+            emptyData[9] = row["SPD"].ToString();
             return emptyData;
         }
 

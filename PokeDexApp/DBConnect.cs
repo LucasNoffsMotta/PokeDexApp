@@ -28,11 +28,11 @@ namespace PokeDexApp
             }
         }
 
-        public DataTable SQLCommand (string query)
+        public DataTable SQLCommand(string query)
         {
             DataTable dt = new DataTable();
             try
-            {              
+            {
                 var selectCommand = new SqlCommand(query, conn);
                 selectCommand.CommandTimeout = 0;
                 var redaer = selectCommand.ExecuteReader();
@@ -43,7 +43,29 @@ namespace PokeDexApp
             {
                 throw new(ex.Message);
             }
-            return dt;   
-        }        
+            return dt;
+        }
+
+        public int executeQuery(SqlCommand dbCommand)
+        {
+            try
+            {
+                if (conn.State == 0)
+                {
+                    conn.Open();
+                }
+
+                dbCommand.Connection = conn;
+                dbCommand.CommandType = CommandType.Text;
+
+
+                return dbCommand.ExecuteNonQuery();
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

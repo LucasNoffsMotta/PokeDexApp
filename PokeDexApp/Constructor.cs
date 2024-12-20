@@ -75,6 +75,17 @@ namespace PokeDexApp
             return emptyData;
         }
 
+        public static int GetTotalBaseStats(string[] values)
+        {
+            int total = 0;
+
+            foreach (string item in values)
+            {
+                total += int.Parse(item);
+            }
+            return total;
+        }
+
         public static ListNode ReverseList(ListNode head)
         {
             ListNode curr = head;

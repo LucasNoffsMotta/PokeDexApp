@@ -56,6 +56,8 @@
             label10 = new Label();
             lblTotal = new Label();
             btnLogOut = new Button();
+            btnAdd = new Button();
+            btnMyPokes = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -224,6 +226,7 @@
             lblHP.Size = new Size(21, 28);
             lblHP.TabIndex = 15;
             lblHP.Text = "*";
+            lblHP.Click += lblHP_Click;
             // 
             // lblATK
             // 
@@ -344,11 +347,34 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // btnAdd
+            // 
+            btnAdd.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(739, 79);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(95, 62);
+            btnAdd.TabIndex = 29;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnMyPokes
+            // 
+            btnMyPokes.Location = new Point(877, 703);
+            btnMyPokes.Name = "btnMyPokes";
+            btnMyPokes.Size = new Size(134, 38);
+            btnMyPokes.TabIndex = 30;
+            btnMyPokes.Text = "My Pokemons";
+            btnMyPokes.UseVisualStyleBackColor = true;
+            btnMyPokes.Click += btnMyPokes_Click;
+            // 
             // PokeDex
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1072, 814);
+            Controls.Add(btnMyPokes);
+            Controls.Add(btnAdd);
             Controls.Add(btnLogOut);
             Controls.Add(lblTotal);
             Controls.Add(label10);
@@ -415,5 +441,7 @@
         private Label label10;
         private Label lblTotal;
         private Button btnLogOut;
+        private Button btnAdd;
+        private Button btnMyPokes;
     }
 }

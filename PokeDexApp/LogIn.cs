@@ -14,6 +14,7 @@ namespace PokeDexApp
     public partial class LogIn : Form
     {
         public DBConnect conn = new DBConnect();
+        public static int userId;
 
         public LogIn()
         {
@@ -28,7 +29,7 @@ namespace PokeDexApp
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             DataTable userTable = new DataTable();
-            string query = $"Select user_name from Users where user_name = '{txtExistentUserName.Text}'";
+            string query = $"Select * from Users where user_name = '{txtExistentUserName.Text}'";
 
             if (txtExistentUserName.Text != "")
             {
@@ -48,6 +49,7 @@ namespace PokeDexApp
                 if (userTable.Rows[0]["user_name"].ToString() == txtExistentUserName.Text)
                 {
                     MessageBox.Show($"Bem vindo, {txtExistentUserName.Text}");
+                    userId = (int)userTable.Rows[0]["user_id"];
                     this.Hide();
                     UserPage userPage = new UserPage();
                     userPage.Show();
@@ -95,17 +97,13 @@ namespace PokeDexApp
 
                     if (affectedRows > 0)
                     {
-                        MessageBox.Show("Novo usario criado.");
-                        this.Hide();
-                        UserPage userPage = new UserPage();
-                        userPage.Show();
+                        MessageBox.Show("Novo usario criado. Faca login com seu nome.");                     
                     }
-                    
                 }
 
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw new Exception (ex.Message);
                 }             
             }
         }

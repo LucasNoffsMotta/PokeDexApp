@@ -214,13 +214,9 @@ namespace PokeDexApp
                         searchNodeTwo = searchNodeTwo.prev;
                     }
                 }
-                return searchNodeOne;
-            }
-
-            else
-            {
                 return dexStart;
-            }        
+            }
+            return dexStart;
         }
     }
 }

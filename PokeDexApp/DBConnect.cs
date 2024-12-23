@@ -33,6 +33,11 @@ namespace PokeDexApp
             DataTable dt = new DataTable();
             try
             {
+                if (conn.State == 0)
+                {
+                    conn.Open();
+                }
+
                 var selectCommand = new SqlCommand(query, conn);
                 selectCommand.CommandTimeout = 0;
                 var redaer = selectCommand.ExecuteReader();
@@ -43,6 +48,7 @@ namespace PokeDexApp
             {
                 throw new(ex.Message);
             }
+            conn.Close();
             return dt;
         }
 
@@ -57,9 +63,9 @@ namespace PokeDexApp
 
                 dbCommand.Connection = conn;
                 dbCommand.CommandType = CommandType.Text;
-
-
-                return dbCommand.ExecuteNonQuery();
+                int rows = dbCommand.ExecuteNonQuery();
+                conn.Close();
+                return rows;
             }
 
             catch (Exception ex)

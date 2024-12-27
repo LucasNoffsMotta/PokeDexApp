@@ -20,8 +20,7 @@ namespace PokeDexApp
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PokeDex pokeDex = new PokeDex();
-            pokeDex.Show();
+            LogIn.dex.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,7 +32,9 @@ namespace PokeDexApp
 
         private void btnMyTeams_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            UserTeams userTeams = new UserTeams();
+            userTeams.Show();
         }
     }
 }

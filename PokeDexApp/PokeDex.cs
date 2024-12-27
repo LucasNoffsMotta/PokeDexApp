@@ -12,6 +12,8 @@ namespace PokeDexApp
         public static ListNode dexStart = new ListNode();
         public int userId = LogIn.userId;
         public static bool loaded = false;
+        public static ListNode[] linkedArray;
+
 
         public PokeDex()
         {
@@ -22,7 +24,7 @@ namespace PokeDexApp
         {
             try
             {
-                if(!loaded)
+                if (!loaded)
                 {
                     string selectAllQuery = "Select id_poke, Name, id_type_one, id_type_two," +
                     " HP, ATK, SPATK, DEF, SPDEF, SPD  from Pokemon;";
@@ -30,21 +32,23 @@ namespace PokeDexApp
                     int pokedexSize = pokeTable.Rows.Count;
                     dexList = new ListNode();
                     dexStart = new ListNode();
+                    linkedArray = new ListNode[pokedexSize];
 
 
-                    for (int i = 0; i <= pokedexSize - 1; i++)
+                    for (int i = 0; i < pokedexSize; i++)
                     {
                         string[] dexData = new string[10];
                         dexData = Constructor.ConstructDexData(dexData, pokeTable.Rows[i]);
                         dexList = Constructor.ConstructLinkedList(dexList, dexData);
+                        linkedArray[i] = dexList;
                         if (i == 0)
                         {
                             dexStart = dexList;
                             dexStart.prev = new ListNode();
-                        }
+                        }                  
                         ListNode temp = dexList;
                         dexList.next = new ListNode();
-                        dexList = dexList.next;
+                        dexList = dexList.next;                    
                         dexList.prev = temp;
                     }
                     UpdatePage();
@@ -54,7 +58,7 @@ namespace PokeDexApp
                 {
                     UpdatePage();
                 }
-                
+
             }
 
             catch (Exception ex)
@@ -63,9 +67,37 @@ namespace PokeDexApp
             }
         }
 
+        public void LoadTop()
+        {
+            string attributeSearch = txtatributeSearch.Text;
+            string query = $"SELECT TOP (10) name, HP, ATK, SPATK, DEF, SPDEF, SPD FROM Pokemon ORDER BY {attributeSearch} DESC;";
+
+            try
+            {
+                DataTable topPokes = new DataTable();
+                topPokes = conn.SQLCommand(query);
+
+                if (topPokes.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = topPokes;
+                }
+
+                else
+                {
+                    dataGridView1.DataSource = null;
+                }
+            }
+
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ConstructPages();
+
         }
 
         private void lblTypeOne_Click(object sender, EventArgs e)
@@ -127,8 +159,8 @@ namespace PokeDexApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-             dexStart = Constructor.SearchOnLinkedList(txtSearch.Text, dexStart);
-             UpdatePage();         
+            dexStart = Constructor.SearchOnLinkedList(txtSearch.Text, dexStart);
+            UpdatePage();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -195,5 +227,12 @@ namespace PokeDexApp
             UserTeams userTeams = new UserTeams();
             userTeams.Show();
         }
+
+        private void btnSearchAtribute_Click(object sender, EventArgs e)
+        {
+            LoadTop();
+        }
+
+ 
     }
 }

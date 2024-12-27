@@ -20,13 +20,12 @@ namespace PokeDexApp
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserPage userPage = new UserPage();
-            userPage.Show();
+            UserTeams userTeams = new UserTeams();
+            userTeams.Show();
         }
 
         private void PokeEditor_Load(object sender, EventArgs e)
-        {
-           
+        {       
             lblName.Text = UserTeams.currentPoke.pokemon.name.ToString();
             lblNumber.Text = UserTeams.currentPoke.pokemon.id.ToString();
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
@@ -39,7 +38,6 @@ namespace PokeDexApp
             lblSPDEF.Text = UserTeams.currentPoke.pokemon.baseStats[4];
             lblSPD.Text = UserTeams.currentPoke.pokemon.baseStats[5];
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
-
         }
     }
 }

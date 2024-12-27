@@ -166,6 +166,34 @@ namespace PokeDexApp
             return typeNumber;
         }
 
+        public static ListNode BinarySearch(ListNode[] nodesArray, int target)
+        {
+            int firstIndex = 0;
+            int lastIndex = nodesArray.Length - 1;
+            int middleIndex = (int)lastIndex / 2;
+
+            while (firstIndex < lastIndex && nodesArray[middleIndex].pokemon.id != target)
+            {
+                if (nodesArray[middleIndex].pokemon.id < target)
+                {
+                    firstIndex = middleIndex + 1;
+                }
+
+                else if (nodesArray[firstIndex].pokemon.id == target)
+                {
+                    return nodesArray[firstIndex];
+                }
+
+                else
+                {
+                    lastIndex = middleIndex - 1;
+                }
+
+                middleIndex = (int) (firstIndex + lastIndex) / 2;
+            }
+            return nodesArray[middleIndex];
+        }
+
 
         public static ListNode ReverseList(ListNode head)
         {

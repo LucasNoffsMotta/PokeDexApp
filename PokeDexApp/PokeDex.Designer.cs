@@ -58,7 +58,12 @@
             btnLogOut = new Button();
             btnAdd = new Button();
             btnMyPokes = new Button();
+            label11 = new Label();
+            txtatributeSearch = new ComboBox();
+            btnSearchAtribute = new Button();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblName
@@ -368,11 +373,53 @@
             btnMyPokes.UseVisualStyleBackColor = true;
             btnMyPokes.Click += btnMyPokes_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(37, 215);
+            label11.Name = "label11";
+            label11.Size = new Size(150, 28);
+            label11.TabIndex = 31;
+            label11.Text = "Search Top 10:";
+            // 
+            // txtatributeSearch
+            // 
+            txtatributeSearch.FormattingEnabled = true;
+            txtatributeSearch.Items.AddRange(new object[] { "HP", "ATK", "SPATK", "DEF", "SPDEF", "SPD" });
+            txtatributeSearch.Location = new Point(37, 249);
+            txtatributeSearch.Name = "txtatributeSearch";
+            txtatributeSearch.Size = new Size(236, 28);
+            txtatributeSearch.TabIndex = 32;
+            // 
+            // btnSearchAtribute
+            // 
+            btnSearchAtribute.Location = new Point(37, 293);
+            btnSearchAtribute.Name = "btnSearchAtribute";
+            btnSearchAtribute.Size = new Size(94, 29);
+            btnSearchAtribute.TabIndex = 33;
+            btnSearchAtribute.Text = "Search";
+            btnSearchAtribute.UseVisualStyleBackColor = true;
+            btnSearchAtribute.Click += btnSearchAtribute_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(37, 357);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(240, 269);
+            dataGridView1.TabIndex = 34;
+            // 
             // PokeDex
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1072, 814);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnSearchAtribute);
+            Controls.Add(txtatributeSearch);
+            Controls.Add(label11);
             Controls.Add(btnMyPokes);
             Controls.Add(btnAdd);
             Controls.Add(btnLogOut);
@@ -407,6 +454,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -443,5 +491,9 @@
         private Button btnLogOut;
         private Button btnAdd;
         private Button btnMyPokes;
+        private Label label11;
+        private ComboBox txtatributeSearch;
+        private Button btnSearchAtribute;
+        private DataGridView dataGridView1;
     }
 }

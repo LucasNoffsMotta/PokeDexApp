@@ -19,7 +19,6 @@ namespace PokeDexApp
             {
                 connectionString = "Data Source=Lucas_pc;Initial Catalog=PokeDex;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                 conn = new(connectionString);
-                conn.Open();
             }
 
             catch (Exception ex)
@@ -33,11 +32,7 @@ namespace PokeDexApp
             DataTable dt = new DataTable();
             try
             {
-                if (conn.State == 0)
-                {
-                    conn.Open();
-                }
-
+                conn.Open();
                 var selectCommand = new SqlCommand(query, conn);
                 selectCommand.CommandTimeout = 0;
                 var redaer = selectCommand.ExecuteReader();
@@ -56,11 +51,7 @@ namespace PokeDexApp
         {
             try
             {
-                if (conn.State == 0)
-                {
-                    conn.Open();
-                }
-
+                conn.Open();
                 dbCommand.Connection = conn;
                 dbCommand.CommandType = CommandType.Text;
                 int rows = dbCommand.ExecuteNonQuery();

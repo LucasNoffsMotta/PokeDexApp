@@ -15,6 +15,7 @@ namespace PokeDexApp
     {
         public DBConnect conn = new DBConnect();
         public static int userId;
+        public static PokeDex dex;
 
         public LogIn()
         {
@@ -51,7 +52,9 @@ namespace PokeDexApp
                     MessageBox.Show($"Bem vindo, {txtExistentUserName.Text}");
                     userId = (int)userTable.Rows[0]["user_id"];
                     this.Hide();
-                    UserPage userPage = new UserPage();
+                    UserPage userPage = new UserPage();   
+                    dex = new PokeDex();
+                    dex.ConstructPages();
                     userPage.Show();
                 }
 
@@ -77,7 +80,7 @@ namespace PokeDexApp
                 {
                     throw new Exception(ex.Message);
                 }
-               
+
             }
 
             if (userTable.Rows.Count > 0)
@@ -97,15 +100,20 @@ namespace PokeDexApp
 
                     if (affectedRows > 0)
                     {
-                        MessageBox.Show("Novo usario criado. Faca login com seu nome.");                     
+                        MessageBox.Show("Novo usario criado. Faca login com seu nome.");
                     }
                 }
 
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    throw new Exception (ex.Message);
-                }             
+                    throw new Exception(ex.Message);
+                }
             }
+        }
+
+        private void LogIn_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

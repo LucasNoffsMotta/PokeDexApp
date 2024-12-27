@@ -15,7 +15,7 @@ namespace PokeDexApp
         public DBConnect conn = new DBConnect();
         public static DataTable pokes = new DataTable();
         public static ListNode currentPoke = new ListNode();
-
+        public static bool loaded = false;
 
         public UserTeams()
         {
@@ -24,9 +24,8 @@ namespace PokeDexApp
 
         private void btnAddTeam_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            PokeDex pokeDex = new PokeDex();
-            pokeDex.Show();
+            this.Hide();            
+            LogIn.dex.Show();
         }
 
         private void btnTeamOne_Click(object sender, EventArgs e)
@@ -44,13 +43,18 @@ namespace PokeDexApp
         {
             try
             {
-                string query = $"Select * from User_Pokemons where user_id = {LogIn.userId};";
-                pokes = conn.SQLCommand(query);
-                Label[] pokeNames = new Label[] { lblName1, lblName2, lblName3, lblName4, lblName5, lblName6, lblName7,
-                lblName8, lblName9, lblName10};
-                PictureBox[] pictures = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5,
-                pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10};
+                if (!loaded)
+                {
+                    string query = $"Select * from User_Pokemons where user_id = {LogIn.userId};";
+                    pokes = conn.SQLCommand(query);
+                }
 
+                Label[] pokeNames = new Label[] { lblName1, lblName2, lblName3, 
+                    lblName4, lblName5, lblName6, lblName7,
+                        lblName8, lblName9, lblName10};
+                PictureBox[] pictures = new PictureBox[] { pictureBox1, pictureBox2, 
+                    pictureBox3, pictureBox4, pictureBox5,
+                        pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10};
 
                 if (pokes.Rows.Count > 0)
                 {
@@ -59,7 +63,7 @@ namespace PokeDexApp
                     for (int i = 0; i < pokes.Rows.Count; i++)
                     {
                         pokeNames[i].Text = pokes.Rows[i]["name"].ToString();
-                        ListNode currentPoke = Constructor.SearchOnLinkedList(pokes.Rows[i]["name"].ToString(), PokeDex.dexStart);
+                        ListNode currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));
                         pictures[i].Image = currentPoke.pokemon.image;
                     }
                 }
@@ -79,23 +83,23 @@ namespace PokeDexApp
 
         private void lblName1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void ChangePage(int slotNumber)
         {
             try
             {
-                currentPoke = Constructor.SearchOnLinkedList(pokes.Rows[slotNumber - 1]["name"].ToString(), PokeDex.dexStart);
+                currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_poke"]));
                 this.Hide();
                 PokeEditor editPage = new PokeEditor();
                 editPage.Show();
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }         
+            }
         }
 
         private void btnpokeOne_Click(object sender, EventArgs e)
@@ -146,6 +150,11 @@ namespace PokeDexApp
         private void btnpokeTen_Click(object sender, EventArgs e)
         {
             ChangePage(10);
+        }
+
+        private void lblSlot_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

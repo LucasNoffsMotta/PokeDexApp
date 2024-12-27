@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblTitle = new Label();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserTeams));
             btnAddTeam = new Button();
             pictureBox1 = new PictureBox();
             lblSlot = new Label();
@@ -70,6 +71,8 @@
             btnpokeEight = new Button();
             btnpokeSeven = new Button();
             btnpokeSix = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            pictureBox11 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -80,23 +83,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(49, 19);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(107, 50);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "Team";
             // 
             // btnAddTeam
             // 
-            btnAddTeam.Location = new Point(496, 775);
+            btnAddTeam.Location = new Point(410, 759);
             btnAddTeam.Name = "btnAddTeam";
-            btnAddTeam.Size = new Size(203, 41);
+            btnAddTeam.Size = new Size(215, 46);
             btnAddTeam.TabIndex = 1;
             btnAddTeam.Text = "Add Pokemon";
             btnAddTeam.UseVisualStyleBackColor = true;
@@ -104,9 +98,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(72, 143);
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(161, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(104, 83);
+            pictureBox1.Padding = new Padding(10);
+            pictureBox1.Size = new Size(104, 106);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 34;
             pictureBox1.TabStop = false;
@@ -115,17 +112,18 @@
             // 
             lblSlot.AutoSize = true;
             lblSlot.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSlot.Location = new Point(90, 86);
+            lblSlot.Location = new Point(58, 81);
             lblSlot.Name = "lblSlot";
             lblSlot.Size = new Size(86, 32);
             lblSlot.TabIndex = 35;
             lblSlot.Text = "Slot 1";
+            lblSlot.Click += lblSlot_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(348, 86);
+            label1.Location = new Point(58, 237);
             label1.Name = "label1";
             label1.Size = new Size(86, 32);
             label1.TabIndex = 36;
@@ -135,7 +133,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(608, 86);
+            label2.Location = new Point(58, 391);
             label2.Name = "label2";
             label2.Size = new Size(86, 32);
             label2.TabIndex = 37;
@@ -145,7 +143,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(851, 86);
+            label3.Location = new Point(58, 535);
             label3.Name = "label3";
             label3.Size = new Size(86, 32);
             label3.TabIndex = 38;
@@ -155,7 +153,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(1080, 86);
+            label4.Location = new Point(58, 669);
             label4.Name = "label4";
             label4.Size = new Size(86, 32);
             label4.TabIndex = 39;
@@ -165,7 +163,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(1080, 434);
+            label5.Location = new Point(589, 669);
             label5.Name = "label5";
             label5.Size = new Size(102, 32);
             label5.TabIndex = 44;
@@ -175,7 +173,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(851, 434);
+            label6.Location = new Point(589, 532);
             label6.Name = "label6";
             label6.Size = new Size(86, 32);
             label6.TabIndex = 43;
@@ -185,7 +183,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(605, 434);
+            label7.Location = new Point(589, 391);
             label7.Name = "label7";
             label7.Size = new Size(86, 32);
             label7.TabIndex = 42;
@@ -195,7 +193,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(368, 434);
+            label8.Location = new Point(589, 237);
             label8.Name = "label8";
             label8.Size = new Size(86, 32);
             label8.TabIndex = 41;
@@ -205,7 +203,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Arial", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(90, 434);
+            label9.Location = new Point(589, 81);
             label9.Name = "label9";
             label9.Size = new Size(86, 32);
             label9.TabIndex = 40;
@@ -213,7 +211,8 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(337, 143);
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(161, 179);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(125, 62);
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -222,7 +221,8 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(589, 143);
+            pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
+            pictureBox3.Location = new Point(161, 323);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(125, 62);
             pictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -231,7 +231,8 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Location = new Point(833, 143);
+            pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
+            pictureBox4.Location = new Point(161, 463);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(125, 62);
             pictureBox4.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -240,7 +241,8 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Location = new Point(1057, 143);
+            pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
+            pictureBox5.Location = new Point(161, 601);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(125, 62);
             pictureBox5.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -249,7 +251,8 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Location = new Point(72, 487);
+            pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
+            pictureBox6.Location = new Point(718, 12);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(125, 62);
             pictureBox6.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -258,7 +261,8 @@
             // 
             // pictureBox7
             // 
-            pictureBox7.Location = new Point(348, 487);
+            pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
+            pictureBox7.Location = new Point(718, 179);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(125, 62);
             pictureBox7.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -267,7 +271,8 @@
             // 
             // pictureBox8
             // 
-            pictureBox8.Location = new Point(589, 487);
+            pictureBox8.InitialImage = (Image)resources.GetObject("pictureBox8.InitialImage");
+            pictureBox8.Location = new Point(718, 323);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(125, 62);
             pictureBox8.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -276,7 +281,8 @@
             // 
             // pictureBox9
             // 
-            pictureBox9.Location = new Point(833, 487);
+            pictureBox9.InitialImage = (Image)resources.GetObject("pictureBox9.InitialImage");
+            pictureBox9.Location = new Point(718, 463);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(125, 62);
             pictureBox9.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -285,7 +291,8 @@
             // 
             // pictureBox10
             // 
-            pictureBox10.Location = new Point(1057, 487);
+            pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
+            pictureBox10.Location = new Point(718, 601);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(125, 62);
             pictureBox10.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -296,7 +303,7 @@
             // 
             lblName1.AutoSize = true;
             lblName1.Font = new Font("Arial", 12F);
-            lblName1.Location = new Point(90, 306);
+            lblName1.Location = new Point(307, 81);
             lblName1.Name = "lblName1";
             lblName1.Size = new Size(66, 23);
             lblName1.TabIndex = 54;
@@ -307,7 +314,7 @@
             // 
             lblName2.AutoSize = true;
             lblName2.Font = new Font("Arial", 12F);
-            lblName2.Location = new Point(368, 306);
+            lblName2.Location = new Point(307, 237);
             lblName2.Name = "lblName2";
             lblName2.Size = new Size(66, 23);
             lblName2.TabIndex = 55;
@@ -317,7 +324,7 @@
             // 
             lblName3.AutoSize = true;
             lblName3.Font = new Font("Arial", 12F);
-            lblName3.Location = new Point(608, 306);
+            lblName3.Location = new Point(307, 362);
             lblName3.Name = "lblName3";
             lblName3.Size = new Size(66, 23);
             lblName3.TabIndex = 56;
@@ -327,7 +334,7 @@
             // 
             lblName4.AutoSize = true;
             lblName4.Font = new Font("Arial", 12F);
-            lblName4.Location = new Point(851, 306);
+            lblName4.Location = new Point(307, 502);
             lblName4.Name = "lblName4";
             lblName4.Size = new Size(66, 23);
             lblName4.TabIndex = 57;
@@ -337,7 +344,7 @@
             // 
             lblName5.AutoSize = true;
             lblName5.Font = new Font("Arial", 12F);
-            lblName5.Location = new Point(1088, 306);
+            lblName5.Location = new Point(305, 636);
             lblName5.Name = "lblName5";
             lblName5.Size = new Size(66, 23);
             lblName5.TabIndex = 58;
@@ -347,7 +354,7 @@
             // 
             lblName10.AutoSize = true;
             lblName10.Font = new Font("Arial", 12F);
-            lblName10.Location = new Point(1088, 626);
+            lblName10.Location = new Point(885, 636);
             lblName10.Name = "lblName10";
             lblName10.Size = new Size(66, 23);
             lblName10.TabIndex = 63;
@@ -357,7 +364,7 @@
             // 
             lblName9.AutoSize = true;
             lblName9.Font = new Font("Arial", 12F);
-            lblName9.Location = new Point(851, 626);
+            lblName9.Location = new Point(885, 502);
             lblName9.Name = "lblName9";
             lblName9.Size = new Size(66, 23);
             lblName9.TabIndex = 62;
@@ -367,7 +374,7 @@
             // 
             lblName8.AutoSize = true;
             lblName8.Font = new Font("Arial", 12F);
-            lblName8.Location = new Point(608, 626);
+            lblName8.Location = new Point(885, 362);
             lblName8.Name = "lblName8";
             lblName8.Size = new Size(66, 23);
             lblName8.TabIndex = 61;
@@ -377,7 +384,7 @@
             // 
             lblName7.AutoSize = true;
             lblName7.Font = new Font("Arial", 12F);
-            lblName7.Location = new Point(368, 626);
+            lblName7.Location = new Point(885, 237);
             lblName7.Name = "lblName7";
             lblName7.Size = new Size(66, 23);
             lblName7.TabIndex = 60;
@@ -387,7 +394,7 @@
             // 
             lblName6.AutoSize = true;
             lblName6.Font = new Font("Arial", 12F);
-            lblName6.Location = new Point(100, 626);
+            lblName6.Location = new Point(885, 81);
             lblName6.Name = "lblName6";
             lblName6.Size = new Size(66, 23);
             lblName6.TabIndex = 59;
@@ -395,7 +402,7 @@
             // 
             // btnpokeOne
             // 
-            btnpokeOne.Location = new Point(82, 367);
+            btnpokeOne.Location = new Point(305, 123);
             btnpokeOne.Name = "btnpokeOne";
             btnpokeOne.Size = new Size(94, 29);
             btnpokeOne.TabIndex = 64;
@@ -405,7 +412,7 @@
             // 
             // btnpokeTwo
             // 
-            btnpokeTwo.Location = new Point(360, 367);
+            btnpokeTwo.Location = new Point(307, 270);
             btnpokeTwo.Name = "btnpokeTwo";
             btnpokeTwo.Size = new Size(94, 29);
             btnpokeTwo.TabIndex = 65;
@@ -415,7 +422,7 @@
             // 
             // btnpokeThree
             // 
-            btnpokeThree.Location = new Point(605, 367);
+            btnpokeThree.Location = new Point(305, 397);
             btnpokeThree.Name = "btnpokeThree";
             btnpokeThree.Size = new Size(94, 29);
             btnpokeThree.TabIndex = 66;
@@ -425,7 +432,7 @@
             // 
             // btnpokeFour
             // 
-            btnpokeFour.Location = new Point(851, 367);
+            btnpokeFour.Location = new Point(305, 535);
             btnpokeFour.Name = "btnpokeFour";
             btnpokeFour.Size = new Size(94, 29);
             btnpokeFour.TabIndex = 67;
@@ -435,7 +442,7 @@
             // 
             // btnpokeFive
             // 
-            btnpokeFive.Location = new Point(1080, 367);
+            btnpokeFive.Location = new Point(305, 675);
             btnpokeFive.Name = "btnpokeFive";
             btnpokeFive.Size = new Size(94, 29);
             btnpokeFive.TabIndex = 68;
@@ -445,7 +452,7 @@
             // 
             // btnpokeTen
             // 
-            btnpokeTen.Location = new Point(1080, 683);
+            btnpokeTen.Location = new Point(885, 675);
             btnpokeTen.Name = "btnpokeTen";
             btnpokeTen.Size = new Size(94, 29);
             btnpokeTen.TabIndex = 73;
@@ -455,7 +462,7 @@
             // 
             // btnpokeNine
             // 
-            btnpokeNine.Location = new Point(843, 683);
+            btnpokeNine.Location = new Point(885, 532);
             btnpokeNine.Name = "btnpokeNine";
             btnpokeNine.Size = new Size(94, 29);
             btnpokeNine.TabIndex = 72;
@@ -465,7 +472,7 @@
             // 
             // btnpokeEight
             // 
-            btnpokeEight.Location = new Point(597, 683);
+            btnpokeEight.Location = new Point(885, 394);
             btnpokeEight.Name = "btnpokeEight";
             btnpokeEight.Size = new Size(94, 29);
             btnpokeEight.TabIndex = 71;
@@ -475,7 +482,7 @@
             // 
             // btnpokeSeven
             // 
-            btnpokeSeven.Location = new Point(360, 683);
+            btnpokeSeven.Location = new Point(885, 270);
             btnpokeSeven.Name = "btnpokeSeven";
             btnpokeSeven.Size = new Size(94, 29);
             btnpokeSeven.TabIndex = 70;
@@ -485,7 +492,7 @@
             // 
             // btnpokeSix
             // 
-            btnpokeSix.Location = new Point(90, 683);
+            btnpokeSix.Location = new Point(885, 123);
             btnpokeSix.Name = "btnpokeSix";
             btnpokeSix.Size = new Size(94, 29);
             btnpokeSix.TabIndex = 69;
@@ -493,11 +500,22 @@
             btnpokeSix.UseVisualStyleBackColor = true;
             btnpokeSix.Click += btnpokeSix_Click;
             // 
+            // pictureBox11
+            // 
+            pictureBox11.Image = (Image)resources.GetObject("pictureBox11.Image");
+            pictureBox11.Location = new Point(641, 744);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(50, 61);
+            pictureBox11.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox11.TabIndex = 74;
+            pictureBox11.TabStop = false;
+            // 
             // UserTeams
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1343, 848);
+            ClientSize = new Size(1073, 871);
+            Controls.Add(pictureBox11);
             Controls.Add(btnpokeTen);
             Controls.Add(btnpokeNine);
             Controls.Add(btnpokeEight);
@@ -539,7 +557,6 @@
             Controls.Add(lblSlot);
             Controls.Add(pictureBox1);
             Controls.Add(btnAddTeam);
-            Controls.Add(lblTitle);
             Name = "UserTeams";
             Text = "UserTeams";
             Load += UserTeams_Load;
@@ -553,6 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -601,5 +619,7 @@
         private Button btnpokeEight;
         private Button btnpokeSeven;
         private Button btnpokeSix;
+        private System.Windows.Forms.Timer timer1;
+        private PictureBox pictureBox11;
     }
 }

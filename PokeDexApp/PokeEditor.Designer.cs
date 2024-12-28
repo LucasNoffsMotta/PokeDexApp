@@ -61,6 +61,8 @@
             txtSPDEFEV = new TextBox();
             txtSPDEV = new TextBox();
             btnCalculate = new Button();
+            txtNature = new ComboBox();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -372,11 +374,33 @@
             btnCalculate.Text = "Calculate";
             btnCalculate.UseVisualStyleBackColor = true;
             // 
+            // txtNature
+            // 
+            txtNature.FormattingEnabled = true;
+            txtNature.Items.AddRange(new object[] { "Adamant", "Bashful", "Bold", "Brave", "Calm", "Careful", "Docile", "Gentle", "Hardy", "Hasty", "Impish", "Jolly", "Lax", "Lonely", "Mild", "Modest", "Naive", "Naughty", "Quiet", "Quirky", "Rash", "Relaxed", "Sassy", "Serious", "Timid" });
+            txtNature.Location = new Point(128, 199);
+            txtNature.Name = "txtNature";
+            txtNature.Size = new Size(151, 28);
+            txtNature.TabIndex = 61;
+            txtNature.SelectedIndexChanged += txtNature_SelectedIndexChanged;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(35, 199);
+            label9.Name = "label9";
+            label9.Size = new Size(83, 28);
+            label9.TabIndex = 62;
+            label9.Text = "Nature:";
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 741);
+            Controls.Add(label9);
+            Controls.Add(txtNature);
             Controls.Add(btnCalculate);
             Controls.Add(txtSPDEV);
             Controls.Add(txtSPDEFEV);
@@ -452,5 +476,7 @@
         private TextBox txtSPDEFEV;
         private TextBox txtSPDEV;
         private Button btnCalculate;
+        private ComboBox txtNature;
+        private Label label9;
     }
 }

@@ -96,6 +96,184 @@ namespace PokeDexApp
             return numbers;
         }
 
+        
+
+        public static int EnumerateStatsInt(string stat)
+        {
+            int statNumber;
+            switch(stat)
+            {
+                case "HP":
+                    statNumber = 1; 
+                    break;
+
+                case "Attack":
+                    statNumber = 2;
+                    break;
+
+                case "Defense":
+                    statNumber = 3;
+                    break;
+
+                case "Special Attack":
+                    statNumber = 4;
+                    break;
+
+                case "Special Defense":
+                    statNumber = 5;
+                    break;
+
+                case "Speed":
+                    statNumber = 6;
+                    break;
+
+                default:
+                    statNumber = 0;
+                    break;
+            }
+            return statNumber;
+        }
+
+
+        public static Dictionary<string, int> EnumerateNature(string nature)
+        {
+            Dictionary<string, int> statsStatus = new Dictionary<string, int>();
+
+            switch (nature)
+            {
+                case "Adamant":
+                    statsStatus["strong"] = EnumerateStatsInt("Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    break;
+
+                case "Bashful":
+                    statsStatus["strong"] = EnumerateStatsInt("None");
+                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    break;
+
+                case "Bold":
+                    statsStatus["strong"] = EnumerateStatsInt("Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    break;
+
+                case "Brave":
+                    statsStatus["strong"] = EnumerateStatsInt("Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    break;
+
+                case "Calm":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    break;
+
+                case "Careful":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    break;
+
+                case "Docile":
+                    statsStatus["strong"] = EnumerateStatsInt("None");
+                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    break;
+
+                case "Gentle":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    break;
+
+                case "Hardy":
+                    statsStatus["strong"] = EnumerateStatsInt("None");
+                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    break;
+
+                case "Hasty":
+                    statsStatus["strong"] = EnumerateStatsInt("Speed");
+                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    break;
+
+                case "Impish":
+                    statsStatus["strong"] = EnumerateStatsInt("Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    break;
+
+                case "Jolly":
+                    statsStatus["strong"] = EnumerateStatsInt("Speed");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    break;
+
+                case "Lax":
+                    statsStatus["strong"] = EnumerateStatsInt("Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    break;
+
+                case "Lonely":
+                    statsStatus["strong"] = EnumerateStatsInt("Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    break;
+
+                case "Mild":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    break;
+
+                case "Modest":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    break;
+
+                case "Naive":
+                    statsStatus["strong"] = EnumerateStatsInt("Speed");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    break;
+
+                case "Naughty":
+                    statsStatus["strong"] = EnumerateStatsInt("Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    break;
+
+                case "Quiet":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    break;
+
+                case "Quirky":
+                    statsStatus["strong"] = EnumerateStatsInt("None");
+                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    break;
+
+                case "Rash":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
+                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    break;
+
+                case "Relaxed":
+                    statsStatus["strong"] = EnumerateStatsInt("Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    break;
+
+                case "Sassy":
+                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
+                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    break;
+
+                case "Serious":
+                    statsStatus["strong"] = EnumerateStatsInt("None");
+                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    break;
+
+                case "Timid":
+                    statsStatus["strong"] = EnumerateStatsInt("Speed");
+                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    break;
+
+                default:
+                    statsStatus["strong"] = 0;
+                    statsStatus["weak"] = 0;
+                    break;
+            }
+
+            return statsStatus;
+        }
 
         public static int EnumerateType(string type)
         {

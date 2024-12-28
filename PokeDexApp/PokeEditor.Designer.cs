@@ -51,6 +51,16 @@
             lblTypeOne = new Label();
             lblName = new Label();
             btnBack = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            lblTitle2 = new Label();
+            txtTotalEv = new Label();
+            txtHPEV = new TextBox();
+            txtATKEV = new TextBox();
+            txtSPATKEV = new TextBox();
+            txtDEFEV = new TextBox();
+            txtSPDEFEV = new TextBox();
+            txtSPDEV = new TextBox();
+            btnCalculate = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +68,7 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(499, 627);
+            lblTotal.Location = new Point(211, 609);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(21, 28);
             lblTotal.TabIndex = 49;
@@ -68,7 +78,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(375, 627);
+            label10.Location = new Point(75, 609);
             label10.Name = "label10";
             label10.Size = new Size(59, 28);
             label10.TabIndex = 48;
@@ -88,7 +98,7 @@
             // 
             lblSPD.AutoSize = true;
             lblSPD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPD.Location = new Point(499, 573);
+            lblSPD.Location = new Point(211, 556);
             lblSPD.Name = "lblSPD";
             lblSPD.Size = new Size(21, 28);
             lblSPD.TabIndex = 46;
@@ -98,7 +108,7 @@
             // 
             lblSPDEF.AutoSize = true;
             lblSPDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPDEF.Location = new Point(499, 519);
+            lblSPDEF.Location = new Point(211, 511);
             lblSPDEF.Name = "lblSPDEF";
             lblSPDEF.Size = new Size(21, 28);
             lblSPDEF.TabIndex = 45;
@@ -108,7 +118,7 @@
             // 
             lblDEF.AutoSize = true;
             lblDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDEF.Location = new Point(499, 468);
+            lblDEF.Location = new Point(211, 456);
             lblDEF.Name = "lblDEF";
             lblDEF.Size = new Size(21, 28);
             lblDEF.TabIndex = 44;
@@ -118,7 +128,7 @@
             // 
             lblSPATK.AutoSize = true;
             lblSPATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPATK.Location = new Point(499, 422);
+            lblSPATK.Location = new Point(211, 410);
             lblSPATK.Name = "lblSPATK";
             lblSPATK.Size = new Size(21, 28);
             lblSPATK.TabIndex = 43;
@@ -128,7 +138,7 @@
             // 
             lblATK.AutoSize = true;
             lblATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblATK.Location = new Point(499, 372);
+            lblATK.Location = new Point(211, 365);
             lblATK.Name = "lblATK";
             lblATK.Size = new Size(21, 28);
             lblATK.TabIndex = 42;
@@ -138,7 +148,7 @@
             // 
             lblHP.AutoSize = true;
             lblHP.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHP.Location = new Point(499, 319);
+            lblHP.Location = new Point(211, 319);
             lblHP.Name = "lblHP";
             lblHP.Size = new Size(21, 28);
             lblHP.TabIndex = 41;
@@ -148,7 +158,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(384, 573);
+            label7.Location = new Point(155, 556);
             label7.Name = "label7";
             label7.Size = new Size(50, 28);
             label7.TabIndex = 40;
@@ -158,7 +168,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(357, 519);
+            label6.Location = new Point(128, 511);
             label6.Name = "label6";
             label6.Size = new Size(77, 28);
             label6.TabIndex = 39;
@@ -168,7 +178,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(386, 468);
+            label5.Location = new Point(157, 456);
             label5.Name = "label5";
             label5.Size = new Size(48, 28);
             label5.TabIndex = 38;
@@ -178,7 +188,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(355, 422);
+            label4.Location = new Point(126, 410);
             label4.Name = "label4";
             label4.Size = new Size(79, 28);
             label4.TabIndex = 37;
@@ -188,7 +198,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(384, 372);
+            label3.Location = new Point(155, 365);
             label3.Name = "label3";
             label3.Size = new Size(50, 28);
             label3.TabIndex = 36;
@@ -198,7 +208,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(395, 319);
+            label2.Location = new Point(166, 319);
             label2.Name = "label2";
             label2.Size = new Size(39, 28);
             label2.TabIndex = 35;
@@ -208,11 +218,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(320, 260);
+            label1.Location = new Point(166, 277);
             label1.Name = "label1";
-            label1.Size = new Size(114, 28);
+            label1.Size = new Size(59, 28);
             label1.TabIndex = 34;
-            label1.Text = "Base Stats:";
+            label1.Text = "Stats";
             // 
             // pictureBox1
             // 
@@ -285,11 +295,97 @@
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
             // 
+            // lblTitle2
+            // 
+            lblTitle2.AutoSize = true;
+            lblTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle2.Location = new Point(294, 277);
+            lblTitle2.Name = "lblTitle2";
+            lblTitle2.Size = new Size(51, 28);
+            lblTitle2.TabIndex = 51;
+            lblTitle2.Text = "EV`s";
+            // 
+            // txtTotalEv
+            // 
+            txtTotalEv.AutoSize = true;
+            txtTotalEv.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotalEv.Location = new Point(313, 609);
+            txtTotalEv.Name = "txtTotalEv";
+            txtTotalEv.Size = new Size(21, 28);
+            txtTotalEv.TabIndex = 53;
+            txtTotalEv.Text = "*";
+            // 
+            // txtHPEV
+            // 
+            txtHPEV.Location = new Point(291, 319);
+            txtHPEV.Name = "txtHPEV";
+            txtHPEV.Size = new Size(59, 27);
+            txtHPEV.TabIndex = 54;
+            txtHPEV.TextChanged += txtHPEV_TextChanged;
+            // 
+            // txtATKEV
+            // 
+            txtATKEV.Location = new Point(291, 369);
+            txtATKEV.Name = "txtATKEV";
+            txtATKEV.Size = new Size(59, 27);
+            txtATKEV.TabIndex = 55;
+            txtATKEV.TextChanged += txtATKEV_TextChanged;
+            // 
+            // txtSPATKEV
+            // 
+            txtSPATKEV.Location = new Point(291, 414);
+            txtSPATKEV.Name = "txtSPATKEV";
+            txtSPATKEV.Size = new Size(59, 27);
+            txtSPATKEV.TabIndex = 56;
+            txtSPATKEV.TextChanged += txtSPATKEV_TextChanged;
+            // 
+            // txtDEFEV
+            // 
+            txtDEFEV.Location = new Point(291, 460);
+            txtDEFEV.Name = "txtDEFEV";
+            txtDEFEV.Size = new Size(59, 27);
+            txtDEFEV.TabIndex = 57;
+            txtDEFEV.TextChanged += txtDEFEV_TextChanged;
+            // 
+            // txtSPDEFEV
+            // 
+            txtSPDEFEV.Location = new Point(291, 511);
+            txtSPDEFEV.Name = "txtSPDEFEV";
+            txtSPDEFEV.Size = new Size(59, 27);
+            txtSPDEFEV.TabIndex = 58;
+            txtSPDEFEV.TextChanged += txtSPDEFEV_TextChanged;
+            // 
+            // txtSPDEV
+            // 
+            txtSPDEV.Location = new Point(291, 560);
+            txtSPDEV.Name = "txtSPDEV";
+            txtSPDEV.Size = new Size(59, 27);
+            txtSPDEV.TabIndex = 59;
+            txtSPDEV.TextChanged += txtSPDEV_TextChanged;
+            // 
+            // btnCalculate
+            // 
+            btnCalculate.Location = new Point(499, 679);
+            btnCalculate.Name = "btnCalculate";
+            btnCalculate.Size = new Size(128, 36);
+            btnCalculate.TabIndex = 60;
+            btnCalculate.Text = "Calculate";
+            btnCalculate.UseVisualStyleBackColor = true;
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 741);
+            Controls.Add(btnCalculate);
+            Controls.Add(txtSPDEV);
+            Controls.Add(txtSPDEFEV);
+            Controls.Add(txtDEFEV);
+            Controls.Add(txtSPATKEV);
+            Controls.Add(txtATKEV);
+            Controls.Add(txtHPEV);
+            Controls.Add(txtTotalEv);
+            Controls.Add(lblTitle2);
             Controls.Add(btnBack);
             Controls.Add(lblTotal);
             Controls.Add(label10);
@@ -346,5 +442,15 @@
         private Label lblTypeOne;
         private Label lblName;
         private Button btnBack;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label lblTitle2;
+        private Label txtTotalEv;
+        private TextBox txtHPEV;
+        private TextBox txtATKEV;
+        private TextBox txtSPATKEV;
+        private TextBox txtDEFEV;
+        private TextBox txtSPDEFEV;
+        private TextBox txtSPDEV;
+        private Button btnCalculate;
     }
 }

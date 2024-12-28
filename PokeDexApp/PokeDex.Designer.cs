@@ -62,6 +62,7 @@
             txtatributeSearch = new ComboBox();
             btnSearchAtribute = new Button();
             dataGridView1 = new DataGridView();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -453,6 +454,7 @@
             Name = "PokeDex";
             Text = "Form1";
             Load += Form1_Load;
+            Paint += PokeDex_Paint;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -495,5 +497,6 @@
         private ComboBox txtatributeSearch;
         private Button btnSearchAtribute;
         private DataGridView dataGridView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

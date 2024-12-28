@@ -27,7 +27,6 @@ namespace PokeDexApp
                 count++;
             }
 
-
             try
             {
                 img = Image.FromFile($"C:\\Users\\lnoff\\source\\repos\\PokeDexApp\\PokeDexApp\\Images\\{poke_id}.png");
@@ -52,7 +51,6 @@ namespace PokeDexApp
             query_one = $"SELECT name_type FROM Types WHERE id_type = {row["id_type_one"]};";
             type_one = conn.SQLCommand(query_one);
             nameTypeOne = type_one.Rows[0]["name_type"].ToString();
-
 
             if (row["id_type_two"].ToString() != "")
             {
@@ -134,7 +132,6 @@ namespace PokeDexApp
                 case "Flying":
                     typeNumber = 10;
                     break;
-
                 case "Psychic":
                     typeNumber = 11;
                     break;
@@ -188,9 +185,9 @@ namespace PokeDexApp
                 {
                     lastIndex = middleIndex - 1;
                 }
-
                 middleIndex = (int) (firstIndex + lastIndex) / 2;
             }
+
             return nodesArray[middleIndex];
         }
 

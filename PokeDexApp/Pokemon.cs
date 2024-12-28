@@ -14,8 +14,7 @@ namespace PokeDexApp
         public string typeTwo;
         public Image image;
         public string[] baseStats;
-        
-        
+            
         public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null)
         {
             this.name = name;

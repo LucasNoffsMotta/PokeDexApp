@@ -13,6 +13,10 @@ namespace PokeDexApp
         public int userId = LogIn.userId;
         public static bool loaded = false;
         public static ListNode[] linkedArray;
+        // Cache font instead of recreating font objects each time we paint.
+        private Font fnt = new Font("Arial", 10);
+         
+
 
 
         public PokeDex()
@@ -34,7 +38,6 @@ namespace PokeDexApp
                     dexStart = new ListNode();
                     linkedArray = new ListNode[pokedexSize];
 
-
                     for (int i = 0; i < pokedexSize; i++)
                     {
                         string[] dexData = new string[10];
@@ -45,10 +48,10 @@ namespace PokeDexApp
                         {
                             dexStart = dexList;
                             dexStart.prev = new ListNode();
-                        }                  
+                        }
                         ListNode temp = dexList;
                         dexList.next = new ListNode();
-                        dexList = dexList.next;                    
+                        dexList = dexList.next;
                         dexList.prev = temp;
                     }
                     UpdatePage();
@@ -88,16 +91,29 @@ namespace PokeDexApp
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
 
+        //private void pictureBox2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        //{
+        //    // Create a local version of the graphics object for the PictureBox.
+        //    Graphics g = e.Graphics;
+
+        //    // Draw a string on the PictureBox.
+        //    g.DrawString("This is a diagonal line drawn on the control",
+        //        fnt, Brushes.Blue, new Point(30, 30));
+        //    // Draw a line in the PictureBox.
+        //    g.DrawLine(Pens.Blue, pictureBox2.Left, pictureBox2.Top,
+        //        pictureBox2.Right, pictureBox2.Bottom);
+        //}
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ConstructPages();
-
+            //pictureBox2.Paint += new PaintEventHandler(this.pictureBox2_Paint);
         }
 
         private void lblTypeOne_Click(object sender, EventArgs e)
@@ -201,7 +217,6 @@ namespace PokeDexApp
                 insertPokemon.Parameters.AddWithValue("@spd", baseStats[5]);
                 insertPokemon.Parameters.AddWithValue("@userId", userId);
 
-
                 insertedPokemon = conn.executeQuery(insertPokemon);
 
                 if (insertedPokemon > 0)
@@ -233,6 +248,9 @@ namespace PokeDexApp
             LoadTop();
         }
 
- 
+        private void PokeDex_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -16,12 +16,14 @@ namespace PokeDexApp
         public int maxEvPerAtribute = 255;
         public int increaseStatRate = 4;
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV;
-        private int[] inputedHPValues = new int[2] { 0, 0 };
-        private int[] inpputedATKValues = new int[2] { 0, 0 };
-        private int[] inpputedSPATKValues = new int[2] { 0, 0 };
-        private int[] inpputedDEFValues = new int[2] { 0, 0 };
-        private int[] inpputedSPDEFValues = new int[2] { 0, 0 };
-        private int[] inpputedSPDValues = new int[2] { 0, 0 };
+        private int[] inputedHPValues = new int[4] { 0, 0, 0, 0 };
+        private int[] inpputedATKValues = new int[4] { 0, 0, 0, 0 };
+        private int[] inpputedSPATKValues = new int[4] { 0, 0, 0 ,0 };
+        private int[] inpputedDEFValues = new int[4] {0, 0, 0, 0 };
+        private int[] inpputedSPDEFValues = new int[4] {0, 0, 0, 0 };
+        private int[] inpputedSPDValues = new int[4] {0, 0, 0, 0 };
+
+
 
 
         public PokeEditor()
@@ -87,38 +89,43 @@ namespace PokeDexApp
             return atributeEV;
         }
 
-        private string CalculateStat(string statText, int ev)
+        private string CalculateStat(string statText, int ev, int[] inputedValues)
         {
             int current = int.Parse(statText);
             int evToAdd = (int)ev / 4;
-            int newTotal = current + evToAdd;
+            InputQueue(inputedValues, evToAdd);
+            int newTotal = current + inputedValues[2];
+            newTotal -= inputedValues[3];
             return newTotal.ToString();
         }
 
-        private void InputQueue(int[] inputArray, int newValue)
+        private void InputQueue(int[] inputArray, int newValue, string type="")
         {
-            inputArray[1] = inputArray[0];
-            inputArray[0] = newValue;
+            if (type == "ev")
+            {
+                inputArray[1] = inputArray[0];
+                inputArray[0] = newValue;
+            }
+
+            else
+            {
+                inputArray[3] = inputArray[2];
+                inputArray[2] = newValue;
+            }       
         }
 
         private void UpdateTextChangedEntry(int atributeEV, TextBox inputText, Label statText, int[] inputedValues)
         {
             atributeEV = ValidateEntry(inputText, atributeEV);
-            InputQueue(inputedValues, atributeEV);
-            statText.Text = CalculateStat(statText.Text, atributeEV);
+            InputQueue(inputedValues, atributeEV, "ev");
             totalEv -= inputedValues[0];
             totalEv += inputedValues[1];
-            txtTotalEv.Text = totalEv.ToString();        
+            txtTotalEv.Text = totalEv.ToString();
+            statText.Text = CalculateStat(statText.Text, atributeEV, inputedValues);
         }
 
         private void txtHPEV_TextChanged(object sender, EventArgs e)
         {
-            //HPEV = ValidateEntry(txtHPEV, HPEV);
-            //InputQueue(inputedHPValues, HPEV);
-            //lblHP.Text = CalculateStat(lblHP.Text, HPEV);
-            //totalEv -= inputedHPValues[0];
-            //totalEv += inputedHPValues[1];   
-            //txtTotalEv.Text = totalEv.ToString();
             UpdateTextChangedEntry(HPEV, txtHPEV, lblHP, inputedHPValues);
         }
 
@@ -130,20 +137,16 @@ namespace PokeDexApp
         private void txtSPATKEV_TextChanged(object sender, EventArgs e)
         {
             UpdateTextChangedEntry(SPATKEV, txtSPATKEV, lblSPATK, inpputedSPATKValues);
-
-
         }
 
         private void txtDEFEV_TextChanged(object sender, EventArgs e)
         {
             UpdateTextChangedEntry(DEFEV, txtDEFEV, lblDEF, inpputedDEFValues);
-
         }
 
         private void txtSPDEFEV_TextChanged(object sender, EventArgs e)
         {
             UpdateTextChangedEntry(SPDEV, txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
-
         }
 
         private void txtSPDEV_TextChanged(object sender, EventArgs e)

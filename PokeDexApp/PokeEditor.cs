@@ -46,8 +46,8 @@ namespace PokeDexApp
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
-            txtNature.Text = "Bashful";
-            //GetBaseStats(txtNature.Text);
+            //txtNature.Text = "Bashful";
+            GetBaseStats();
             lblHP.Text = baseHP.ToString();
             lblATK.Text = baseATK.ToString();
             lblSPATK.Text = baseSPATK.ToString();
@@ -65,7 +65,7 @@ namespace PokeDexApp
                 atributeEV = int.Parse(textChanged.Text);
             }
 
-            catch 
+            catch
             {
                 atributeEV = 0;
             }
@@ -92,7 +92,7 @@ namespace PokeDexApp
             return atributeEV;
         }
 
-        private string CalculateStatByEV(string statText, int ev=0, int[] inputedValues=null, string nature ="")
+        private string CalculateStatByEV(string statText, int ev = 0, int[] inputedValues = null, string nature = "")
         {
             int current = int.Parse(statText);
             int evToAdd = (int)ev / 4;
@@ -141,7 +141,7 @@ namespace PokeDexApp
         {
             UpdateTextChangedEV(HPEV, txtHPEV, lblHP, inputedHPValues);
         }
-  
+
 
         private void txtATKEV_TextChanged(object sender, EventArgs e)
         {
@@ -205,161 +205,28 @@ namespace PokeDexApp
             return (int)(current * 0.1);
         }
 
-        //private void GetBaseStats(string nature)
-        //{
-        //    switch (nature)
-        //    {
-        //        case "Adamant":
-        //            statsStatus["strong"] = EnumerateStatsInt("Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-        //            break;
-
-        //        case "Bashful":
-        //            statsStatus["strong"] = EnumerateStatsInt("None");
-        //            statsStatus["weak"] = EnumerateStatsInt("None");
-        //            break;
-
-        //        case "Bold":
-        //            statsStatus["strong"] = EnumerateStatsInt("Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Attack");
-        //            break;
-
-        //        case "Brave":
-        //            statsStatus["strong"] = EnumerateStatsInt("Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Speed");
-        //            break;
-
-        //        case "Calm":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Attack");
-        //            break;
-
-        //        case "Careful":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-        //            break;
-
-        //        case "Docile":
-        //            statsStatus["strong"] = EnumerateStatsInt("None");
-        //            statsStatus["weak"] = EnumerateStatsInt("None");
-        //            break;
-
-        //        case "Gentle":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Defense");
-        //            break;
-
-        //        case "Hardy":
-        //            statsStatus["strong"] = EnumerateStatsInt("None");
-        //            statsStatus["weak"] = EnumerateStatsInt("None");
-        //            break;
-
-        //        case "Hasty":
-        //            statsStatus["strong"] = EnumerateStatsInt("Speed");
-        //            statsStatus["weak"] = EnumerateStatsInt("Defense");
-        //            break;
-
-        //        case "Impish":
-        //            statsStatus["strong"] = EnumerateStatsInt("Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-        //            break;
-
-        //        case "Jolly":
-        //            statsStatus["strong"] = EnumerateStatsInt("Speed");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-        //            break;
-
-        //        case "Lax":
-        //            statsStatus["strong"] = EnumerateStatsInt("Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Defense");
-        //            break;
-
-        //        case "Lonely":
-        //            statsStatus["strong"] = EnumerateStatsInt("Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Defense");
-        //            break;
-
-        //        case "Mild":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Defense");
-        //            break;
-
-        //        case "Modest":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Attack");
-        //            break;
-
-        //        case "Naive":
-        //            statsStatus["strong"] = EnumerateStatsInt("Speed");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Defense");
-        //            break;
-
-        //        case "Naughty":
-        //            statsStatus["strong"] = EnumerateStatsInt("Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Defense");
-        //            break;
-
-        //        case "Quiet":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Speed");
-        //            break;
-
-        //        case "Quirky":
-        //            statsStatus["strong"] = EnumerateStatsInt("None");
-        //            statsStatus["weak"] = EnumerateStatsInt("None");
-        //            break;
-
-        //        case "Rash":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-        //            statsStatus["weak"] = EnumerateStatsInt("Special Defense");
-        //            break;
-
-        //        case "Relaxed":
-        //            statsStatus["strong"] = EnumerateStatsInt("Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Speed");
-        //            break;
-
-        //        case "Sassy":
-        //            statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-        //            statsStatus["weak"] = EnumerateStatsInt("Speed");
-        //            break;
-
-        //        case "Serious":
-        //            statsStatus["strong"] = EnumerateStatsInt("None");
-        //            statsStatus["weak"] = EnumerateStatsInt("None");
-        //            break;
-
-        //        case "Timid":
-        //            baseHP = int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]);
-        //            baseATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]);
-        //            baseSPATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]);
-        //            baseDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]);
-        //            baseSPDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]);
-        //            baseSPD = (int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]));
-        //            break;
-
-        //        default:
-        //            baseHP = int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]);
-        //            baseATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]);
-        //            baseSPATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]);
-        //            baseDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]);
-        //            baseSPDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]);
-        //            baseSPD = int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]);
-        //            break;
-        //    }
-        //}
+        private void GetBaseStats()
+        {
+            
+            baseHP = int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]);
+            baseATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]);
+            baseSPATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]);
+            baseDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]);
+            baseSPDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]);
+            baseSPD = int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]);       
+        }
 
         private int EnumerateBaseStats(Label lbl)
         {
             int stat;
             string statName = lbl.Name;
 
-            switch(statName)
+            switch (statName)
             {
                 case "lblHP":
                     stat = baseHP;
                     break;
-                    
+
                 case "lblATK":
                     stat = baseATK;
                     break;
@@ -387,9 +254,11 @@ namespace PokeDexApp
             return stat;
         }
 
+
+
         //private void ChangeStatsNature(string nature)
         //{
-            
+
         //    Dictionary<string, int> statsToChange = Constructor.EnumerateNature(nature);
         //    Label strongStat = EnumerateStatsLabels(statsToChange["strong"]);
         //    Label weakStat = EnumerateStatsLabels(statsToChange["weak"]);

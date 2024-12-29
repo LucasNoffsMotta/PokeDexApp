@@ -382,7 +382,7 @@
             txtNature.Name = "txtNature";
             txtNature.Size = new Size(151, 28);
             txtNature.TabIndex = 61;
-            txtNature.SelectedIndexChanged += txtNature_SelectedIndexChanged;
+            //txtNature.SelectedIndexChanged += txtNature_SelectedIndexChanged;
             // 
             // label9
             // 

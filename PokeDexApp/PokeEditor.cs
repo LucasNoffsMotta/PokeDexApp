@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace PokeDexApp
         private int[] inpputedDEFValues = new int[4] { 0, 0, 0, 0 };
         private int[] inpputedSPDEFValues = new int[4] { 0, 0, 0, 0 };
         private int[] inpputedSPDValues = new int[4] { 0, 0, 0, 0 };
+        private DBConnect conn = new DBConnect();
 
 
         public PokeEditor()
@@ -266,7 +268,9 @@ namespace PokeDexApp
             try
             {
                 int poke_id = UserTeams.poke_key_id;
-                string query = $"Delete from User_Pokemon where id_key = {poke_id}";        
+                string query = $"Delete from User_Pokemons where id_key = {poke_id}";
+                SqlCommand deleteQuery = new SqlCommand(query);
+                int deletedRows = conn.executeQuery(deleteQuery);
                 UserTeams userTeams = new UserTeams(); 
                 this.Close();
                 userTeams.Show();

@@ -63,6 +63,7 @@
             btnCalculate = new Button();
             txtNature = new ComboBox();
             label9 = new Label();
+            btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -382,7 +383,6 @@
             txtNature.Name = "txtNature";
             txtNature.Size = new Size(151, 28);
             txtNature.TabIndex = 61;
-            //txtNature.SelectedIndexChanged += txtNature_SelectedIndexChanged;
             // 
             // label9
             // 
@@ -394,11 +394,22 @@
             label9.TabIndex = 62;
             label9.Text = "Nature:";
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(921, 679);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 63;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += button1_Click;
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 741);
+            Controls.Add(btnDelete);
             Controls.Add(label9);
             Controls.Add(txtNature);
             Controls.Add(btnCalculate);
@@ -478,5 +489,6 @@
         private Button btnCalculate;
         private ComboBox txtNature;
         private Label label9;
+        private Button btnDelete;
     }
 }

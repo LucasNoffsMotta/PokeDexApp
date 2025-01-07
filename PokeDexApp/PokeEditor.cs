@@ -25,8 +25,6 @@ namespace PokeDexApp
         private int[] inpputedSPDValues = new int[4] { 0, 0, 0, 0 };
 
 
-
-
         public PokeEditor()
         {
             InitializeComponent();
@@ -46,7 +44,6 @@ namespace PokeDexApp
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
-            //txtNature.Text = "Bashful";
             GetBaseStats();
             lblHP.Text = baseHP.ToString();
             lblATK.Text = baseATK.ToString();
@@ -92,9 +89,9 @@ namespace PokeDexApp
             return atributeEV;
         }
 
-        private string CalculateStatByEV(string statText, int ev = 0, int[] inputedValues = null, string nature = "")
+        private string CalculateStatByEV(string labelTXT, int ev = 0, int[] inputedValues = null, string nature = "")
         {
-            int current = int.Parse(statText);
+            int current = int.Parse(labelTXT);
             int evToAdd = (int)ev / 4;
             InputQueue(inputedValues, evToAdd);
             int newTotal = current + inputedValues[2];
@@ -117,55 +114,45 @@ namespace PokeDexApp
             }
         }
 
-        private void UpdateTextChangedEV(int atributeEV, TextBox inputText, Label statText, int[] inputedValues)
+        private void UpdateTextChangedEV(int atributeEV, string labelTXT, int baseStat, TextBox inputText, Label statText, int[] inputedValues)
         {
             atributeEV = ValidateEVEntry(inputText, atributeEV);
             InputQueue(inputedValues, atributeEV, "ev");
             totalEv -= inputedValues[0];
             totalEv += inputedValues[1];
             txtTotalEv.Text = totalEv.ToString();
-            statText.Text = CalculateStatByEV(statText.Text, atributeEV, inputedValues);
-        }
-
-        private void UpdateAllStatsByEv()
-        {
-            UpdateTextChangedEV(HPEV, txtHPEV, lblHP, inputedHPValues);
-            UpdateTextChangedEV(ATKEV, txtATKEV, lblATK, inpputedATKValues);
-            UpdateTextChangedEV(SPATKEV, txtSPATKEV, lblSPATK, inpputedSPATKValues);
-            UpdateTextChangedEV(DEFEV, txtDEFEV, lblDEF, inpputedDEFValues);
-            UpdateTextChangedEV(SPDEFEV, txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
-            UpdateTextChangedEV(SPDEV, txtSPDEV, lblSPD, inpputedSPDValues);
+            statText.Text = CalculateStatByEV(labelTXT, atributeEV, inputedValues);
         }
 
         private void txtHPEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(HPEV, txtHPEV, lblHP, inputedHPValues);
+            UpdateTextChangedEV(HPEV, lblHP.Text, baseHP, txtHPEV, lblHP, inputedHPValues);
         }
 
 
         private void txtATKEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(ATKEV, txtATKEV, lblATK, inpputedATKValues);
+            UpdateTextChangedEV(ATKEV, lblATK.Text, baseATK, txtATKEV, lblATK, inpputedATKValues);
         }
 
         private void txtSPATKEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPATKEV, txtSPATKEV, lblSPATK, inpputedSPATKValues);
+            UpdateTextChangedEV(SPATKEV, lblSPATK.Text, baseSPATK, txtSPATKEV, lblSPATK, inpputedSPATKValues);
         }
 
         private void txtDEFEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(DEFEV, txtDEFEV, lblDEF, inpputedDEFValues);
+            UpdateTextChangedEV(DEFEV, lblDEF.Text, baseDEF, txtDEFEV, lblDEF, inpputedDEFValues);
         }
 
         private void txtSPDEFEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPDEFEV, txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
+            UpdateTextChangedEV(SPDEFEV, lblSPDEF.Text, baseSPDEF, txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
         }
 
         private void txtSPDEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPDEV, txtSPDEV, lblSPD, inpputedSPDValues);
+            UpdateTextChangedEV(SPDEV, lblSPD.Text, baseSPD, txtSPDEV, lblSPD, inpputedSPDValues);
         }
 
         private Label EnumerateStatsLabels(int statCode)
@@ -207,13 +194,26 @@ namespace PokeDexApp
 
         private void GetBaseStats()
         {
-            
+
             baseHP = int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]);
             baseATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]);
             baseSPATK = int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]);
             baseDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]);
             baseSPDEF = int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]);
-            baseSPD = int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]);       
+            baseSPD = int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]);
+        }
+
+        private void UpdateBaseStats()
+        {
+            string nature = txtNature.Text;
+            Dictionary<string, int> natureStats = Constructor.EnumerateNature(nature);
+
+            if (natureStats["strong"] != null)
+            {
+                Label strongStat = EnumerateStatsLabels(natureStats["strong"]);
+                Label weakStat = EnumerateStatsLabels(natureStats["weak"]);
+
+            }
         }
 
         private int EnumerateBaseStats(Label lbl)
@@ -255,35 +255,27 @@ namespace PokeDexApp
         }
 
 
-
-        //private void ChangeStatsNature(string nature)
-        //{
-
-        //    Dictionary<string, int> statsToChange = Constructor.EnumerateNature(nature);
-        //    Label strongStat = EnumerateStatsLabels(statsToChange["strong"]);
-        //    Label weakStat = EnumerateStatsLabels(statsToChange["weak"]);
-        //    GetBaseStats();
-        //    if (strongStat != null && weakStat != null)
-        //    {
-        //        int strongStatValue = EnumerateBaseStats(strongStat);
-        //        int weakStatValue = EnumerateBaseStats(weakStat);
-        //        strongStat.Text = (strongStatValue + CalculateTenPercentage(strongStatValue).ToString());
-        //        weakStat.Text = (weakStatValue + CalculateTenPercentage(weakStatValue).ToString());
-        //    }
-
-        //    else
-        //    {
-        //        GetBaseStats();
-        //    }
-        //    UpdateAllStatsByEv();
-        //}
+        private void txtNature_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
 
-        //private void txtNature_SelectedIndexChanged(object sender, EventArgs e)
-        //{
+        }
 
-        //    ChangeStatsNature(txtNature.Text);
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int poke_id = UserTeams.poke_key_id;
+                string query = $"Delete from User_Pokemon where id_key = {poke_id}";        
+                UserTeams userTeams = new UserTeams(); 
+                this.Close();
+                userTeams.Show();
+            }
 
-        //}
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }             
+        }
     }
 }

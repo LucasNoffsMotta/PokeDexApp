@@ -149,7 +149,6 @@ namespace PokeDexApp
                 dexStart = dexStart.next;
                 UpdatePage();
             }
-
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
@@ -159,8 +158,6 @@ namespace PokeDexApp
                 dexStart = dexStart.prev;
                 UpdatePage();
             }
-
-
         }
 
         private void pctBox_Click(object sender, EventArgs e)
@@ -187,48 +184,69 @@ namespace PokeDexApp
             logIn.Show();
         }
 
+        private bool CheckFullTeam()
+        {
+            DataTable userPokes = new DataTable();
+            string query = $"Select * from User_Pokemons Where user_id = {userId};";
+            userPokes = conn.SQLCommand(query);
+            if (userPokes.Rows.Count > 9)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
+            if (CheckFullTeam())
             {
-                int[] baseStats = Constructor.ParseArray(dexStart.pokemon.baseStats);
-                int insertedPokemon;
+                try
+                {
+                    int[] baseStats = Constructor.ParseArray(dexStart.pokemon.baseStats);
+                    int insertedPokemon;
 
-                string query = @"
+                    string query = @"
                     INSERT INTO User_Pokemons 
                     (id_poke, name, id_type_one, id_type_two, HP, ATK, SPATK, DEF, SPDEF, SPD, user_id) 
                     VALUES 
                     (@id, @name, @typeOne, @typeTwo, @hp, @atk, @spatk, @def, @spdef, @spd, @userId);
                 ";
 
-                SqlCommand insertPokemon = new SqlCommand(query, conn.conn);
-                int typeOne = Constructor.EnumerateType(dexStart.pokemon.typeOne);
-                int typeTwo = Constructor.EnumerateType(dexStart.pokemon.typeTwo);
+                    SqlCommand insertPokemon = new SqlCommand(query, conn.conn);
+                    int typeOne = Constructor.EnumerateType(dexStart.pokemon.typeOne);
+                    int typeTwo = Constructor.EnumerateType(dexStart.pokemon.typeTwo);
 
-                insertPokemon.Parameters.AddWithValue("@id", dexStart.pokemon.id);
-                insertPokemon.Parameters.AddWithValue("@name", dexStart.pokemon.name);
-                insertPokemon.Parameters.AddWithValue("@typeOne", typeOne);
-                insertPokemon.Parameters.AddWithValue("@typeTwo", typeTwo);
-                insertPokemon.Parameters.AddWithValue("@hp", baseStats[0]);
-                insertPokemon.Parameters.AddWithValue("@atk", baseStats[1]);
-                insertPokemon.Parameters.AddWithValue("@spatk", baseStats[2]);
-                insertPokemon.Parameters.AddWithValue("@def", baseStats[3]);
-                insertPokemon.Parameters.AddWithValue("@spdef", baseStats[4]);
-                insertPokemon.Parameters.AddWithValue("@spd", baseStats[5]);
-                insertPokemon.Parameters.AddWithValue("@userId", userId);
+                    insertPokemon.Parameters.AddWithValue("@id", dexStart.pokemon.id);
+                    insertPokemon.Parameters.AddWithValue("@name", dexStart.pokemon.name);
+                    insertPokemon.Parameters.AddWithValue("@typeOne", typeOne);
+                    insertPokemon.Parameters.AddWithValue("@typeTwo", typeTwo);
+                    insertPokemon.Parameters.AddWithValue("@hp", baseStats[0]);
+                    insertPokemon.Parameters.AddWithValue("@atk", baseStats[1]);
+                    insertPokemon.Parameters.AddWithValue("@spatk", baseStats[2]);
+                    insertPokemon.Parameters.AddWithValue("@def", baseStats[3]);
+                    insertPokemon.Parameters.AddWithValue("@spdef", baseStats[4]);
+                    insertPokemon.Parameters.AddWithValue("@spd", baseStats[5]);
+                    insertPokemon.Parameters.AddWithValue("@userId", userId);
 
-                insertedPokemon = conn.executeQuery(insertPokemon);
+                    insertedPokemon = conn.executeQuery(insertPokemon);
 
-                if (insertedPokemon > 0)
+                    if (insertedPokemon > 0)
+                    {
+                        MessageBox.Show("Pokemon Inserido com sucesso!");
+                    }
+                }
+
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Pokemon Inserido com sucesso!");
+                    throw new(ex.Message);
                 }
             }
 
-            catch (Exception ex)
+            else
             {
-                throw new(ex.Message);
+                MessageBox.Show("Numero maximo de Pokemons no Time, libere algum slot");
             }
+           
         }
 
         private void lblHP_Click(object sender, EventArgs e)

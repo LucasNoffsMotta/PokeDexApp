@@ -16,6 +16,7 @@ namespace PokeDexApp
         public static DataTable pokes = new DataTable();
         public static ListNode currentPoke = new ListNode();
         public static bool loaded = false;
+        public static int poke_key_id = 0;
 
         public UserTeams()
         {
@@ -90,6 +91,7 @@ namespace PokeDexApp
         {
             try
             {
+                poke_key_id = Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_key"]);
                 currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_poke"]));
                 this.Hide();
                 PokeEditor editPage = new PokeEditor();

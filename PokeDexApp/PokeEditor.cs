@@ -14,18 +14,9 @@ namespace PokeDexApp
     public partial class PokeEditor : Form
     {
         public int totalEv = 510;
-        public int maxEvPerAtribute = 255;
-        public int increaseStatRate = 4;
-        public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV;
-        public Dictionary<string, int> baseStats = new Dictionary<string, int>();
-        private int[] inputedHPValues = new int[4] { 0, 0, 0, 0 };
-        private int[] inpputedATKValues = new int[4] { 0, 0, 0, 0 };
-        private int[] inpputedSPATKValues = new int[4] { 0, 0, 0, 0 };
-        private int[] inpputedDEFValues = new int[4] { 0, 0, 0, 0 };
-        private int[] inpputedSPDEFValues = new int[4] { 0, 0, 0, 0 };
-        private int[] inpputedSPDValues = new int[4] { 0, 0, 0, 0 };
         private string nature;
         private DBConnect conn = new DBConnect();
+        private Atribute hp, atk, spatk, def, spdef, spd;
 
 
         public PokeEditor()
@@ -50,120 +41,95 @@ namespace PokeDexApp
             nature = "Bashful";
             txtNature.Text = nature;
             GetBaseStats();
-            UpdateStatLabels();
-            txtTotalEv.Text = totalEv.ToString();
+            InitializeLabels();
+            lblTotalEv.Text = totalEv.ToString();
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
         }
 
-        private int ValidateEVEntry(TextBox textChanged, int atributeEV)
+        private void InitializeLabels()
         {
-            try
-            {
-                atributeEV = int.Parse(textChanged.Text);
-            }
-
-            catch
-            {
-                atributeEV = 0;
-            }
-
-            if (atributeEV > maxEvPerAtribute)
-            {
-                MessageBox.Show("Max EV per atribute: 255");
-                atributeEV = 0;
-            }
-
-            else if (atributeEV < 0)
-            {
-                MessageBox.Show("Type a number greater than 0");
-                atributeEV = 0;
-            }
-
-            else
-            {
-                if ((totalEv - atributeEV) > 0)
-                {
-                    return atributeEV;
-                }
-            }
-            return atributeEV;
+            lblHP.Text = hp.baseStat.ToString();
+            lblATK.Text = atk.baseStat.ToString();
+            lblSPATK.Text = spatk.baseStat.ToString();
+            lblDEF.Text = def.baseStat.ToString();
+            lblSPDEF.Text = spdef.baseStat.ToString();
+            lblSPD.Text = spd.baseStat.ToString();
         }
 
-        private string CalculateStatByEV(int baseStat, string labelTXT, int ev = 0, int[] inputedValues = null, string nature = "")
+        private void GetBaseStats()
         {
-            //int current = int.Parse(labelTXT);
-            UpdateBaseStats();
-            int evToAdd = (int)ev / 4;
-            InputQueue(inputedValues, evToAdd);
-            int newTotal = baseStat + inputedValues[2];
-            newTotal -= inputedValues[3];
-            return newTotal.ToString();
+            hp = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]));
+            atk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]));
+            spatk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]));
+            def = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]));
+            spdef = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]));
+            spd = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]));
         }
 
-        private void InputQueue(int[] inputArray, int newValue, string type = "")
+        private void CalculateTotalEv(int[] nums)
         {
-            if (type == "ev")
-            {
-                inputArray[1] = inputArray[0];
-                inputArray[0] = newValue;
-            }
-
-            else
-            {
-                inputArray[3] = inputArray[2];
-                inputArray[2] = newValue;
-            }
+            totalEv -= nums[0];
+            totalEv += nums[1];
+            lblTotalEv.Text = totalEv.ToString();
         }
 
-        private void UpdateTextChangedEV(int atributeEV, string labelTXT, int baseStat, TextBox inputText, Label statText, int[] inputedValues)
-        {      
-            atributeEV = ValidateEVEntry(inputText, atributeEV);
-            InputQueue(inputedValues, atributeEV, "ev");
-            totalEv -= inputedValues[0];
-            totalEv += inputedValues[1];
-            txtTotalEv.Text = totalEv.ToString();
-            statText.Text = CalculateStatByEV(baseStat, labelTXT, atributeEV, inputedValues);
-        }
 
-        private void UpdateAllEvs()
-        {
-            UpdateTextChangedEV(HPEV, lblHP.Text, baseStats["baseHP"], txtHPEV, lblHP, inputedHPValues);
-            UpdateTextChangedEV(ATKEV, lblATK.Text, baseStats["baseATK"], txtATKEV, lblATK, inpputedATKValues);
-            UpdateTextChangedEV(SPATKEV, lblSPATK.Text, baseStats["baseSPATK"], txtSPATKEV, lblSPATK, inpputedSPATKValues);
-            UpdateTextChangedEV(DEFEV, lblDEF.Text, baseStats["baseDEF"], txtDEFEV, lblDEF, inpputedDEFValues);
-            UpdateTextChangedEV(SPDEFEV, lblSPDEF.Text, baseStats["baseSPDEF"], txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
-            UpdateTextChangedEV(SPDEV, lblSPD.Text, baseStats["baseSPD"], txtSPDEV, lblSPD, inpputedSPDValues);
-        }
 
         private void txtHPEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(HPEV, lblHP.Text, baseStats["baseHP"], txtHPEV, lblHP, inputedHPValues);
+            hp.ev = hp.ValidateEVEntry(txtHPEV, totalEv);
+            hp.ChangeEV();
+            hp.InputQueue(hp.ev, "ev");
+            CalculateTotalEv(hp.evTotalDecrease);
+            lblHP.Text = hp.CalculateStat();
         }
 
 
         private void txtATKEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(ATKEV, lblATK.Text, baseStats["baseATK"], txtATKEV, lblATK, inpputedATKValues);
+            atk.ev = atk.ValidateEVEntry(txtATKEV, totalEv);
+            atk.ChangeEV();
+            atk.InputQueue(atk.ev, "ev");
+            CalculateTotalEv(atk.evTotalDecrease);
+            lblATK.Text = atk.CalculateStat();
         }
 
         private void txtSPATKEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPATKEV, lblSPATK.Text, baseStats["baseSPATK"], txtSPATKEV, lblSPATK, inpputedSPATKValues);
+            spatk.ev = spatk.ValidateEVEntry(txtSPATKEV, totalEv);
+            spatk.ChangeEV();
+            spatk.InputQueue(spatk.ev, "ev");
+            CalculateTotalEv(spatk.evTotalDecrease);
+            lblSPATK.Text = spatk.CalculateStat();
         }
 
         private void txtDEFEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(DEFEV, lblDEF.Text, baseStats["baseDEF"], txtDEFEV, lblDEF, inpputedDEFValues);
+            def.ev = def.ValidateEVEntry(txtDEFEV, totalEv);
+            def.ChangeEV();
+            def.InputQueue(def.ev, "ev");
+            CalculateTotalEv(def.evTotalDecrease);
+            lblDEF.Text = def.CalculateStat();
         }
 
         private void txtSPDEFEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPDEFEV, lblSPDEF.Text, baseStats["baseSPDEF"], txtSPDEFEV, lblSPDEF, inpputedSPDEFValues);
+            spdef.ev = def.ValidateEVEntry(txtSPDEFEV, totalEv);
+            spdef.ChangeEV();
+            spdef.InputQueue(spdef.ev, "ev");
+            CalculateTotalEv(spdef.evTotalDecrease);
+            lblSPDEF.Text = spdef.CalculateStat();
+
+
         }
 
         private void txtSPDEV_TextChanged(object sender, EventArgs e)
         {
-            UpdateTextChangedEV(SPDEV, lblSPD.Text, baseStats["baseSPD"], txtSPDEV, lblSPD, inpputedSPDValues);
+            spd.ev = spd.ValidateEVEntry(txtSPDEV, totalEv);
+            spd.ChangeEV();
+            spd.InputQueue(spd.ev, "ev");
+            CalculateTotalEv(spd.evTotalDecrease);
+            lblSPD.Text = spd.CalculateStat();
         }
 
         private string EnumerateStatsString(int statCode)
@@ -198,44 +164,6 @@ namespace PokeDexApp
             return currentLabel;
         }
 
-        private int CalculateTenPercentage(int current)
-        {
-            return (int)(current * 0.1);
-        }
-
-        private void UpdateStatLabels()
-        {
-            lblHP.Text = baseStats["baseHP"].ToString();
-            lblATK.Text = baseStats["baseATK"].ToString();
-            lblSPATK.Text = baseStats["baseSPATK"].ToString();
-            lblDEF.Text = baseStats["baseDEF"].ToString();
-            lblSPDEF.Text = baseStats["baseSPDEF"].ToString();
-            lblSPD.Text = baseStats["baseSPD"].ToString();
-        }
-
-        private void UpdateBaseStats()
-        {
-            nature = txtNature.Text;
-            Dictionary<string, int> bonus = Constructor.EnumerateNature(nature);
-            string strong = EnumerateStatsString(bonus["strong"]);
-            string weak = EnumerateStatsString(bonus["weak"]);
-
-            if (strong != "neutral")
-            {
-                baseStats[strong] = baseStats[strong] + CalculateTenPercentage(baseStats[strong]);
-                baseStats[weak] = baseStats[weak] - CalculateTenPercentage(baseStats[weak]);
-            }        
-        }
-
-        private void GetBaseStats()
-        {
-            baseStats["baseHP"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]);
-            baseStats["baseATK"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]);
-            baseStats["baseSPATK"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]);
-            baseStats["baseDEF"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]);
-            baseStats["baseSPDEF"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]);
-            baseStats["baseSPD"] = int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]);
-        }
 
 
 
@@ -276,7 +204,7 @@ namespace PokeDexApp
         //    }
         //    return stat;
         //}
- 
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -299,9 +227,9 @@ namespace PokeDexApp
 
         private void txtNature_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            GetBaseStats();
-            UpdateBaseStats();
-            UpdateStatLabels();
+
         }
+
+
     }
 }

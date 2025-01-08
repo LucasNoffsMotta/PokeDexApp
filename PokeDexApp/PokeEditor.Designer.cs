@@ -53,7 +53,7 @@
             btnBack = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             lblTitle2 = new Label();
-            txtTotalEv = new Label();
+            lblTotalEv = new Label();
             txtHPEV = new TextBox();
             txtATKEV = new TextBox();
             txtSPATKEV = new TextBox();
@@ -308,15 +308,15 @@
             lblTitle2.TabIndex = 51;
             lblTitle2.Text = "EV`s";
             // 
-            // txtTotalEv
+            // lblTotalEv
             // 
-            txtTotalEv.AutoSize = true;
-            txtTotalEv.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTotalEv.Location = new Point(313, 609);
-            txtTotalEv.Name = "txtTotalEv";
-            txtTotalEv.Size = new Size(21, 28);
-            txtTotalEv.TabIndex = 53;
-            txtTotalEv.Text = "*";
+            lblTotalEv.AutoSize = true;
+            lblTotalEv.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalEv.Location = new Point(313, 609);
+            lblTotalEv.Name = "lblTotalEv";
+            lblTotalEv.Size = new Size(21, 28);
+            lblTotalEv.TabIndex = 53;
+            lblTotalEv.Text = "*";
             // 
             // txtHPEV
             // 
@@ -420,7 +420,7 @@
             Controls.Add(txtSPATKEV);
             Controls.Add(txtATKEV);
             Controls.Add(txtHPEV);
-            Controls.Add(txtTotalEv);
+            Controls.Add(lblTotalEv);
             Controls.Add(lblTitle2);
             Controls.Add(btnBack);
             Controls.Add(lblTotal);
@@ -480,7 +480,7 @@
         private Button btnBack;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Label lblTitle2;
-        private Label txtTotalEv;
+        private Label lblTotalEv;
         private TextBox txtHPEV;
         private TextBox txtATKEV;
         private TextBox txtSPATKEV;

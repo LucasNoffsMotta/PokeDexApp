@@ -10,7 +10,7 @@ namespace PokeDexApp
     public class Atribute
     {
         //Declara todas as variaveis necessarias
-
+        public string name;
         public int baseStat;
         public int ev;
         public int iv;
@@ -25,10 +25,10 @@ namespace PokeDexApp
         public int maxIv;
 
 
-        public Atribute(int baseStat)
+        public Atribute(int baseStat, string name)
         {
             //Inicializa as variaveis 
-
+            this.name = name;
             this.baseStat = baseStat;
             this.ev = 0;
             this.iv = 0;
@@ -45,35 +45,46 @@ namespace PokeDexApp
         //Metodo que valida o EV digitado na caixa de texto, retorna 0 caso seja invalido
         public int ValidateEVEntry(TextBox textChanged, int totalEvs)
         {
-            try
-            {
-                ev = int.Parse(textChanged.Text);
-            }
 
-            catch
+            if (totalEvs == 0)
             {
-                ev = 0;
-            }
-
-            if (ev > maxEv)
-            {
-                MessageBox.Show("Max EV per atribute: 255");
-                ev = 0;
-            }
-
-            else if (ev < 0)
-            {
-                MessageBox.Show("Type a number greater than 0");
+                MessageBox.Show("Max EV reached.");
                 ev = 0;
             }
 
             else
             {
-                if ((totalEvs - ev) > 0)
+                try
                 {
-                    return ev;
+                    ev = int.Parse(textChanged.Text);
+                }
+
+                catch
+                {
+                    ev = 0;
+                }
+
+                if (ev > maxEv)
+                {
+                    MessageBox.Show("Max EV per atribute: 255");
+                    ev = 0;
+                }
+
+                else if (ev < 0)
+                {
+                    MessageBox.Show("Type a number greater than 0");
+                    ev = 0;
+                }
+
+                else
+                {
+                    if (totalEvs - ev > 0)
+                    {
+                        return ev;
+                    }
                 }
             }
+           
             return ev;
         }
 

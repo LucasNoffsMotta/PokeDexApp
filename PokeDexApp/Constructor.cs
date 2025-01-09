@@ -135,144 +135,124 @@ namespace PokeDexApp
         }
 
 
-        public static Dictionary<string, int> EnumerateNature(string nature)
+        public static Dictionary<string, string> EnumerateNature(string nature, Dictionary<string, string> natures)
         {
-            Dictionary<string, int> statsStatus = new Dictionary<string, int>();
 
             switch (nature)
             {
                 case "Adamant":
-                    statsStatus["strong"] = EnumerateStatsInt("Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-                    break;
-
-                case "Bashful":
-                    statsStatus["strong"] = EnumerateStatsInt("None");
-                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    natures["atk"] = "positive";
+                    natures["spatk"] = "negative";
                     break;
 
                 case "Bold":
-                    statsStatus["strong"] = EnumerateStatsInt("Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    natures["def"] = "positive";
+                    natures["atk"] = "negative";
                     break;
 
                 case "Brave":
-                    statsStatus["strong"] = EnumerateStatsInt("Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    natures["atk"] = "positive";
+                    natures["spd"] = "negative";
                     break;
 
                 case "Calm":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    natures["spdef"] = "positive";
+                    natures["atk"] = "negative";
                     break;
 
                 case "Careful":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
-                    break;
-
-                case "Docile":
-                    statsStatus["strong"] = EnumerateStatsInt("None");
-                    statsStatus["weak"] = EnumerateStatsInt("None");
+                    natures["spdef"] = "positive";
+                    natures["spatk"] = "negative";
                     break;
 
                 case "Gentle":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    natures["spdef"] = "positive";
+                    natures["def"] = "negative";
                     break;
 
-                case "Hardy":
-                    statsStatus["strong"] = EnumerateStatsInt("None");
-                    statsStatus["weak"] = EnumerateStatsInt("None");
-                    break;
 
                 case "Hasty":
-                    statsStatus["strong"] = EnumerateStatsInt("Speed");
-                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    natures["spd"] = "positive";
+                    natures["def"] = "negative";
                     break;
 
                 case "Impish":
-                    statsStatus["strong"] = EnumerateStatsInt("Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    natures["def"] = "positive";
+                    natures["spatk"] = "negative";
                     break;
 
                 case "Jolly":
-                    statsStatus["strong"] = EnumerateStatsInt("Speed");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Attack");
+                    natures["spd"] = "positive";
+                    natures["spatk"] = "negative";
                     break;
 
                 case "Lax":
-                    statsStatus["strong"] = EnumerateStatsInt("Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    natures["def"] = "positive";
+                    natures["spddef"] = "negative";
                     break;
 
                 case "Lonely":
-                    statsStatus["strong"] = EnumerateStatsInt("Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    natures["atk"] = "positive";
+                    natures["def"] = "negative";
                     break;
 
                 case "Mild":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Defense");
+                    natures["spatk"] = "positive";
+                    natures["def"] = "negative";
                     break;
 
                 case "Modest":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    natures["spatk"] = "positive";
+                    natures["atk"] = "negative";
                     break;
 
                 case "Naive":
-                    statsStatus["strong"] = EnumerateStatsInt("Speed");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    natures["spd"] = "positive";
+                    natures["spddef"] = "negative";
                     break;
 
                 case "Naughty":
-                    statsStatus["strong"] = EnumerateStatsInt("Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    natures["atk"] = "positive";
+                    natures["spdef"] = "negative";
                     break;
 
                 case "Quiet":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    natures["spatk"] = "positive";
+                    natures["spd"] = "negative";
                     break;
 
-                case "Quirky":
-                    statsStatus["strong"] = EnumerateStatsInt("None");
-                    statsStatus["weak"] = EnumerateStatsInt("None");
-                    break;
 
                 case "Rash":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Attack");
-                    statsStatus["weak"] = EnumerateStatsInt("Special Defense");
+                    natures["spatk"] = "positive";
+                    natures["spdef"] = "negative";
                     break;
 
                 case "Relaxed":
-                    statsStatus["strong"] = EnumerateStatsInt("Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    natures["def"] = "positive";
+                    natures["spd"] = "negative";
                     break;
 
                 case "Sassy":
-                    statsStatus["strong"] = EnumerateStatsInt("Special Defense");
-                    statsStatus["weak"] = EnumerateStatsInt("Speed");
+                    natures["spdef"] = "positive";
+                    natures["spd"] = "negative";
                     break;
 
-                case "Serious":
-                    statsStatus["strong"] = EnumerateStatsInt("None");
-                    statsStatus["weak"] = EnumerateStatsInt("None");
-                    break;
 
                 case "Timid":
-                    statsStatus["strong"] = EnumerateStatsInt("Speed");
-                    statsStatus["weak"] = EnumerateStatsInt("Attack");
+                    natures["spd"] = "positive";
+                    natures["atk"] = "negative";
                     break;
 
                 default:
-                    statsStatus["strong"] = 0;
-                    statsStatus["weak"] = 0;
+                    natures["hp"] = "";
+                    natures["atk"] = "";
+                    natures["spatk"] = "";
+                    natures["def"] = "";
+                    natures["spdef"] = "";
+                    natures["spd"] = "";
                     break;
             }
-
-            return statsStatus;
+            return natures;
         }
 
         public static int EnumerateType(string type)

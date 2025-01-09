@@ -17,6 +17,7 @@ namespace PokeDexApp
         private string nature;
         private DBConnect conn = new DBConnect();
         private Atribute hp, atk, spatk, def, spdef, spd;
+        private Dictionary<string, string> natureDict =  new Dictionary<string, string>();
 
 
         public PokeEditor()
@@ -38,10 +39,11 @@ namespace PokeDexApp
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
-            nature = "Bashful";
-            txtNature.Text = nature;
             GetBaseStats();
             InitializeLabels();
+            InitializeNatures();
+            nature = "Bashful";
+            txtNature.Text = nature;
             lblTotalEv.Text = totalEv.ToString();
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
         }
@@ -56,14 +58,25 @@ namespace PokeDexApp
             lblSPD.Text = spd.baseStat.ToString();
         }
 
+
         private void GetBaseStats()
         {
-            hp = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]));
-            atk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]));
-            spatk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]));
-            def = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]));
-            spdef = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]));
-            spd = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]));
+            hp = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]), "hp");
+            atk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]), "atk");
+            spatk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]), "spatk");
+            def = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]), "def");
+            spdef = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]), "spdef");
+            spd = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]), "spd");
+        }
+
+        private void InitializeNatures()
+        {
+            natureDict["hp"] = "";
+            natureDict["atk"] = "";
+            natureDict["spatk"] = "";
+            natureDict["def"] = "";
+            natureDict["spdef"] = "";
+            natureDict["spd"] = "";
         }
 
         private void CalculateTotalEv(int[] nums)
@@ -72,8 +85,6 @@ namespace PokeDexApp
             totalEv += nums[1];
             lblTotalEv.Text = totalEv.ToString();
         }
-
-
 
         private void txtHPEV_TextChanged(object sender, EventArgs e)
         {
@@ -132,80 +143,6 @@ namespace PokeDexApp
             lblSPD.Text = spd.CalculateStat();
         }
 
-        private string EnumerateStatsString(int statCode)
-        {
-            string currentLabel;
-
-            switch (statCode)
-            {
-                case 1:
-                    currentLabel = "baseHP";
-                    break;
-
-                case 2:
-                    currentLabel = "baseATK";
-                    break;
-                case 3:
-                    currentLabel = "baseSPATK";
-                    break;
-                case 4:
-                    currentLabel = "baseDEF";
-                    break;
-                case 5:
-                    currentLabel = "baseSPDEF";
-                    break;
-                case 6:
-                    currentLabel = "baseSPD";
-                    break;
-                default:
-                    currentLabel = "neutral";
-                    break;
-            }
-            return currentLabel;
-        }
-
-
-
-
-        //private int EnumerateBaseStats(Label lbl)
-        //{
-        //    int stat;
-        //    string statName = lbl.Name;
-
-        //    switch (statName)
-        //    {
-        //        case "lblHP":
-        //            stat = baseHP;
-        //            break;
-
-        //        case "lblATK":
-        //            stat = baseATK;
-        //            break;
-
-        //        case "lblSPATK":
-        //            stat = baseSPATK;
-        //            break;
-
-        //        case "lblDEF":
-        //            stat = baseDEF;
-        //            break;
-
-        //        case "lblSPDEF":
-        //            stat = baseSPDEF;
-        //            break;
-
-        //        case "lblSPD":
-        //            stat = baseSPD;
-        //            break;
-
-        //        default:
-        //            stat = 0;
-        //            break;
-        //    }
-        //    return stat;
-        //}
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -227,9 +164,21 @@ namespace PokeDexApp
 
         private void txtNature_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            string nature = txtNature.Text;
+            InitializeNatures();
+            Constructor.EnumerateNature(nature, natureDict);
+            hp.ChangeNature(natureDict["hp"]);
+            atk.ChangeNature(natureDict["atk"]);
+            spatk.ChangeNature(natureDict["spatk"]);
+            def.ChangeNature(natureDict["def"]);
+            spdef.ChangeNature(natureDict["spdef"]);
+            spd.ChangeNature(natureDict["spd"]);
+            lblHP.Text = hp.CalculateStat();
+            lblATK.Text = atk.CalculateStat();
+            lblSPATK.Text = spatk.CalculateStat();
+            lblDEF.Text = def.CalculateStat();
+            lblSPDEF.Text = spdef.CalculateStat();
+            lblSPD.Text = spd.CalculateStat();
         }
-
-
     }
 }

@@ -198,7 +198,7 @@ namespace PokeDexApp
 
             if (name.Contains("hp"))
             {
-                int finalStat = Convert.ToInt32((((2 * baseStat + iv + evStatAdd) * level) / 100) + level + 10);
+                int finalStat = (int)((((2 * baseStat + iv + evStatAdd) * level) / 100) + level + 10);
                 statLabel = finalStat.ToString();
                 return statLabel;
 
@@ -206,7 +206,7 @@ namespace PokeDexApp
 
             else
             {
-                int finalStat = Convert.ToInt32(((((2* baseStat + iv + evStatAdd) * level) / 100) + 5) * natureBonus);
+                int finalStat = (int)(((((2* baseStat + iv + evStatAdd) * level) / 100) + 5) * natureBonus);
                 statLabel = finalStat.ToString();
             }
             return statLabel;

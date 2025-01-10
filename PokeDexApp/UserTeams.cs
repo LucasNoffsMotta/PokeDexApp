@@ -62,7 +62,7 @@ namespace PokeDexApp
                 {
                     int teamSize = pokes.Rows.Count;
 
-                    for (int i = 0; i < teamLimit; i++)
+                    for (int i = 0; i < teamSize; i++)
                     {
                         pokeNames[i].Text = pokes.Rows[i]["name"].ToString();
                         ListNode currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));

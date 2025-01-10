@@ -64,6 +64,15 @@
             txtNature = new ComboBox();
             label9 = new Label();
             btnDelete = new Button();
+            label11 = new Label();
+            txtHPIV = new TextBox();
+            txtATKIV = new TextBox();
+            txtSPATKIV = new TextBox();
+            txtDEFIV = new TextBox();
+            txtSPDEFIV = new TextBox();
+            txtSPDIV = new TextBox();
+            lblLevel = new Label();
+            txtLevel = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -405,11 +414,96 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += button1_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(416, 277);
+            label11.Name = "label11";
+            label11.Size = new Size(46, 28);
+            label11.TabIndex = 64;
+            label11.Text = "IV`s";
+            // 
+            // txtHPIV
+            // 
+            txtHPIV.Location = new Point(416, 319);
+            txtHPIV.Name = "txtHPIV";
+            txtHPIV.Size = new Size(59, 27);
+            txtHPIV.TabIndex = 65;
+            txtHPIV.TextChanged += txtHPIV_TextChanged;
+            // 
+            // txtATKIV
+            // 
+            txtATKIV.Location = new Point(417, 369);
+            txtATKIV.Name = "txtATKIV";
+            txtATKIV.Size = new Size(59, 27);
+            txtATKIV.TabIndex = 66;
+            txtATKIV.TextChanged += txtATKIV_TextChanged;
+            // 
+            // txtSPATKIV
+            // 
+            txtSPATKIV.Location = new Point(416, 414);
+            txtSPATKIV.Name = "txtSPATKIV";
+            txtSPATKIV.Size = new Size(59, 27);
+            txtSPATKIV.TabIndex = 67;
+            txtSPATKIV.TextChanged += txtSPATKIV_TextChanged;
+            // 
+            // txtDEFIV
+            // 
+            txtDEFIV.Location = new Point(417, 460);
+            txtDEFIV.Name = "txtDEFIV";
+            txtDEFIV.Size = new Size(59, 27);
+            txtDEFIV.TabIndex = 68;
+            txtDEFIV.TextChanged += txtDEFIV_TextChanged;
+            // 
+            // txtSPDEFIV
+            // 
+            txtSPDEFIV.Location = new Point(416, 515);
+            txtSPDEFIV.Name = "txtSPDEFIV";
+            txtSPDEFIV.Size = new Size(59, 27);
+            txtSPDEFIV.TabIndex = 69;
+            txtSPDEFIV.TextChanged += txtSPDEFIV_TextChanged;
+            // 
+            // txtSPDIV
+            // 
+            txtSPDIV.Location = new Point(416, 560);
+            txtSPDIV.Name = "txtSPDIV";
+            txtSPDIV.Size = new Size(59, 27);
+            txtSPDIV.TabIndex = 70;
+            txtSPDIV.TextChanged += txtSPDIV_TextChanged;
+            // 
+            // lblLevel
+            // 
+            lblLevel.AutoSize = true;
+            lblLevel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLevel.Location = new Point(52, 145);
+            lblLevel.Name = "lblLevel";
+            lblLevel.Size = new Size(66, 28);
+            lblLevel.TabIndex = 71;
+            lblLevel.Text = "Level:";
+            // 
+            // txtLevel
+            // 
+            txtLevel.Location = new Point(128, 149);
+            txtLevel.Name = "txtLevel";
+            txtLevel.Size = new Size(151, 27);
+            txtLevel.TabIndex = 72;
+            txtLevel.TextChanged += txtLevel_TextChanged;
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 741);
+            Controls.Add(txtLevel);
+            Controls.Add(lblLevel);
+            Controls.Add(txtSPDIV);
+            Controls.Add(txtSPDEFIV);
+            Controls.Add(txtDEFIV);
+            Controls.Add(txtSPATKIV);
+            Controls.Add(txtATKIV);
+            Controls.Add(txtHPIV);
+            Controls.Add(label11);
             Controls.Add(btnDelete);
             Controls.Add(label9);
             Controls.Add(txtNature);
@@ -491,5 +585,14 @@
         private ComboBox txtNature;
         private Label label9;
         private Button btnDelete;
+        private Label label11;
+        private TextBox txtHPIV;
+        private TextBox txtATKIV;
+        private TextBox txtSPATKIV;
+        private TextBox txtDEFIV;
+        private TextBox txtSPDEFIV;
+        private TextBox txtSPDIV;
+        private Label lblLevel;
+        private TextBox txtLevel;
     }
 }

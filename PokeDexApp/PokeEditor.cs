@@ -17,7 +17,7 @@ namespace PokeDexApp
         private string nature;
         private DBConnect conn = new DBConnect();
         private Atribute hp, atk, spatk, def, spdef, spd;
-        private Dictionary<string, string> natureDict =  new Dictionary<string, string>();
+        private Dictionary<string, string> natureDict = new Dictionary<string, string>();
 
 
         public PokeEditor()
@@ -42,6 +42,7 @@ namespace PokeDexApp
             GetBaseStats();
             InitializeLabels();
             InitializeNatures();
+            txtLevel.Text = 50.ToString();
             nature = "Bashful";
             txtNature.Text = nature;
             lblTotalEv.Text = totalEv.ToString();
@@ -173,11 +174,78 @@ namespace PokeDexApp
             def.ChangeNature(natureDict["def"]);
             spdef.ChangeNature(natureDict["spdef"]);
             spd.ChangeNature(natureDict["spd"]);
+
             lblHP.Text = hp.CalculateStat();
             lblATK.Text = atk.CalculateStat();
             lblSPATK.Text = spatk.CalculateStat();
             lblDEF.Text = def.CalculateStat();
             lblSPDEF.Text = spdef.CalculateStat();
+            lblSPD.Text = spd.CalculateStat();
+        }
+
+        private void txtHPIV_TextChanged(object sender, EventArgs e)
+        {
+            hp.iv = hp.ValidateIVEntry(txtHPIV);
+            hp.ChangeIV();
+            lblHP.Text = hp.CalculateStat();
+
+        }
+
+        private void txtATKIV_TextChanged(object sender, EventArgs e)
+        {
+            atk.iv = atk.ValidateIVEntry(txtATKIV);
+            atk.ChangeIV();
+            lblATK.Text = atk.CalculateStat();
+        }
+
+        private void txtSPATKIV_TextChanged(object sender, EventArgs e)
+        {
+            spatk.iv = spatk.ValidateIVEntry(txtSPATKIV);
+            spatk.ChangeIV();
+            lblSPATK.Text = spatk.CalculateStat();
+
+        }
+
+        private void txtDEFIV_TextChanged(object sender, EventArgs e)
+        {
+            def.iv = def.ValidateIVEntry(txtDEFIV);
+            def.ChangeIV();
+            lblDEF.Text = def.CalculateStat();
+
+        }
+
+        private void txtSPDEFIV_TextChanged(object sender, EventArgs e)
+        {
+            spdef.iv = spdef.ValidateIVEntry(txtSPDEFIV);
+            spdef.ChangeIV();
+            lblSPDEF.Text = spdef.CalculateStat();
+        }
+
+        private void txtSPDIV_TextChanged(object sender, EventArgs e)
+        {
+            spd.iv = spd.ValidateIVEntry(txtSPDIV);
+            spd.ChangeIV();
+            lblSPD.Text = spd.CalculateStat();
+        }
+
+        private void txtLevel_TextChanged(object sender, EventArgs e)
+        {
+            hp.ValidateLevelEntry(txtLevel);
+            lblHP.Text = hp.CalculateStat();
+
+            atk.ValidateLevelEntry(txtLevel);
+            lblATK.Text = atk.CalculateStat();
+
+            spatk.ValidateLevelEntry(txtLevel);
+            lblSPATK.Text = spatk.CalculateStat();
+
+            def.ValidateLevelEntry(txtLevel);
+            lblDEF.Text = def.CalculateStat();
+
+            spdef.ValidateLevelEntry(txtLevel);
+            lblSPDEF.Text = spdef.CalculateStat();
+
+            spd.ValidateLevelEntry(txtLevel);
             lblSPD.Text = spd.CalculateStat();
         }
     }

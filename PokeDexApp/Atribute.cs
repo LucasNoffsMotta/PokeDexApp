@@ -18,18 +18,19 @@ namespace PokeDexApp
         public int[] evTotalDecrease;
         public int evStatAdd;
         public int ivStatAdd;
-        public int natureBonus;
+        public double natureBonus;
         public int evIncreaseRate;
         public int ivIncreaseRate;
         public int maxEv;
         public int maxIv;
-
+        public int level;
 
         public Atribute(int baseStat, string name)
         {
             //Inicializa as variaveis 
             this.name = name;
             this.baseStat = baseStat;
+            this.level = 50;
             this.ev = 0;
             this.iv = 0;
             this.evTotalDecrease = new int[] { 0, 0 };
@@ -40,6 +41,27 @@ namespace PokeDexApp
             this.ivIncreaseRate = 1;
             this.maxEv = 255;
             this.maxIv = 31;
+        }
+
+        public int ValidateLevelEntry(TextBox textChanged)
+        {
+            try
+            {
+                level = int.Parse(textChanged.Text);
+            }
+
+            catch 
+            {
+                level = 1;
+            }
+
+            if (level < 0 || level > 100)
+            {
+                MessageBox.Show("Digite um numero de 1 a 100");
+                level = 1;
+            }
+
+            return level;
         }
 
         //Metodo que valida o EV digitado na caixa de texto, retorna 0 caso seja invalido
@@ -88,7 +110,7 @@ namespace PokeDexApp
             return ev;
         }
 
-        public int ValidateIVEntry(TextBox textChanged, int totalIvs)
+        public int ValidateIVEntry(TextBox textChanged)
         {
             try
             {
@@ -112,13 +134,6 @@ namespace PokeDexApp
                 iv = 0;
             }
 
-            else
-            {
-                if ((totalIvs - iv) > 0)
-                {
-                    return iv;
-                }
-            }
             return iv;
         }
 
@@ -156,18 +171,17 @@ namespace PokeDexApp
         {
             if (status == "positive")
             {
-                natureBonus = Convert.ToInt32(baseStat * 0.1);
+                natureBonus = 1.1;
             }
 
             else if (status == "negative")
             {
-                natureBonus = Convert.ToInt32(baseStat * 0.1);
-                natureBonus = -natureBonus;
+                natureBonus = 0.9;
             }
 
             else
             {
-                natureBonus = 0;
+                natureBonus = 1;
             }
         }
 
@@ -181,9 +195,27 @@ namespace PokeDexApp
         //Metodo final utilizado para calcular o total do stat com base em todos os fatores
         public string CalculateStat()
         {
-            int finalStat = baseStat + natureBonus + ivStatAdd + evStatAdd;
-            statLabel = finalStat.ToString();
+
+            if (name.Contains("hp"))
+            {
+                int finalStat = Convert.ToInt32((((2 * baseStat + iv + evStatAdd) * level) / 100) + level + 10);
+                statLabel = finalStat.ToString();
+                return statLabel;
+
+            }
+
+            else
+            {
+                int finalStat = Convert.ToInt32(((((2* baseStat + iv + evStatAdd) * level) / 100) + 5) * natureBonus);
+                statLabel = finalStat.ToString();
+            }
             return statLabel;
+
+
+            //int finalStat = baseStat + natureBonus + ivStatAdd + evStatAdd;
+            //statLabel = finalStat.ToString();
+            //return statLabel;
+
         }
     }
 }

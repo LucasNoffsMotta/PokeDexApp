@@ -14,6 +14,7 @@ namespace PokeDexApp
     public partial class PokeEditor : Form
     {
         public int totalEv = 510;
+        private int poke_id;
         private string nature;
         private DBConnect conn = new DBConnect();
         private Atribute hp, atk, spatk, def, spdef, spd;
@@ -34,12 +35,14 @@ namespace PokeDexApp
 
         private void PokeEditor_Load(object sender, EventArgs e)
         {
+            poke_id = UserTeams.poke_key_id;
             lblName.Text = UserTeams.currentPoke.pokemon.name.ToString();
             lblNumber.Text = UserTeams.currentPoke.pokemon.id.ToString();
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
             GetBaseStats();
+            InitializeEmptyFields();
             InitializeLabels();
             InitializeNatures();
             txtLevel.Text = 50.ToString();
@@ -48,6 +51,27 @@ namespace PokeDexApp
             lblTotalEv.Text = totalEv.ToString();
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
         }
+
+        private void InitializeEmptyFields()
+        {
+            //Load ev and iv saved on the database
+            txtHPEV.Text = UserTeams.currentPoke.pokemon.HPEV.ToString();
+            txtATKEV.Text = UserTeams.currentPoke.pokemon.ATKEV.ToString();
+            txtSPATKEV.Text = UserTeams.currentPoke.pokemon.SPATKEV.ToString();
+            txtDEFEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
+            txtSPDEFEV.Text = UserTeams.currentPoke.pokemon.SPDEFEV.ToString();
+            txtSPDEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
+
+
+            txtHPIV.Text = UserTeams.currentPoke.pokemon.HPIV.ToString();
+            txtATKIV.Text = UserTeams.currentPoke.pokemon.ATKIV.ToString();
+            txtSPATKIV.Text = UserTeams.currentPoke.pokemon.SPATKIV.ToString();
+            txtDEFIV.Text = UserTeams.currentPoke.pokemon.DEFIV.ToString();
+            txtSPDEFIV.Text = UserTeams.currentPoke.pokemon.SPDEFIV.ToString();
+            txtSPDIV.Text = UserTeams.currentPoke.pokemon.SPDIV.ToString();
+        }
+
+
 
         private void InitializeLabels()
         {
@@ -148,7 +172,6 @@ namespace PokeDexApp
         {
             try
             {
-                int poke_id = UserTeams.poke_key_id;
                 string query = $"Delete from User_Pokemons where id_key = {poke_id}";
                 SqlCommand deleteQuery = new SqlCommand(query);
                 int deletedRows = conn.executeQuery(deleteQuery);
@@ -247,6 +270,48 @@ namespace PokeDexApp
 
             spd.ValidateLevelEntry(txtLevel);
             lblSPD.Text = spd.CalculateStat();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = "Update User_Pokemons" +
+                    " SET " +
+                    "HP_EV = @txtHPEV, " +
+                    "ATK_EV = @txtATKEV, SPATK_EV = @txtSPATKEV, DEF_EV = @txtDEFEV, " +
+                    "SPDEF_EV = @txtSPDEFEV," +
+                    "SPD_EV = @txtSPDEV, HP_IV = @txtHPIV, ATK_IV = @txtATKIV , " +
+                    "SPATK_IV = @txtSPATKIV, DEF_IV = @txtDEFIV, SPDEF_IV = @txtSPDEFIV, SPD_IV= @txtSPDIV" +
+                    $" WHERE id_key = {poke_id};";
+
+                SqlCommand updateComand = new SqlCommand(query);
+                updateComand.Parameters.AddWithValue("@txtHPEV", txtHPEV.Text);
+                updateComand.Parameters.AddWithValue("@txtATKEV", txtATKEV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPATKEV", txtSPATKEV.Text);
+                updateComand.Parameters.AddWithValue("@txtDEFEV", txtDEFEV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPDEFEV", txtSPDEFEV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPDEV", txtSPDEV.Text);
+
+                updateComand.Parameters.AddWithValue("@txtHPIV", txtHPIV.Text);
+                updateComand.Parameters.AddWithValue("@txtATKIV", txtATKIV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPATKIV", txtSPATKIV.Text);
+                updateComand.Parameters.AddWithValue("@txtDEFIV", txtDEFIV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPDEFIV", txtSPDEFIV.Text);
+                updateComand.Parameters.AddWithValue("@txtSPDIV", txtSPDIV.Text);
+                int affectedRow = conn.executeQuery(updateComand);
+
+
+                if (affectedRow > 0)
+                {
+                    MessageBox.Show("Saved on database");
+                }
+            }
+
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

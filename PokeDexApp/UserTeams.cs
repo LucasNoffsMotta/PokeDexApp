@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,6 +42,43 @@ namespace PokeDexApp
 
         }
 
+        private void LoadEditedData(Pokemon poke, DataTable dt, int i)
+        {
+            try
+            {
+                poke.HPEV = (int)dt.Rows[i]["HP_EV"];
+                poke.ATKEV = (int)dt.Rows[i]["ATK_EV"];
+                poke.SPATKEV = (int)dt.Rows[i]["SPATK_EV"];
+                poke.DEFEV = (int)dt.Rows[i]["DEF_EV"];
+                poke.SPDEFEV = (int)dt.Rows[i]["SPDEF_EV"];
+                poke.SPDEV = (int)dt.Rows[i]["SPD_EV"];
+
+                poke.HPIV = (int)dt.Rows[i]["HP_IV"];
+                poke.ATKIV = (int)dt.Rows[i]["ATK_IV"];
+                poke.SPATKIV = (int)dt.Rows[i]["SPATK_IV"];
+                poke.DEFIV = (int)dt.Rows[i]["DEF_IV"];
+                poke.SPDEFIV = (int)dt.Rows[i]["SPDEF_IV"];
+                poke.SPDIV = (int)dt.Rows[i]["SPD_IV"];
+            }
+  
+            catch
+            {
+                poke.HPEV = 0;
+                poke.ATKEV = 0;
+                poke.SPATKEV = 0;
+                poke.DEFEV = 0;
+                poke.SPDEFEV = 0;
+                poke.SPDEV = 0;
+
+                poke.HPIV = 0;
+                poke.ATKIV = 0;
+                poke.SPATKIV = 0;
+                poke.DEFIV = 0;
+                poke.SPDEFIV = 0;
+                poke.SPDIV = 0;
+            }
+        }
+
         private void UserTeams_Load(object sender, EventArgs e)
         {
             try
@@ -66,6 +104,7 @@ namespace PokeDexApp
                     {
                         pokeNames[i].Text = pokes.Rows[i]["name"].ToString();
                         ListNode currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));
+                        LoadEditedData(currentPoke.pokemon, pokes, i);
                         pictures[i].Image = currentPoke.pokemon.image;
                     }
                 }

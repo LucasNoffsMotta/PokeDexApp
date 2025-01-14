@@ -60,7 +60,6 @@
             txtDEFEV = new TextBox();
             txtSPDEFEV = new TextBox();
             txtSPDEV = new TextBox();
-            btnCalculate = new Button();
             txtNature = new ComboBox();
             label9 = new Label();
             btnDelete = new Button();
@@ -73,6 +72,7 @@
             txtSPDIV = new TextBox();
             lblLevel = new Label();
             txtLevel = new TextBox();
+            btnSave = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +80,7 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(211, 609);
+            lblTotal.Location = new Point(399, 724);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(21, 28);
             lblTotal.TabIndex = 49;
@@ -90,11 +90,11 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(75, 609);
+            label10.Location = new Point(269, 724);
             label10.Name = "label10";
-            label10.Size = new Size(59, 28);
+            label10.Size = new Size(109, 28);
             label10.TabIndex = 48;
-            label10.Text = "Total";
+            label10.Text = "Total Base";
             // 
             // label8
             // 
@@ -110,7 +110,7 @@
             // 
             lblSPD.AutoSize = true;
             lblSPD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPD.Location = new Point(211, 556);
+            lblSPD.Location = new Point(399, 659);
             lblSPD.Name = "lblSPD";
             lblSPD.Size = new Size(21, 28);
             lblSPD.TabIndex = 46;
@@ -120,7 +120,7 @@
             // 
             lblSPDEF.AutoSize = true;
             lblSPDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPDEF.Location = new Point(211, 511);
+            lblSPDEF.Location = new Point(399, 599);
             lblSPDEF.Name = "lblSPDEF";
             lblSPDEF.Size = new Size(21, 28);
             lblSPDEF.TabIndex = 45;
@@ -130,7 +130,7 @@
             // 
             lblDEF.AutoSize = true;
             lblDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDEF.Location = new Point(211, 456);
+            lblDEF.Location = new Point(399, 537);
             lblDEF.Name = "lblDEF";
             lblDEF.Size = new Size(21, 28);
             lblDEF.TabIndex = 44;
@@ -140,7 +140,7 @@
             // 
             lblSPATK.AutoSize = true;
             lblSPATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSPATK.Location = new Point(211, 410);
+            lblSPATK.Location = new Point(399, 474);
             lblSPATK.Name = "lblSPATK";
             lblSPATK.Size = new Size(21, 28);
             lblSPATK.TabIndex = 43;
@@ -150,7 +150,7 @@
             // 
             lblATK.AutoSize = true;
             lblATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblATK.Location = new Point(211, 365);
+            lblATK.Location = new Point(399, 408);
             lblATK.Name = "lblATK";
             lblATK.Size = new Size(21, 28);
             lblATK.TabIndex = 42;
@@ -160,7 +160,7 @@
             // 
             lblHP.AutoSize = true;
             lblHP.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHP.Location = new Point(211, 319);
+            lblHP.Location = new Point(399, 345);
             lblHP.Name = "lblHP";
             lblHP.Size = new Size(21, 28);
             lblHP.TabIndex = 41;
@@ -170,7 +170,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(155, 556);
+            label7.Location = new Point(328, 659);
             label7.Name = "label7";
             label7.Size = new Size(50, 28);
             label7.TabIndex = 40;
@@ -180,7 +180,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(128, 511);
+            label6.Location = new Point(301, 599);
             label6.Name = "label6";
             label6.Size = new Size(77, 28);
             label6.TabIndex = 39;
@@ -190,7 +190,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(157, 456);
+            label5.Location = new Point(323, 537);
             label5.Name = "label5";
             label5.Size = new Size(48, 28);
             label5.TabIndex = 38;
@@ -200,7 +200,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(126, 410);
+            label4.Location = new Point(299, 474);
             label4.Name = "label4";
             label4.Size = new Size(79, 28);
             label4.TabIndex = 37;
@@ -210,7 +210,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(155, 365);
+            label3.Location = new Point(321, 408);
             label3.Name = "label3";
             label3.Size = new Size(50, 28);
             label3.TabIndex = 36;
@@ -220,7 +220,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(166, 319);
+            label2.Location = new Point(332, 345);
             label2.Name = "label2";
             label2.Size = new Size(39, 28);
             label2.TabIndex = 35;
@@ -230,7 +230,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(166, 277);
+            label1.Location = new Point(383, 305);
             label1.Name = "label1";
             label1.Size = new Size(59, 28);
             label1.TabIndex = 34;
@@ -299,7 +299,7 @@
             // 
             // btnBack
             // 
-            btnBack.Location = new Point(35, 679);
+            btnBack.Location = new Point(51, 786);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(128, 36);
             btnBack.TabIndex = 50;
@@ -311,7 +311,7 @@
             // 
             lblTitle2.AutoSize = true;
             lblTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle2.Location = new Point(294, 277);
+            lblTitle2.Location = new Point(484, 305);
             lblTitle2.Name = "lblTitle2";
             lblTitle2.Size = new Size(51, 28);
             lblTitle2.TabIndex = 51;
@@ -321,7 +321,7 @@
             // 
             lblTotalEv.AutoSize = true;
             lblTotalEv.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalEv.Location = new Point(313, 609);
+            lblTotalEv.Location = new Point(494, 724);
             lblTotalEv.Name = "lblTotalEv";
             lblTotalEv.Size = new Size(21, 28);
             lblTotalEv.TabIndex = 53;
@@ -329,7 +329,7 @@
             // 
             // txtHPEV
             // 
-            txtHPEV.Location = new Point(291, 319);
+            txtHPEV.Location = new Point(476, 349);
             txtHPEV.Name = "txtHPEV";
             txtHPEV.Size = new Size(59, 27);
             txtHPEV.TabIndex = 54;
@@ -337,7 +337,7 @@
             // 
             // txtATKEV
             // 
-            txtATKEV.Location = new Point(291, 369);
+            txtATKEV.Location = new Point(476, 412);
             txtATKEV.Name = "txtATKEV";
             txtATKEV.Size = new Size(59, 27);
             txtATKEV.TabIndex = 55;
@@ -345,7 +345,7 @@
             // 
             // txtSPATKEV
             // 
-            txtSPATKEV.Location = new Point(291, 414);
+            txtSPATKEV.Location = new Point(476, 478);
             txtSPATKEV.Name = "txtSPATKEV";
             txtSPATKEV.Size = new Size(59, 27);
             txtSPATKEV.TabIndex = 56;
@@ -353,7 +353,7 @@
             // 
             // txtDEFEV
             // 
-            txtDEFEV.Location = new Point(291, 460);
+            txtDEFEV.Location = new Point(476, 541);
             txtDEFEV.Name = "txtDEFEV";
             txtDEFEV.Size = new Size(59, 27);
             txtDEFEV.TabIndex = 57;
@@ -361,7 +361,7 @@
             // 
             // txtSPDEFEV
             // 
-            txtSPDEFEV.Location = new Point(291, 511);
+            txtSPDEFEV.Location = new Point(476, 603);
             txtSPDEFEV.Name = "txtSPDEFEV";
             txtSPDEFEV.Size = new Size(59, 27);
             txtSPDEFEV.TabIndex = 58;
@@ -369,26 +369,17 @@
             // 
             // txtSPDEV
             // 
-            txtSPDEV.Location = new Point(291, 560);
+            txtSPDEV.Location = new Point(476, 663);
             txtSPDEV.Name = "txtSPDEV";
             txtSPDEV.Size = new Size(59, 27);
             txtSPDEV.TabIndex = 59;
             txtSPDEV.TextChanged += txtSPDEV_TextChanged;
             // 
-            // btnCalculate
-            // 
-            btnCalculate.Location = new Point(499, 679);
-            btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(128, 36);
-            btnCalculate.TabIndex = 60;
-            btnCalculate.Text = "Calculate";
-            btnCalculate.UseVisualStyleBackColor = true;
-            // 
             // txtNature
             // 
             txtNature.FormattingEnabled = true;
             txtNature.Items.AddRange(new object[] { "Adamant", "Bashful", "Bold", "Brave", "Calm", "Careful", "Docile", "Gentle", "Hardy", "Hasty", "Impish", "Jolly", "Lax", "Lonely", "Mild", "Modest", "Naive", "Naughty", "Quiet", "Quirky", "Rash", "Relaxed", "Sassy", "Serious", "Timid" });
-            txtNature.Location = new Point(128, 199);
+            txtNature.Location = new Point(123, 266);
             txtNature.Name = "txtNature";
             txtNature.Size = new Size(151, 28);
             txtNature.TabIndex = 61;
@@ -398,7 +389,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(35, 199);
+            label9.Location = new Point(34, 262);
             label9.Name = "label9";
             label9.Size = new Size(83, 28);
             label9.TabIndex = 62;
@@ -406,9 +397,9 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(921, 679);
+            btnDelete.Location = new Point(870, 786);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 29);
+            btnDelete.Size = new Size(112, 36);
             btnDelete.TabIndex = 63;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -418,7 +409,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(416, 277);
+            label11.Location = new Point(587, 305);
             label11.Name = "label11";
             label11.Size = new Size(46, 28);
             label11.TabIndex = 64;
@@ -426,7 +417,7 @@
             // 
             // txtHPIV
             // 
-            txtHPIV.Location = new Point(416, 319);
+            txtHPIV.Location = new Point(587, 349);
             txtHPIV.Name = "txtHPIV";
             txtHPIV.Size = new Size(59, 27);
             txtHPIV.TabIndex = 65;
@@ -434,7 +425,7 @@
             // 
             // txtATKIV
             // 
-            txtATKIV.Location = new Point(417, 369);
+            txtATKIV.Location = new Point(587, 412);
             txtATKIV.Name = "txtATKIV";
             txtATKIV.Size = new Size(59, 27);
             txtATKIV.TabIndex = 66;
@@ -442,7 +433,7 @@
             // 
             // txtSPATKIV
             // 
-            txtSPATKIV.Location = new Point(416, 414);
+            txtSPATKIV.Location = new Point(587, 478);
             txtSPATKIV.Name = "txtSPATKIV";
             txtSPATKIV.Size = new Size(59, 27);
             txtSPATKIV.TabIndex = 67;
@@ -450,7 +441,7 @@
             // 
             // txtDEFIV
             // 
-            txtDEFIV.Location = new Point(417, 460);
+            txtDEFIV.Location = new Point(589, 541);
             txtDEFIV.Name = "txtDEFIV";
             txtDEFIV.Size = new Size(59, 27);
             txtDEFIV.TabIndex = 68;
@@ -458,7 +449,7 @@
             // 
             // txtSPDEFIV
             // 
-            txtSPDEFIV.Location = new Point(416, 515);
+            txtSPDEFIV.Location = new Point(589, 603);
             txtSPDEFIV.Name = "txtSPDEFIV";
             txtSPDEFIV.Size = new Size(59, 27);
             txtSPDEFIV.TabIndex = 69;
@@ -466,7 +457,7 @@
             // 
             // txtSPDIV
             // 
-            txtSPDIV.Location = new Point(416, 560);
+            txtSPDIV.Location = new Point(589, 663);
             txtSPDIV.Name = "txtSPDIV";
             txtSPDIV.Size = new Size(59, 27);
             txtSPDIV.TabIndex = 70;
@@ -476,7 +467,7 @@
             // 
             lblLevel.AutoSize = true;
             lblLevel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLevel.Location = new Point(52, 145);
+            lblLevel.Location = new Point(51, 216);
             lblLevel.Name = "lblLevel";
             lblLevel.Size = new Size(66, 28);
             lblLevel.TabIndex = 71;
@@ -484,17 +475,29 @@
             // 
             // txtLevel
             // 
-            txtLevel.Location = new Point(128, 149);
+            txtLevel.Location = new Point(124, 220);
             txtLevel.Name = "txtLevel";
-            txtLevel.Size = new Size(151, 27);
+            txtLevel.Size = new Size(54, 27);
             txtLevel.TabIndex = 72;
             txtLevel.TextChanged += txtLevel_TextChanged;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(494, 786);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(128, 36);
+            btnSave.TabIndex = 73;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1171, 741);
+            BackColor = SystemColors.ActiveBorder;
+            ClientSize = new Size(1031, 843);
+            Controls.Add(btnSave);
             Controls.Add(txtLevel);
             Controls.Add(lblLevel);
             Controls.Add(txtSPDIV);
@@ -507,7 +510,6 @@
             Controls.Add(btnDelete);
             Controls.Add(label9);
             Controls.Add(txtNature);
-            Controls.Add(btnCalculate);
             Controls.Add(txtSPDEV);
             Controls.Add(txtSPDEFEV);
             Controls.Add(txtDEFEV);
@@ -581,7 +583,6 @@
         private TextBox txtDEFEV;
         private TextBox txtSPDEFEV;
         private TextBox txtSPDEV;
-        private Button btnCalculate;
         private ComboBox txtNature;
         private Label label9;
         private Button btnDelete;
@@ -594,5 +595,6 @@
         private TextBox txtSPDIV;
         private Label lblLevel;
         private TextBox txtLevel;
+        private Button btnSave;
     }
 }

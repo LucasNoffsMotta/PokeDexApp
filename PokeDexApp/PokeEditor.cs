@@ -16,6 +16,7 @@ namespace PokeDexApp
         public int totalEv = 510;
         private int poke_id;
         private string nature;
+        private DataTable moves;
         private DBConnect conn = new DBConnect();
         private Atribute hp, atk, spatk, def, spdef, spd;
         private Dictionary<string, string> natureDict = new Dictionary<string, string>();
@@ -41,6 +42,10 @@ namespace PokeDexApp
             lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
+
+
+            GetMovesData();
+            InitializeMoveslist();
             GetBaseStats();
             InitializeEmptyFields();
             InitializeLabels();
@@ -52,6 +57,37 @@ namespace PokeDexApp
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
         }
 
+        private void GetMovesData()
+        {
+            try
+            {
+                for (int i = 0; i < UserTeams.currentPoke.pokemon.moveSet.Length; i++)
+                {
+                    string selectQuery = $"Select * from Moves where id_move = {UserTeams.currentPoke.pokemon.moveSet[i]};";
+                    DataTable temp = conn.SQLCommand(selectQuery);
+                    moves.Rows.Add(temp.Rows[0]);
+                }
+            }
+
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        private void InitializeMoveslist()
+        {
+            for (int i = 0; i < moves.Rows.Count; i++)
+            {
+                txtMoveOne.Items[i] = moves.Rows[i];
+                txtMoveTwo.Items[i] = moves.Rows[i];
+                txtMoveThree.Items[i] = moves.Rows[i];
+                txtMoveFour.Items[i] = moves.Rows[i];
+            }
+        }
+
+
         private void InitializeEmptyFields()
         {
             //Load ev and iv saved on the database
@@ -61,7 +97,6 @@ namespace PokeDexApp
             txtDEFEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
             txtSPDEFEV.Text = UserTeams.currentPoke.pokemon.SPDEFEV.ToString();
             txtSPDEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
-
 
             txtHPIV.Text = UserTeams.currentPoke.pokemon.HPIV.ToString();
             txtATKIV.Text = UserTeams.currentPoke.pokemon.ATKIV.ToString();
@@ -308,10 +343,15 @@ namespace PokeDexApp
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void txtMoveOne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

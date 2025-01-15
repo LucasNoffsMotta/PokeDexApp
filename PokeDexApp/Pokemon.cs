@@ -15,6 +15,7 @@ namespace PokeDexApp
         public Image image;
         public string[] baseStats;
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV, HPIV, ATKIV, SPATKIV, DEFIV, SPDEFIV, SPDIV;
+        public int[] moveSet;
             
         public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null)
         {
@@ -24,6 +25,7 @@ namespace PokeDexApp
             this.typeTwo = typeTwo;
             this.image = image;
             this.baseStats = baseStats;
+            this.moveSet = MovesDataBase.GetMoves(this.name);
 
             this.HPEV = 0;
             this.ATKEV = 0;

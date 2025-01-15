@@ -167,6 +167,7 @@
             Controls.Add(label1);
             Controls.Add(txtExistentUserName);
             Name = "LogIn";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LogIn";
             Load += LogIn_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

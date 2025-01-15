@@ -452,6 +452,7 @@
             Controls.Add(lblTypeOne);
             Controls.Add(lblName);
             Name = "PokeDex";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             Paint += PokeDex_Paint;

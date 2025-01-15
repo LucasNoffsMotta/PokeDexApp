@@ -558,6 +558,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(btnAddTeam);
             Name = "UserTeams";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserTeams";
             Load += UserTeams_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

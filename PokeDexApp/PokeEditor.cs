@@ -38,11 +38,11 @@ namespace PokeDexApp
         private void PokeEditor_Load(object sender, EventArgs e)
         {
             poke_id = UserTeams.poke_key_id;
-            lblName.Text = UserTeams.currentPoke.pokemon.name.ToString();
-            lblNumber.Text = UserTeams.currentPoke.pokemon.id.ToString();
-            lblTypeOne.Text = UserTeams.currentPoke.pokemon.typeOne.ToString();
-            lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
-            pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
+            lblName.Text = UserTeams.currentPoke.name.ToString();
+            lblNumber.Text = UserTeams.currentPoke.id.ToString();
+            lblTypeOne.Text = UserTeams.currentPoke.typeOne.ToString();
+            lblTypeTwo.Text = UserTeams.currentPoke.typeTwo.ToString();
+            pictureBox1.Image = UserTeams.currentPoke.image;
 
             GetMovesData();
             InitializeMoveslist();
@@ -54,7 +54,7 @@ namespace PokeDexApp
             nature = "Bashful";
             txtNature.Text = nature;
             lblTotalEv.Text = totalEv.ToString();
-            lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.pokemon.baseStats).ToString();
+            lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.baseStats).ToString();
         }
 
         private void GetMovesData()
@@ -64,9 +64,9 @@ namespace PokeDexApp
 
             try
             {
-                for (int i = 0; i < UserTeams.currentPoke.pokemon.moveSet.Length; i++)
+                for (int i = 0; i < UserTeams.currentPoke.moveSet.Length; i++)
                 {
-                    string selectQuery = $"Select * from Moves where id_move = {UserTeams.currentPoke.pokemon.moveSet[i]};";
+                    string selectQuery = $"Select * from Moves where id_move = {UserTeams.currentPoke.moveSet[i]};";
                     DataTable temp = conn.SQLCommand(selectQuery);
                     DataRow tempRow = temp.Rows[0];
                     moves.ImportRow(tempRow);
@@ -111,24 +111,24 @@ namespace PokeDexApp
         private void InitializeEmptyFields()
         {
             //Load ev and iv saved on the database
-            txtHPEV.Text = UserTeams.currentPoke.pokemon.HPEV.ToString();
-            txtATKEV.Text = UserTeams.currentPoke.pokemon.ATKEV.ToString();
-            txtSPATKEV.Text = UserTeams.currentPoke.pokemon.SPATKEV.ToString();
-            txtDEFEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
-            txtSPDEFEV.Text = UserTeams.currentPoke.pokemon.SPDEFEV.ToString();
-            txtSPDEV.Text = UserTeams.currentPoke.pokemon.DEFEV.ToString();
+            txtHPEV.Text = UserTeams.currentPoke.HPEV.ToString();
+            txtATKEV.Text = UserTeams.currentPoke.ATKEV.ToString();
+            txtSPATKEV.Text = UserTeams.currentPoke.SPATKEV.ToString();
+            txtDEFEV.Text = UserTeams.currentPoke.DEFEV.ToString();
+            txtSPDEFEV.Text = UserTeams.currentPoke.SPDEFEV.ToString();
+            txtSPDEV.Text = UserTeams.currentPoke.DEFEV.ToString();
 
-            txtHPIV.Text = UserTeams.currentPoke.pokemon.HPIV.ToString();
-            txtATKIV.Text = UserTeams.currentPoke.pokemon.ATKIV.ToString();
-            txtSPATKIV.Text = UserTeams.currentPoke.pokemon.SPATKIV.ToString();
-            txtDEFIV.Text = UserTeams.currentPoke.pokemon.DEFIV.ToString();
-            txtSPDEFIV.Text = UserTeams.currentPoke.pokemon.SPDEFIV.ToString();
-            txtSPDIV.Text = UserTeams.currentPoke.pokemon.SPDIV.ToString();
+            txtHPIV.Text = UserTeams.currentPoke.HPIV.ToString();
+            txtATKIV.Text = UserTeams.currentPoke.ATKIV.ToString();
+            txtSPATKIV.Text = UserTeams.currentPoke.SPATKIV.ToString();
+            txtDEFIV.Text = UserTeams.currentPoke.DEFIV.ToString();
+            txtSPDEFIV.Text = UserTeams.currentPoke.SPDEFIV.ToString();
+            txtSPDIV.Text = UserTeams.currentPoke.SPDIV.ToString();
 
-            currentMoveOne = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveOne);
-            currentMoveTwo = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveTwo);
-            currentMoveThree = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveThree);
-            currentMoveFour = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveFour);
+            currentMoveOne = GetCurrentMoveByid(UserTeams.currentPoke.idMoveOne);
+            currentMoveTwo = GetCurrentMoveByid(UserTeams.currentPoke.idMoveTwo);
+            currentMoveThree = GetCurrentMoveByid(UserTeams.currentPoke.idMoveThree);
+            currentMoveFour = GetCurrentMoveByid(UserTeams.currentPoke.idMoveFour);
 
             txtMoveOne.Text = currentMoveOne["name_move"].ToString();
             txtMoveTwo.Text = currentMoveTwo["name_move"].ToString();
@@ -157,12 +157,12 @@ namespace PokeDexApp
 
         private void GetBaseStats()
         {
-            hp = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[0]), "hp");
-            atk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[1]), "atk");
-            spatk = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[2]), "spatk");
-            def = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[3]), "def");
-            spdef = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[4]), "spdef");
-            spd = new Atribute(int.Parse(UserTeams.currentPoke.pokemon.baseStats[5]), "spd");
+            hp = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[0]), "hp");
+            atk = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[1]), "atk");
+            spatk = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[2]), "spatk");
+            def = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[3]), "def");
+            spdef = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[4]), "spdef");
+            spd = new Atribute(int.Parse(UserTeams.currentPoke.baseStats[5]), "spd");
         }
 
         private void InitializeNatures()

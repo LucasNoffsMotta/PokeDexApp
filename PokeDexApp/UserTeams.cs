@@ -15,10 +15,12 @@ namespace PokeDexApp
     {
         public DBConnect conn = new DBConnect();
         public static DataTable pokes = new DataTable();
-        public static ListNode currentPoke = new ListNode();
+        public static ListNode currentNode = new ListNode();
+        public static Pokemon currentPoke;
         public static bool loaded = false;
         public static int poke_key_id = 0;
         public static int teamLimit = 10;
+        public static Pokemon[] teamPokes = new Pokemon[teamLimit]; 
 
         public UserTeams()
         {
@@ -42,8 +44,14 @@ namespace PokeDexApp
 
         }
 
-        private void LoadEditedData(Pokemon poke, DataTable dt, int i)
+        private Pokemon LoadEditedData(ListNode currentNode, DataTable dt, int i)
         {
+
+
+            Pokemon poke = new Pokemon(currentNode.pokemon.name, currentNode.pokemon.id,
+                currentNode.pokemon.typeOne, currentNode.pokemon.typeTwo, currentNode.pokemon.image,
+                currentNode.pokemon.baseStats);
+
             try
             {
                 poke.HPEV = (int)dt.Rows[i]["HP_EV"];
@@ -82,6 +90,8 @@ namespace PokeDexApp
                 poke.SPDEFIV = 0;
                 poke.SPDIV = 0;
             }
+
+            return poke;
         }
 
         private void UserTeams_Load(object sender, EventArgs e)
@@ -108,9 +118,10 @@ namespace PokeDexApp
                     for (int i = 0; i < teamSize; i++)
                     {
                         pokeNames[i].Text = pokes.Rows[i]["name"].ToString();
-                        ListNode currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));
-                        LoadEditedData(currentPoke.pokemon, pokes, i);
-                        pictures[i].Image = currentPoke.pokemon.image;
+                        ListNode currentNode = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));
+                        currentPoke = LoadEditedData(currentNode, pokes, i);
+                        pictures[i].Image = currentPoke.image;
+                        teamPokes[i] = currentPoke;
                     }
                 }
 
@@ -137,15 +148,16 @@ namespace PokeDexApp
             try
             {
                 poke_key_id = Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_key"]);
-                currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_poke"]));
+                //currentPoke = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[slotNumber - 1]["id_poke"]));
+                currentPoke = teamPokes[slotNumber - 1];
                 this.Hide();
                 PokeEditor editPage = new PokeEditor();
                 editPage.Show();
             }
 
-            catch (Exception ex)
+            catch 
             {
-                throw new Exception(ex.Message);
+                MessageBox.Show("Adicione um Pokemon a este slot para editar.");
             }
         }
 

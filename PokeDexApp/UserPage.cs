@@ -36,5 +36,10 @@ namespace PokeDexApp
             UserTeams userTeams = new UserTeams();
             userTeams.Show();
         }
+
+        private void UserPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

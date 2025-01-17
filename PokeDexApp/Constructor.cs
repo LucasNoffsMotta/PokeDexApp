@@ -96,6 +96,75 @@ namespace PokeDexApp
             return numbers;
         }
 
+
+        public static string EnumerateTypes(int idType)
+        {
+            string nameType;
+
+            switch (idType)
+            {
+                case 1:
+                    nameType = "Normal";
+                    break;
+                case 2:
+                    nameType = "Fire";
+                    break;
+                case 3:
+                    nameType = "Water";
+                    break;
+                case 4:
+                    nameType = "Electric";
+                    break;
+                case 5:
+                    nameType = "Grass";
+                    break;
+                case 6:
+                    nameType = "Ice";
+                    break;
+                case 7:
+                    nameType = "Fighting";
+                    break;
+                case 8:
+                    nameType = "Poison";
+                    break;
+                case 9:
+                    nameType = "Ground";
+                    break;
+                case 10:
+                    nameType = "Flying";
+                    break;
+                case 11:
+                    nameType = "Psychic";
+                    break;
+                case 12:
+                    nameType = "Bug";
+                    break;
+                case 13:
+                    nameType = "Rock";
+                    break;
+                case 14:
+                    nameType = "Ghost";
+                    break;
+                case 15:
+                    nameType = "Dragon";
+                    break;
+                case 16:
+                    nameType = "Dark";
+                    break;
+                case 17:
+                    nameType = "Steel";
+                    break;
+                case 18:
+                    nameType = "Fairy";
+                    break;
+
+                default:
+                    nameType = "";
+                    break;
+            }
+
+            return nameType;
+        }
         
 
         public static int EnumerateStatsInt(string stat)

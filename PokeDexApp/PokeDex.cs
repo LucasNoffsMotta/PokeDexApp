@@ -30,6 +30,7 @@ namespace PokeDexApp
             {
                 if (!loaded)
                 {
+                    MovesDataBase.FillDict();
                     string selectAllQuery = "Select id_poke, Name, id_type_one, id_type_two," +
                     " HP, ATK, SPATK, DEF, SPDEF, SPD  from Pokemon;";
                     pokeTable = conn.SQLCommand(selectAllQuery);

@@ -16,10 +16,11 @@ namespace PokeDexApp
         public int totalEv = 510;
         private int poke_id;
         private string nature;
-        private DataTable moves;
+        private DataTable moves = new DataTable();
         private DBConnect conn = new DBConnect();
         private Atribute hp, atk, spatk, def, spdef, spd;
         private Dictionary<string, string> natureDict = new Dictionary<string, string>();
+        private DataRow currentMoveOne, currentMoveTwo, currentMoveThree, currentMoveFour;
 
 
         public PokeEditor()
@@ -43,7 +44,6 @@ namespace PokeDexApp
             lblTypeTwo.Text = UserTeams.currentPoke.pokemon.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.pokemon.image;
 
-
             GetMovesData();
             InitializeMoveslist();
             GetBaseStats();
@@ -59,20 +59,39 @@ namespace PokeDexApp
 
         private void GetMovesData()
         {
+            moves = conn.SQLCommand("Select * from Moves where id_move = 1");
+            moves.Clear();
+
             try
             {
                 for (int i = 0; i < UserTeams.currentPoke.pokemon.moveSet.Length; i++)
                 {
                     string selectQuery = $"Select * from Moves where id_move = {UserTeams.currentPoke.pokemon.moveSet[i]};";
                     DataTable temp = conn.SQLCommand(selectQuery);
-                    moves.Rows.Add(temp.Rows[0]);
+                    DataRow tempRow = temp.Rows[0];
+                    moves.ImportRow(tempRow);
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private int GetMovesId(string name)
+        {
+            int id = 1;
+
+            for (int i = 0; i < moves.Rows.Count; i++)
+            {
+                if (moves.Rows[i]["name_move"].Equals(name))
+                {
+                    id = (int)moves.Rows[i]["id_move"];
+                }
+            }
+
+            return id;
         }
 
 
@@ -80,12 +99,13 @@ namespace PokeDexApp
         {
             for (int i = 0; i < moves.Rows.Count; i++)
             {
-                txtMoveOne.Items[i] = moves.Rows[i];
-                txtMoveTwo.Items[i] = moves.Rows[i];
-                txtMoveThree.Items[i] = moves.Rows[i];
-                txtMoveFour.Items[i] = moves.Rows[i];
+                txtMoveOne.Items.Add(moves.Rows[i]["name_move"].ToString());
+                txtMoveTwo.Items.Add(moves.Rows[i]["name_move"].ToString());
+                txtMoveThree.Items.Add(moves.Rows[i]["name_move"].ToString());
+                txtMoveFour.Items.Add(moves.Rows[i]["name_move"].ToString());
             }
         }
+
 
 
         private void InitializeEmptyFields()
@@ -104,6 +124,20 @@ namespace PokeDexApp
             txtDEFIV.Text = UserTeams.currentPoke.pokemon.DEFIV.ToString();
             txtSPDEFIV.Text = UserTeams.currentPoke.pokemon.SPDEFIV.ToString();
             txtSPDIV.Text = UserTeams.currentPoke.pokemon.SPDIV.ToString();
+
+            currentMoveOne = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveOne);
+            currentMoveTwo = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveTwo);
+            currentMoveThree = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveThree);
+            currentMoveFour = GetCurrentMoveByid(UserTeams.currentPoke.pokemon.idMoveFour);
+
+            txtMoveOne.Text = currentMoveOne["name_move"].ToString();
+            txtMoveTwo.Text = currentMoveTwo["name_move"].ToString();
+            txtMoveThree.Text = currentMoveThree["name_move"].ToString();
+            txtMoveFour.Text = currentMoveFour["name_move"].ToString();
+            GetMoveLabels(currentMoveOne, lblType1, lblCat1, lblPower1, lblAcc1, lblPP1);
+            GetMoveLabels(currentMoveTwo, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
+            GetMoveLabels(currentMoveThree, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
+            GetMoveLabels(currentMoveFour, lblType4, lblCat4, lblPower4, lblAcc4, lblPP4);
         }
 
 
@@ -116,6 +150,8 @@ namespace PokeDexApp
             lblDEF.Text = def.baseStat.ToString();
             lblSPDEF.Text = spdef.baseStat.ToString();
             lblSPD.Text = spd.baseStat.ToString();
+
+            
         }
 
 
@@ -317,7 +353,8 @@ namespace PokeDexApp
                     "ATK_EV = @txtATKEV, SPATK_EV = @txtSPATKEV, DEF_EV = @txtDEFEV, " +
                     "SPDEF_EV = @txtSPDEFEV," +
                     "SPD_EV = @txtSPDEV, HP_IV = @txtHPIV, ATK_IV = @txtATKIV , " +
-                    "SPATK_IV = @txtSPATKIV, DEF_IV = @txtDEFIV, SPDEF_IV = @txtSPDEFIV, SPD_IV= @txtSPDIV" +
+                    "SPATK_IV = @txtSPATKIV, DEF_IV = @txtDEFIV, SPDEF_IV = @txtSPDEFIV, SPD_IV= @txtSPDIV," +
+                    "id_move_one = @idMoveOne, id_move_two = @idMoveTwo, id_move_three = @idMoveThree, id_move_four = @idMoveFour" +
                     $" WHERE id_key = {poke_id};";
 
                 SqlCommand updateComand = new SqlCommand(query);
@@ -334,6 +371,12 @@ namespace PokeDexApp
                 updateComand.Parameters.AddWithValue("@txtDEFIV", txtDEFIV.Text);
                 updateComand.Parameters.AddWithValue("@txtSPDEFIV", txtSPDEFIV.Text);
                 updateComand.Parameters.AddWithValue("@txtSPDIV", txtSPDIV.Text);
+
+                updateComand.Parameters.AddWithValue("idMoveOne", GetMovesId(txtMoveOne.Text));
+                updateComand.Parameters.AddWithValue("idMoveTwo", GetMovesId(txtMoveTwo.Text));
+                updateComand.Parameters.AddWithValue("idMoveThree", GetMovesId(txtMoveThree.Text));
+                updateComand.Parameters.AddWithValue("idMoveFour", GetMovesId(txtMoveFour.Text));
+
                 int affectedRow = conn.executeQuery(updateComand);
 
 
@@ -349,9 +392,77 @@ namespace PokeDexApp
             }
         }
 
+        private DataRow GetCurrentMoveByName(string name)
+        {
+            DataRow currentRow = moves.Rows[0];
+
+
+            for (int i = 0; i < moves.Rows.Count; i++)
+            {
+                if (moves.Rows[i]["name_move"].Equals(name))
+                {
+                    currentRow = moves.Rows[i];
+                }
+            }
+
+            return currentRow;
+        }
+
+        private DataRow GetCurrentMoveByid(int id)
+        {
+            DataRow currentRow = moves.Rows[0];
+
+
+            for (int i = 0; i < moves.Rows.Count; i++)
+            {
+                if ((int)moves.Rows[i]["id_move"] == id)
+                {
+                    currentRow = moves.Rows[i];
+                }
+            }
+
+
+            return currentRow;
+        }
+
+
+        private void GetMoveLabels(DataRow dr, Label type, Label cat, Label power, Label acc, Label pp)
+        {
+            type.Text = Constructor.EnumerateTypes((int)dr["id_type"]);
+            cat.Text = dr["move_category"].ToString();
+            power.Text = dr["power"].ToString();
+            acc.Text = dr["accuracy"].ToString();
+            pp.Text = dr["pp"].ToString();
+        }
+
+
+
         private void txtMoveOne_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DataRow selectedMove;
+            selectedMove = GetCurrentMoveByName(txtMoveOne.Text);
+            GetMoveLabels(selectedMove, lblType1, lblCat1, lblPower1, lblAcc1, lblPP1);
+        }
 
+        private void txtMoveTwo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRow selectedMove;
+            selectedMove = GetCurrentMoveByName(txtMoveTwo.Text);
+            GetMoveLabels(selectedMove, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
+        }
+
+        private void txtMoveThree_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRow selectedMove;
+            selectedMove = GetCurrentMoveByName(txtMoveThree.Text);
+            GetMoveLabels(selectedMove, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
+        }
+
+        private void txtMoveFour_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataRow selectedMove;
+            selectedMove = GetCurrentMoveByName(txtMoveFour.Text);
+            GetMoveLabels(selectedMove, lblType4, lblCat4, lblPower4, lblAcc4, lblPP4);
         }
     }
 }

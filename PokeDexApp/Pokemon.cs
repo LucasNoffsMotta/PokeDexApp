@@ -12,6 +12,7 @@ namespace PokeDexApp
         public int id, idUserTable;
         public string typeOne;
         public string typeTwo;
+        public int idMoveOne, idMoveTwo, idMoveThree, idMoveFour;
         public Image image;
         public string[] baseStats;
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV, HPIV, ATKIV, SPATKIV, DEFIV, SPDEFIV, SPDIV;
@@ -25,8 +26,17 @@ namespace PokeDexApp
             this.typeTwo = typeTwo;
             this.image = image;
             this.baseStats = baseStats;
-            this.moveSet = MovesDataBase.GetMoves(this.name);
 
+            //Just for testing:
+            if (name.Equals("Bulbasaur") || name.Equals("Ivysaur") || name.Equals("Venusaur"))
+            {
+                this.moveSet = MovesDataBase.GetMoves(this.name);
+            }
+
+            this.idMoveOne = 0;
+            this.idMoveTwo = 0;
+            this.idMoveThree = 0;
+            this.idMoveFour = 0;
             this.HPEV = 0;
             this.ATKEV = 0;
             this.SPATKEV = 0;

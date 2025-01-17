@@ -59,6 +59,11 @@ namespace PokeDexApp
                 poke.DEFIV = (int)dt.Rows[i]["DEF_IV"];
                 poke.SPDEFIV = (int)dt.Rows[i]["SPDEF_IV"];
                 poke.SPDIV = (int)dt.Rows[i]["SPD_IV"];
+
+                poke.idMoveOne = (int)dt.Rows[i]["id_move_one"];
+                poke.idMoveTwo = (int)dt.Rows[i]["id_move_two"];
+                poke.idMoveThree = (int)dt.Rows[i]["id_move_three"];
+                poke.idMoveFour = (int)dt.Rows[i]["id_move_four"];
             }
   
             catch

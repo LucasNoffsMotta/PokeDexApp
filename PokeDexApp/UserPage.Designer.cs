@@ -101,6 +101,7 @@
             Name = "UserPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UserPage";
+            Load += UserPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);

@@ -68,7 +68,7 @@ namespace PokeDexApp
         public int ValidateEVEntry(TextBox textChanged, int totalEvs)
         {
 
-            if (totalEvs == 0)
+            if (totalEvs < 0)
             {
                 MessageBox.Show("Max EV reached.");
                 ev = 0;
@@ -166,7 +166,7 @@ namespace PokeDexApp
         }
 
 
-        //Metodo utilizado para calcular o bonus da Nature
+        //Metodo utilizado para calcular o bonus da Nature e definir o simbolo de status que aparecera
         public void ChangeNature(string status)
         {
             if (status == "positive")
@@ -182,6 +182,31 @@ namespace PokeDexApp
             else
             {
                 natureBonus = 1;
+            }
+        }
+
+
+        public void ChangeNatureSymbol(Label symbol)
+        {
+            if (natureBonus == 1.1)
+            {
+                symbol.Text = "+";
+                symbol.ForeColor = Color.Green;
+                symbol.Visible = true;
+            }
+          
+            else if (natureBonus == 0.9)
+            {
+                symbol.Text = "-";
+                symbol.ForeColor = Color.Red;
+                symbol.Visible = true;
+            }
+
+            else
+            {
+                symbol.Text = "O";
+                symbol.ForeColor = Color.Blue;
+                symbol.Visible = true;
             }
         }
 

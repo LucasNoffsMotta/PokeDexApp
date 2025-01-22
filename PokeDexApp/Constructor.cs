@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -388,6 +389,279 @@ namespace PokeDexApp
                     break;
             }
             return typeNumber;
+        }
+
+
+        public static string EnumerateNatureToString(int natureValue)
+        {
+            string nature;
+
+            switch(natureValue)
+            {
+                case 1:
+                    nature = "Hardy";
+                    break;
+                case 2:
+                    nature = "Lonely";
+                    break;
+
+                case 3:
+                    nature = "Brave";
+                    break;
+                case 4:
+                    nature = "Adamant";
+                    break;
+
+                case 5:
+                    nature = "Naughty";
+                    break;
+
+                case 6:
+                    nature = "Bold";
+                    break;
+
+                case 7:
+                    nature = "Docile";
+                    break;
+
+                case 8:
+                    nature = "Relaxed";
+                    break;
+
+                case 9:
+                    nature = "Impish";
+                    break;
+
+                case 10:
+                    nature = "Lax";
+                    break;
+
+                case 11:
+                    nature = "Timid";
+                    break;
+
+                case 12:
+                    nature = "Hasty";
+                    break;
+                
+                case 13:
+                    nature = "Serious";
+                    break;
+
+                case 14:
+                    nature = "Jolly";
+                    break;
+
+                case 15:
+                    nature = "Naive";
+                    break;
+                case 16:
+                    nature = "Modest";
+                    break;
+
+                case 17:
+                    nature = "Mild";
+                    break;
+
+                case 18:
+                    nature = "Quiet";
+                    break;
+
+                case 19:
+                    nature = "Bashful";
+                    break;
+
+                case 20:
+                    nature = "Rash";
+                    break;
+
+                case 21:
+                    nature = "Calm";
+                    break;
+
+                case 22:
+                    nature = "Gentle";
+                    break;
+
+                case 23:
+                    nature = "Sassy";
+                    break;
+
+                case 24:
+                    nature = "Careful";
+                    break;
+
+                case 25:
+                    nature = "Quirky";
+                    break;
+
+                default:
+                    nature = "Bashful";
+                    break;
+            }
+
+            return nature;
+        }
+
+
+        public static int EnumerateNatureToInt(string nature)
+        {
+            int natureValue;
+
+            switch (nature)
+            {
+                case "Hardy":
+                    natureValue = 1;
+                    break;
+                case "Lonely":
+                    natureValue = 2;
+                    break;
+                case "Brave":
+                    natureValue = 3;
+                    break;
+                case "Adamant":
+                    natureValue = 4;
+                    break;
+                case "Naughty":
+                    natureValue = 5;
+                    break;
+                case "Bold":
+                    natureValue = 6;
+                    break;
+                case "Docile":
+                    natureValue = 7;
+                    break;
+                case "Relaxed":
+                    natureValue = 8;
+                    break;
+                case "Impish":
+                    natureValue = 9;
+                    break;
+                case "Lax":
+                    natureValue = 10;
+                    break;
+                case "Timid":
+                    natureValue = 11;
+                    break;
+                case "Hasty":
+                    natureValue = 12;
+                    break;
+                case "Serious":
+                    natureValue = 13;
+                    break;
+                case "Jolly":
+                    natureValue = 14;
+                    break;
+                case "Naive":
+                    natureValue = 15;
+                    break;
+                case "Modest":
+                    natureValue = 16;
+                    break;
+                case "Mild":
+                    natureValue = 17;
+                    break;
+                case "Quiet":
+                    natureValue = 18;
+                    break;
+                case "Bashful":
+                    natureValue = 19;
+                    break;
+                case "Rash":
+                    natureValue = 20;
+                    break;
+                case "Calm":
+                    natureValue = 21;
+                    break;
+                case "Gentle":
+                    natureValue = 22;
+                    break;
+                case "Sassy":
+                    natureValue = 23;
+                    break;
+                case "Careful":
+                    natureValue = 24;
+                    break;
+                case "Quirky":
+                    natureValue = 25;
+                    break;
+                default:
+                    natureValue = 19; // Default to "Bashful"
+                    break;
+            }
+
+            return natureValue;
+        }
+
+
+        public static Color SetBackGroundColor(string nameType)
+        {
+            Color color;
+                  
+
+            switch (nameType)
+            {
+                case "Normal":
+                    color = Color.LightGray;
+                    break;
+                case "Fire":
+                    color = Color.MediumVioletRed;
+                    break;
+                case "Water":
+                    color = Color.LightSkyBlue;
+                    break;
+                case "Electric":
+                    color = Color.LightGoldenrodYellow;
+                    break;
+                case "Grass":
+                    color = Color.LightGreen;
+                    break;
+                case "Ice":
+                    color = Color.AliceBlue;
+                    break;
+                case "Fighting":
+                    color = Color.Maroon;
+                    break;
+                case "Poison":
+                    color = Color.Purple;
+                    break;
+                case "Ground":
+                    color = Color.SandyBrown;
+                    break;
+                case "Flying":
+                    color = Color.SkyBlue;
+                    break;
+                case "Psychic":
+                    color = Color.Magenta;
+                    break;
+                case "Bug":
+                    color = Color.Olive;
+                    break;
+                case "Rock":
+                    color = Color.Brown;
+                    break;
+                case "Ghost":
+                    color = Color.DarkSlateBlue;
+                    break;
+                case "Dragon":
+                    color = Color.Indigo;
+                    break;
+                case "Dark":
+                    color = Color.DarkTurquoise;
+                    break;
+                case "Steel":
+                    color = Color.LightSlateGray;
+                    break;
+                case "Fairy":
+                    color = Color.LightPink;
+                    break;
+                default:
+                    color = Color.White; // Default color
+                    break;
+            }
+
+            return color;
+
         }
 
         public static ListNode BinarySearch(ListNode[] nodesArray, int target)

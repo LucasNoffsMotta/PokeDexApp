@@ -114,6 +114,8 @@ namespace PokeDexApp
         private void Form1_Load(object sender, EventArgs e)
         {
             ConstructPages();
+;           BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
+            
             //pictureBox2.Paint += new PaintEventHandler(this.pictureBox2_Paint);
         }
 
@@ -141,6 +143,8 @@ namespace PokeDexApp
             lblSPDEF.Text = dexStart.pokemon.baseStats[4];
             lblSPD.Text = dexStart.pokemon.baseStats[5];
             lblTotal.Text = Constructor.GetTotalBaseStats(dexStart.pokemon.baseStats).ToString();
+            BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)

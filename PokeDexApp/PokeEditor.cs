@@ -22,7 +22,6 @@ namespace PokeDexApp
         private Dictionary<string, string> natureDict = new Dictionary<string, string>();
         private DataRow currentMoveOne, currentMoveTwo, currentMoveThree, currentMoveFour;
 
-
         public PokeEditor()
         {
             InitializeComponent();
@@ -36,7 +35,7 @@ namespace PokeDexApp
         }
 
         private void PokeEditor_Load(object sender, EventArgs e)
-        {
+        {          
             poke_id = UserTeams.poke_key_id;
             lblName.Text = UserTeams.currentPoke.name.ToString();
             lblNumber.Text = UserTeams.currentPoke.id.ToString();
@@ -44,18 +43,19 @@ namespace PokeDexApp
             lblTypeTwo.Text = UserTeams.currentPoke.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.image;
 
+            BackColor = Constructor.SetBackGroundColor(UserTeams.currentPoke.typeOne.ToString());
+          
             GetMovesData();
             InitializeMoveslist();
             GetBaseStats();
             InitializeEmptyFields();
             InitializeLabels();
             InitializeNatures();
-            txtLevel.Text = 50.ToString();
-            nature = "Bashful";
-            txtNature.Text = nature;
+            txtNature.Text = UserTeams.currentPoke.nature.ToString();
             lblTotalEv.Text = totalEv.ToString();
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.baseStats).ToString();
         }
+
 
         private void GetMovesData()
         {
@@ -106,6 +106,36 @@ namespace PokeDexApp
             }
         }
 
+        private void RebuildMoveslist()
+        {
+            for (int i = 0; i < moves.Rows.Count; i++)
+            {
+                txtMoveOne.Items[i] = (moves.Rows[i]["name_move"].ToString());
+                txtMoveTwo.Items[i] = (moves.Rows[i]["name_move"].ToString());
+                txtMoveThree.Items[i] = (moves.Rows[i]["name_move"].ToString());
+                txtMoveFour.Items[i] = (moves.Rows[i]["name_move"].ToString());
+            }
+        }
+
+        private void IterateOnList(ComboBox list, ComboBox selectedMove)
+        {
+            for (int i = 0; i < list.Items.Count; i++)
+            {
+                if (list.Items[i].Equals(selectedMove.Text))
+                {
+                    list.Items[i] = " - ";
+                }
+            }
+        }
+
+        private void UpdateMovesList(ComboBox one, ComboBox two, ComboBox three, ComboBox selected)
+        {
+            RebuildMoveslist();
+            IterateOnList(one, selected);
+            IterateOnList(two, selected);
+            IterateOnList(three, selected);
+        }
+
 
 
         private void InitializeEmptyFields()
@@ -125,6 +155,8 @@ namespace PokeDexApp
             txtSPDEFIV.Text = UserTeams.currentPoke.SPDEFIV.ToString();
             txtSPDIV.Text = UserTeams.currentPoke.SPDIV.ToString();
 
+            txtLevel.Text = UserTeams.currentPoke.level.ToString();
+
             currentMoveOne = GetCurrentMoveByid(UserTeams.currentPoke.idMoveOne);
             currentMoveTwo = GetCurrentMoveByid(UserTeams.currentPoke.idMoveTwo);
             currentMoveThree = GetCurrentMoveByid(UserTeams.currentPoke.idMoveThree);
@@ -134,6 +166,7 @@ namespace PokeDexApp
             txtMoveTwo.Text = currentMoveTwo["name_move"].ToString();
             txtMoveThree.Text = currentMoveThree["name_move"].ToString();
             txtMoveFour.Text = currentMoveFour["name_move"].ToString();
+
             GetMoveLabels(currentMoveOne, lblType1, lblCat1, lblPower1, lblAcc1, lblPP1);
             GetMoveLabels(currentMoveTwo, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
             GetMoveLabels(currentMoveThree, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
@@ -149,9 +182,7 @@ namespace PokeDexApp
             lblSPATK.Text = spatk.baseStat.ToString();
             lblDEF.Text = def.baseStat.ToString();
             lblSPDEF.Text = spdef.baseStat.ToString();
-            lblSPD.Text = spd.baseStat.ToString();
-
-            
+            lblSPD.Text = spd.baseStat.ToString();    
         }
 
 
@@ -269,6 +300,13 @@ namespace PokeDexApp
             spdef.ChangeNature(natureDict["spdef"]);
             spd.ChangeNature(natureDict["spd"]);
 
+            hp.ChangeNatureSymbol(lblHPnature);
+            atk.ChangeNatureSymbol(lblATKnature);
+            spatk.ChangeNatureSymbol(lblSPATKnature);
+            def.ChangeNatureSymbol(lblDEFnature);
+            spdef.ChangeNatureSymbol(lblSPDEFnature);
+            spd.ChangeNatureSymbol(lblSPDnature);
+
             lblHP.Text = hp.CalculateStat();
             lblATK.Text = atk.CalculateStat();
             lblSPATK.Text = spatk.CalculateStat();
@@ -354,7 +392,8 @@ namespace PokeDexApp
                     "SPDEF_EV = @txtSPDEFEV," +
                     "SPD_EV = @txtSPDEV, HP_IV = @txtHPIV, ATK_IV = @txtATKIV , " +
                     "SPATK_IV = @txtSPATKIV, DEF_IV = @txtDEFIV, SPDEF_IV = @txtSPDEFIV, SPD_IV= @txtSPDIV," +
-                    "id_move_one = @idMoveOne, id_move_two = @idMoveTwo, id_move_three = @idMoveThree, id_move_four = @idMoveFour" +
+                    "id_move_one = @idMoveOne, id_move_two = @idMoveTwo, id_move_three = @idMoveThree, id_move_four = @idMoveFour, " +
+                    "id_nature = @idNature, " + "level = @level" +
                     $" WHERE id_key = {poke_id};";
 
                 SqlCommand updateComand = new SqlCommand(query);
@@ -376,6 +415,10 @@ namespace PokeDexApp
                 updateComand.Parameters.AddWithValue("idMoveTwo", GetMovesId(txtMoveTwo.Text));
                 updateComand.Parameters.AddWithValue("idMoveThree", GetMovesId(txtMoveThree.Text));
                 updateComand.Parameters.AddWithValue("idMoveFour", GetMovesId(txtMoveFour.Text));
+
+                updateComand.Parameters.AddWithValue("level", hp.level);
+
+                updateComand.Parameters.AddWithValue("@idNature", Constructor.EnumerateNatureToInt(txtNature.Text));
 
                 int affectedRow = conn.executeQuery(updateComand);
 

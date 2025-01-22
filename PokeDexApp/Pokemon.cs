@@ -12,13 +12,15 @@ namespace PokeDexApp
         public int id, idUserTable;
         public string typeOne;
         public string typeTwo;
+        public string nature;
         public int idMoveOne, idMoveTwo, idMoveThree, idMoveFour;
+        public int level;
         public Image image;
         public string[] baseStats;
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV, HPIV, ATKIV, SPATKIV, DEFIV, SPDEFIV, SPDIV;
         public int[] moveSet;
             
-        public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null)
+        public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null, int natureValue=19, int level = 1)
         {
             this.name = name;
             this.id = id;
@@ -26,9 +28,12 @@ namespace PokeDexApp
             this.typeTwo = typeTwo;
             this.image = image;
             this.baseStats = baseStats;
+            this.nature = Constructor.EnumerateNatureToString(natureValue);
+            this.level = level;
+
 
             //Just for testing:
-            if (name.Equals("Bulbasaur") || name.Equals("Ivysaur") || name.Equals("Venusaur"))
+            if (this.id <= 3)
             {
                 this.moveSet = MovesDataBase.GetMoves(this.name);
             }
@@ -50,23 +55,6 @@ namespace PokeDexApp
             this.DEFIV = 0;
             this.SPDEFIV = 0;
             this.SPDIV = 0;
-        }
-
-        public void SaveEvAndIv(int hpev, int atkev, int spatkev, int defev, int spdefev, 
-            int spdev, int hpiv, int atkiv, int spatkiv, int defiv, int spdefiv, int spdiv)
-        {
-            HPEV = hpev;
-            ATKEV = atkev;
-            SPATKEV = spatkev;
-            DEFEV = defev;
-            SPDEFEV = spdefev;
-            SPDEV = spdev;
-            HPIV = hpiv;
-            ATKIV = atkiv;
-            SPATKIV = spatkiv;
-            DEFIV = defiv;
-            SPDEFIV = spdefiv;
-            SPDIV = spdiv;       
         }
     }
 }

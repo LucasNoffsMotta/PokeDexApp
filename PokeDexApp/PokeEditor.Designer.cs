@@ -107,26 +107,33 @@
             lblPP2 = new Label();
             lblPP1 = new Label();
             lblPower4 = new Label();
+            label22 = new Label();
+            lblSPDnature = new Label();
+            lblSPDEFnature = new Label();
+            lblDEFnature = new Label();
+            lblSPATKnature = new Label();
+            lblATKnature = new Label();
+            lblHPnature = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotal.Font = new Font("Segoe UI", 12F);
             lblTotal.Location = new Point(146, 704);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(21, 28);
+            lblTotal.Size = new Size(20, 28);
             lblTotal.TabIndex = 49;
             lblTotal.Text = "*";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Bodoni MT", 12F);
             label10.Location = new Point(16, 704);
             label10.Name = "label10";
-            label10.Size = new Size(109, 28);
+            label10.Size = new Size(103, 24);
             label10.TabIndex = 48;
             label10.Text = "Total Base";
             // 
@@ -143,130 +150,130 @@
             // lblSPD
             // 
             lblSPD.AutoSize = true;
-            lblSPD.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSPD.Font = new Font("Segoe UI", 12F);
             lblSPD.Location = new Point(146, 639);
             lblSPD.Name = "lblSPD";
-            lblSPD.Size = new Size(21, 28);
+            lblSPD.Size = new Size(20, 28);
             lblSPD.TabIndex = 46;
             lblSPD.Text = "*";
             // 
             // lblSPDEF
             // 
             lblSPDEF.AutoSize = true;
-            lblSPDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSPDEF.Font = new Font("Segoe UI", 12F);
             lblSPDEF.Location = new Point(146, 579);
             lblSPDEF.Name = "lblSPDEF";
-            lblSPDEF.Size = new Size(21, 28);
+            lblSPDEF.Size = new Size(20, 28);
             lblSPDEF.TabIndex = 45;
             lblSPDEF.Text = "*";
             // 
             // lblDEF
             // 
             lblDEF.AutoSize = true;
-            lblDEF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDEF.Font = new Font("Segoe UI", 12F);
             lblDEF.Location = new Point(146, 517);
             lblDEF.Name = "lblDEF";
-            lblDEF.Size = new Size(21, 28);
+            lblDEF.Size = new Size(20, 28);
             lblDEF.TabIndex = 44;
             lblDEF.Text = "*";
             // 
             // lblSPATK
             // 
             lblSPATK.AutoSize = true;
-            lblSPATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSPATK.Font = new Font("Segoe UI", 12F);
             lblSPATK.Location = new Point(146, 454);
             lblSPATK.Name = "lblSPATK";
-            lblSPATK.Size = new Size(21, 28);
+            lblSPATK.Size = new Size(20, 28);
             lblSPATK.TabIndex = 43;
             lblSPATK.Text = "*";
             // 
             // lblATK
             // 
             lblATK.AutoSize = true;
-            lblATK.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblATK.Font = new Font("Segoe UI", 12F);
             lblATK.Location = new Point(146, 388);
             lblATK.Name = "lblATK";
-            lblATK.Size = new Size(21, 28);
+            lblATK.Size = new Size(20, 28);
             lblATK.TabIndex = 42;
             lblATK.Text = "*";
             // 
             // lblHP
             // 
             lblHP.AutoSize = true;
-            lblHP.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHP.Font = new Font("Segoe UI", 12F);
             lblHP.Location = new Point(146, 325);
             lblHP.Name = "lblHP";
-            lblHP.Size = new Size(21, 28);
+            lblHP.Size = new Size(20, 28);
             lblHP.TabIndex = 41;
             lblHP.Text = "*";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Bodoni MT", 12F);
             label7.Location = new Point(75, 639);
             label7.Name = "label7";
-            label7.Size = new Size(50, 28);
+            label7.Size = new Size(49, 24);
             label7.TabIndex = 40;
             label7.Text = "SPD";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Bodoni MT", 12F);
             label6.Location = new Point(48, 579);
             label6.Name = "label6";
-            label6.Size = new Size(77, 28);
+            label6.Size = new Size(81, 24);
             label6.TabIndex = 39;
             label6.Text = "SP DEF";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Bodoni MT", 12F);
             label5.Location = new Point(70, 517);
             label5.Name = "label5";
-            label5.Size = new Size(48, 28);
+            label5.Size = new Size(52, 24);
             label5.TabIndex = 38;
             label5.Text = "DEF";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Bodoni MT", 12F);
             label4.Location = new Point(46, 454);
             label4.Name = "label4";
-            label4.Size = new Size(79, 28);
+            label4.Size = new Size(82, 24);
             label4.TabIndex = 37;
             label4.Text = "SP ATK";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Bodoni MT", 12F);
             label3.Location = new Point(68, 388);
             label3.Name = "label3";
-            label3.Size = new Size(50, 28);
+            label3.Size = new Size(53, 24);
             label3.TabIndex = 36;
             label3.Text = "ATK";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Bodoni MT", 12F);
             label2.Location = new Point(79, 325);
             label2.Name = "label2";
-            label2.Size = new Size(39, 28);
+            label2.Size = new Size(39, 24);
             label2.TabIndex = 35;
             label2.Text = "HP";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(130, 285);
+            label1.Font = new Font("Bodoni MT", 12F);
+            label1.Location = new Point(66, 283);
             label1.Name = "label1";
-            label1.Size = new Size(59, 28);
+            label1.Size = new Size(55, 24);
             label1.TabIndex = 34;
             label1.Text = "Stats";
             // 
@@ -345,7 +352,7 @@
             // 
             lblTitle2.AutoSize = true;
             lblTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle2.Location = new Point(231, 285);
+            lblTitle2.Location = new Point(304, 285);
             lblTitle2.Name = "lblTitle2";
             lblTitle2.Size = new Size(51, 28);
             lblTitle2.TabIndex = 51;
@@ -355,7 +362,7 @@
             // 
             lblTotalEv.AutoSize = true;
             lblTotalEv.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalEv.Location = new Point(241, 704);
+            lblTotalEv.Location = new Point(314, 704);
             lblTotalEv.Name = "lblTotalEv";
             lblTotalEv.Size = new Size(21, 28);
             lblTotalEv.TabIndex = 53;
@@ -363,7 +370,7 @@
             // 
             // txtHPEV
             // 
-            txtHPEV.Location = new Point(223, 329);
+            txtHPEV.Location = new Point(296, 329);
             txtHPEV.Name = "txtHPEV";
             txtHPEV.Size = new Size(59, 27);
             txtHPEV.TabIndex = 54;
@@ -371,7 +378,7 @@
             // 
             // txtATKEV
             // 
-            txtATKEV.Location = new Point(223, 392);
+            txtATKEV.Location = new Point(296, 392);
             txtATKEV.Name = "txtATKEV";
             txtATKEV.Size = new Size(59, 27);
             txtATKEV.TabIndex = 55;
@@ -379,7 +386,7 @@
             // 
             // txtSPATKEV
             // 
-            txtSPATKEV.Location = new Point(223, 458);
+            txtSPATKEV.Location = new Point(296, 458);
             txtSPATKEV.Name = "txtSPATKEV";
             txtSPATKEV.Size = new Size(59, 27);
             txtSPATKEV.TabIndex = 56;
@@ -387,7 +394,7 @@
             // 
             // txtDEFEV
             // 
-            txtDEFEV.Location = new Point(223, 521);
+            txtDEFEV.Location = new Point(296, 521);
             txtDEFEV.Name = "txtDEFEV";
             txtDEFEV.Size = new Size(59, 27);
             txtDEFEV.TabIndex = 57;
@@ -395,7 +402,7 @@
             // 
             // txtSPDEFEV
             // 
-            txtSPDEFEV.Location = new Point(223, 583);
+            txtSPDEFEV.Location = new Point(296, 583);
             txtSPDEFEV.Name = "txtSPDEFEV";
             txtSPDEFEV.Size = new Size(59, 27);
             txtSPDEFEV.TabIndex = 58;
@@ -403,7 +410,7 @@
             // 
             // txtSPDEV
             // 
-            txtSPDEV.Location = new Point(223, 643);
+            txtSPDEV.Location = new Point(296, 643);
             txtSPDEV.Name = "txtSPDEV";
             txtSPDEV.Size = new Size(59, 27);
             txtSPDEV.TabIndex = 59;
@@ -411,6 +418,7 @@
             // 
             // txtNature
             // 
+            txtNature.BackColor = SystemColors.HighlightText;
             txtNature.FormattingEnabled = true;
             txtNature.Items.AddRange(new object[] { "Adamant", "Bashful", "Bold", "Brave", "Calm", "Careful", "Docile", "Gentle", "Hardy", "Hasty", "Impish", "Jolly", "Lax", "Lonely", "Mild", "Modest", "Naive", "Naughty", "Quiet", "Quirky", "Rash", "Relaxed", "Sassy", "Serious", "Timid" });
             txtNature.Location = new Point(111, 211);
@@ -422,10 +430,10 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Bodoni MT", 12F);
             label9.Location = new Point(22, 207);
             label9.Name = "label9";
-            label9.Size = new Size(83, 28);
+            label9.Size = new Size(76, 24);
             label9.TabIndex = 62;
             label9.Text = "Nature:";
             // 
@@ -443,7 +451,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(334, 285);
+            label11.Location = new Point(407, 285);
             label11.Name = "label11";
             label11.Size = new Size(46, 28);
             label11.TabIndex = 64;
@@ -451,7 +459,7 @@
             // 
             // txtHPIV
             // 
-            txtHPIV.Location = new Point(334, 329);
+            txtHPIV.Location = new Point(407, 329);
             txtHPIV.Name = "txtHPIV";
             txtHPIV.Size = new Size(59, 27);
             txtHPIV.TabIndex = 65;
@@ -459,7 +467,7 @@
             // 
             // txtATKIV
             // 
-            txtATKIV.Location = new Point(334, 392);
+            txtATKIV.Location = new Point(407, 392);
             txtATKIV.Name = "txtATKIV";
             txtATKIV.Size = new Size(59, 27);
             txtATKIV.TabIndex = 66;
@@ -467,7 +475,7 @@
             // 
             // txtSPATKIV
             // 
-            txtSPATKIV.Location = new Point(334, 458);
+            txtSPATKIV.Location = new Point(407, 458);
             txtSPATKIV.Name = "txtSPATKIV";
             txtSPATKIV.Size = new Size(59, 27);
             txtSPATKIV.TabIndex = 67;
@@ -475,7 +483,7 @@
             // 
             // txtDEFIV
             // 
-            txtDEFIV.Location = new Point(336, 521);
+            txtDEFIV.Location = new Point(409, 521);
             txtDEFIV.Name = "txtDEFIV";
             txtDEFIV.Size = new Size(59, 27);
             txtDEFIV.TabIndex = 68;
@@ -483,7 +491,7 @@
             // 
             // txtSPDEFIV
             // 
-            txtSPDEFIV.Location = new Point(336, 583);
+            txtSPDEFIV.Location = new Point(409, 583);
             txtSPDEFIV.Name = "txtSPDEFIV";
             txtSPDEFIV.Size = new Size(59, 27);
             txtSPDEFIV.TabIndex = 69;
@@ -491,7 +499,7 @@
             // 
             // txtSPDIV
             // 
-            txtSPDIV.Location = new Point(336, 643);
+            txtSPDIV.Location = new Point(409, 643);
             txtSPDIV.Name = "txtSPDIV";
             txtSPDIV.Size = new Size(59, 27);
             txtSPDIV.TabIndex = 70;
@@ -500,10 +508,10 @@
             // lblLevel
             // 
             lblLevel.AutoSize = true;
-            lblLevel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLevel.Font = new Font("Bodoni MT", 12F);
             lblLevel.Location = new Point(39, 161);
             lblLevel.Name = "lblLevel";
-            lblLevel.Size = new Size(66, 28);
+            lblLevel.Size = new Size(63, 24);
             lblLevel.TabIndex = 71;
             lblLevel.Text = "Level:";
             // 
@@ -529,7 +537,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(482, 285);
+            label12.Location = new Point(533, 284);
             label12.Name = "label12";
             label12.Size = new Size(86, 28);
             label12.TabIndex = 74;
@@ -539,7 +547,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(455, 333);
+            label13.Location = new Point(506, 332);
             label13.Name = "label13";
             label13.Size = new Size(21, 23);
             label13.TabIndex = 75;
@@ -549,7 +557,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(455, 388);
+            label14.Location = new Point(506, 387);
             label14.Name = "label14";
             label14.Size = new Size(21, 23);
             label14.TabIndex = 76;
@@ -559,7 +567,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(455, 436);
+            label15.Location = new Point(506, 435);
             label15.Name = "label15";
             label15.Size = new Size(21, 23);
             label15.TabIndex = 77;
@@ -569,7 +577,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.Location = new Point(455, 484);
+            label16.Location = new Point(506, 483);
             label16.Name = "label16";
             label16.Size = new Size(21, 23);
             label16.TabIndex = 78;
@@ -578,7 +586,7 @@
             // txtMoveOne
             // 
             txtMoveOne.FormattingEnabled = true;
-            txtMoveOne.Location = new Point(482, 329);
+            txtMoveOne.Location = new Point(533, 328);
             txtMoveOne.Name = "txtMoveOne";
             txtMoveOne.Size = new Size(126, 28);
             txtMoveOne.TabIndex = 79;
@@ -587,7 +595,7 @@
             // txtMoveTwo
             // 
             txtMoveTwo.FormattingEnabled = true;
-            txtMoveTwo.Location = new Point(482, 383);
+            txtMoveTwo.Location = new Point(533, 382);
             txtMoveTwo.Name = "txtMoveTwo";
             txtMoveTwo.Size = new Size(126, 28);
             txtMoveTwo.TabIndex = 80;
@@ -596,7 +604,7 @@
             // txtMoveThree
             // 
             txtMoveThree.FormattingEnabled = true;
-            txtMoveThree.Location = new Point(482, 436);
+            txtMoveThree.Location = new Point(533, 435);
             txtMoveThree.Name = "txtMoveThree";
             txtMoveThree.Size = new Size(126, 28);
             txtMoveThree.TabIndex = 81;
@@ -605,7 +613,7 @@
             // txtMoveFour
             // 
             txtMoveFour.FormattingEnabled = true;
-            txtMoveFour.Location = new Point(482, 484);
+            txtMoveFour.Location = new Point(533, 483);
             txtMoveFour.Name = "txtMoveFour";
             txtMoveFour.Size = new Size(126, 28);
             txtMoveFour.TabIndex = 82;
@@ -615,7 +623,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.Location = new Point(653, 286);
+            label17.Location = new Point(704, 285);
             label17.Name = "label17";
             label17.Size = new Size(64, 28);
             label17.TabIndex = 83;
@@ -625,7 +633,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.Location = new Point(761, 286);
+            label18.Location = new Point(812, 285);
             label18.Name = "label18";
             label18.Size = new Size(111, 28);
             label18.TabIndex = 84;
@@ -635,7 +643,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(917, 286);
+            label19.Location = new Point(968, 285);
             label19.Name = "label19";
             label19.Size = new Size(79, 28);
             label19.TabIndex = 85;
@@ -645,7 +653,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.Location = new Point(1052, 286);
+            label20.Location = new Point(1103, 285);
             label20.Name = "label20";
             label20.Size = new Size(114, 28);
             label20.TabIndex = 86;
@@ -655,7 +663,7 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Arial Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.Location = new Point(1234, 286);
+            label21.Location = new Point(1285, 285);
             label21.Name = "label21";
             label21.Size = new Size(40, 28);
             label21.TabIndex = 87;
@@ -665,7 +673,7 @@
             // 
             lblType1.AutoSize = true;
             lblType1.Font = new Font("Candara", 10.8F);
-            lblType1.Location = new Point(653, 328);
+            lblType1.Location = new Point(704, 327);
             lblType1.Name = "lblType1";
             lblType1.Size = new Size(15, 22);
             lblType1.TabIndex = 88;
@@ -675,7 +683,7 @@
             // 
             lblType2.AutoSize = true;
             lblType2.Font = new Font("Candara", 10.8F);
-            lblType2.Location = new Point(653, 384);
+            lblType2.Location = new Point(704, 383);
             lblType2.Name = "lblType2";
             lblType2.Size = new Size(15, 22);
             lblType2.TabIndex = 89;
@@ -685,7 +693,7 @@
             // 
             lblType3.AutoSize = true;
             lblType3.Font = new Font("Candara", 10.8F);
-            lblType3.Location = new Point(653, 431);
+            lblType3.Location = new Point(704, 430);
             lblType3.Name = "lblType3";
             lblType3.Size = new Size(15, 22);
             lblType3.TabIndex = 90;
@@ -695,7 +703,7 @@
             // 
             lblType4.AutoSize = true;
             lblType4.Font = new Font("Candara", 10.8F);
-            lblType4.Location = new Point(653, 479);
+            lblType4.Location = new Point(704, 478);
             lblType4.Name = "lblType4";
             lblType4.Size = new Size(15, 22);
             lblType4.TabIndex = 91;
@@ -705,7 +713,7 @@
             // 
             lblCat4.AutoSize = true;
             lblCat4.Font = new Font("Candara", 10.8F);
-            lblCat4.Location = new Point(761, 484);
+            lblCat4.Location = new Point(812, 483);
             lblCat4.Name = "lblCat4";
             lblCat4.Size = new Size(15, 22);
             lblCat4.TabIndex = 95;
@@ -715,7 +723,7 @@
             // 
             lblCat3.AutoSize = true;
             lblCat3.Font = new Font("Candara", 10.8F);
-            lblCat3.Location = new Point(761, 432);
+            lblCat3.Location = new Point(812, 431);
             lblCat3.Name = "lblCat3";
             lblCat3.Size = new Size(15, 22);
             lblCat3.TabIndex = 94;
@@ -725,7 +733,7 @@
             // 
             lblCat2.AutoSize = true;
             lblCat2.Font = new Font("Candara", 10.8F);
-            lblCat2.Location = new Point(761, 384);
+            lblCat2.Location = new Point(812, 383);
             lblCat2.Name = "lblCat2";
             lblCat2.Size = new Size(15, 22);
             lblCat2.TabIndex = 93;
@@ -735,7 +743,7 @@
             // 
             lblCat1.AutoSize = true;
             lblCat1.Font = new Font("Candara", 10.8F);
-            lblCat1.Location = new Point(761, 329);
+            lblCat1.Location = new Point(812, 328);
             lblCat1.Name = "lblCat1";
             lblCat1.Size = new Size(15, 22);
             lblCat1.TabIndex = 92;
@@ -745,7 +753,7 @@
             // 
             lblPower3.AutoSize = true;
             lblPower3.Font = new Font("Candara", 10.8F);
-            lblPower3.Location = new Point(938, 428);
+            lblPower3.Location = new Point(989, 427);
             lblPower3.Name = "lblPower3";
             lblPower3.Size = new Size(15, 22);
             lblPower3.TabIndex = 98;
@@ -755,7 +763,7 @@
             // 
             lblPower2.AutoSize = true;
             lblPower2.Font = new Font("Candara", 10.8F);
-            lblPower2.Location = new Point(938, 380);
+            lblPower2.Location = new Point(989, 379);
             lblPower2.Name = "lblPower2";
             lblPower2.Size = new Size(15, 22);
             lblPower2.TabIndex = 97;
@@ -765,7 +773,7 @@
             // 
             lblPower1.AutoSize = true;
             lblPower1.Font = new Font("Candara", 10.8F);
-            lblPower1.Location = new Point(938, 325);
+            lblPower1.Location = new Point(989, 324);
             lblPower1.Name = "lblPower1";
             lblPower1.Size = new Size(15, 22);
             lblPower1.TabIndex = 96;
@@ -775,7 +783,7 @@
             // 
             lblAcc4.AutoSize = true;
             lblAcc4.Font = new Font("Candara", 10.8F);
-            lblAcc4.Location = new Point(1083, 484);
+            lblAcc4.Location = new Point(1134, 483);
             lblAcc4.Name = "lblAcc4";
             lblAcc4.Size = new Size(19, 22);
             lblAcc4.TabIndex = 103;
@@ -785,7 +793,7 @@
             // 
             lblAcc3.AutoSize = true;
             lblAcc3.Font = new Font("Candara", 10.8F);
-            lblAcc3.Location = new Point(1083, 427);
+            lblAcc3.Location = new Point(1134, 426);
             lblAcc3.Name = "lblAcc3";
             lblAcc3.Size = new Size(19, 22);
             lblAcc3.TabIndex = 102;
@@ -795,7 +803,7 @@
             // 
             lblAcc2.AutoSize = true;
             lblAcc2.Font = new Font("Candara", 10.8F);
-            lblAcc2.Location = new Point(1083, 379);
+            lblAcc2.Location = new Point(1134, 378);
             lblAcc2.Name = "lblAcc2";
             lblAcc2.Size = new Size(19, 22);
             lblAcc2.TabIndex = 101;
@@ -805,7 +813,7 @@
             // 
             lblAcc1.AutoSize = true;
             lblAcc1.Font = new Font("Candara", 10.8F);
-            lblAcc1.Location = new Point(1083, 324);
+            lblAcc1.Location = new Point(1134, 323);
             lblAcc1.Name = "lblAcc1";
             lblAcc1.Size = new Size(19, 22);
             lblAcc1.TabIndex = 100;
@@ -815,7 +823,7 @@
             // 
             lblPP4.AutoSize = true;
             lblPP4.Font = new Font("Candara", 10.8F);
-            lblPP4.Location = new Point(1234, 484);
+            lblPP4.Location = new Point(1285, 483);
             lblPP4.Name = "lblPP4";
             lblPP4.Size = new Size(19, 22);
             lblPP4.TabIndex = 107;
@@ -825,7 +833,7 @@
             // 
             lblPP3.AutoSize = true;
             lblPP3.Font = new Font("Candara", 10.8F);
-            lblPP3.Location = new Point(1234, 436);
+            lblPP3.Location = new Point(1285, 435);
             lblPP3.Name = "lblPP3";
             lblPP3.Size = new Size(19, 22);
             lblPP3.TabIndex = 106;
@@ -835,7 +843,7 @@
             // 
             lblPP2.AutoSize = true;
             lblPP2.Font = new Font("Candara", 10.8F);
-            lblPP2.Location = new Point(1234, 388);
+            lblPP2.Location = new Point(1285, 387);
             lblPP2.Name = "lblPP2";
             lblPP2.Size = new Size(19, 22);
             lblPP2.TabIndex = 105;
@@ -845,7 +853,7 @@
             // 
             lblPP1.AutoSize = true;
             lblPP1.Font = new Font("Candara", 10.8F);
-            lblPP1.Location = new Point(1234, 333);
+            lblPP1.Location = new Point(1285, 332);
             lblPP1.Name = "lblPP1";
             lblPP1.Size = new Size(19, 22);
             lblPP1.TabIndex = 104;
@@ -855,18 +863,102 @@
             // 
             lblPower4.AutoSize = true;
             lblPower4.Font = new Font("Candara", 10.8F);
-            lblPower4.Location = new Point(938, 484);
+            lblPower4.Location = new Point(989, 483);
             lblPower4.Name = "lblPower4";
             lblPower4.Size = new Size(15, 22);
             lblPower4.TabIndex = 108;
             lblPower4.Text = "-";
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label22.Location = new Point(211, 704);
+            label22.Name = "label22";
+            label22.Size = new Size(24, 31);
+            label22.TabIndex = 115;
+            label22.Text = "*";
+            label22.Visible = false;
+            // 
+            // lblSPDnature
+            // 
+            lblSPDnature.AutoSize = true;
+            lblSPDnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblSPDnature.Location = new Point(211, 639);
+            lblSPDnature.Name = "lblSPDnature";
+            lblSPDnature.Size = new Size(24, 31);
+            lblSPDnature.TabIndex = 114;
+            lblSPDnature.Text = "*";
+            lblSPDnature.Visible = false;
+            // 
+            // lblSPDEFnature
+            // 
+            lblSPDEFnature.AutoSize = true;
+            lblSPDEFnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblSPDEFnature.Location = new Point(211, 579);
+            lblSPDEFnature.Name = "lblSPDEFnature";
+            lblSPDEFnature.Size = new Size(24, 31);
+            lblSPDEFnature.TabIndex = 113;
+            lblSPDEFnature.Text = "*";
+            lblSPDEFnature.Visible = false;
+            // 
+            // lblDEFnature
+            // 
+            lblDEFnature.AutoSize = true;
+            lblDEFnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblDEFnature.Location = new Point(211, 517);
+            lblDEFnature.Name = "lblDEFnature";
+            lblDEFnature.Size = new Size(24, 31);
+            lblDEFnature.TabIndex = 112;
+            lblDEFnature.Text = "*";
+            lblDEFnature.Visible = false;
+            // 
+            // lblSPATKnature
+            // 
+            lblSPATKnature.AutoSize = true;
+            lblSPATKnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblSPATKnature.Location = new Point(211, 454);
+            lblSPATKnature.Name = "lblSPATKnature";
+            lblSPATKnature.Size = new Size(24, 31);
+            lblSPATKnature.TabIndex = 111;
+            lblSPATKnature.Text = "*";
+            lblSPATKnature.Visible = false;
+            // 
+            // lblATKnature
+            // 
+            lblATKnature.AutoSize = true;
+            lblATKnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblATKnature.Location = new Point(211, 388);
+            lblATKnature.Name = "lblATKnature";
+            lblATKnature.Size = new Size(24, 31);
+            lblATKnature.TabIndex = 110;
+            lblATKnature.Text = "*";
+            lblATKnature.Visible = false;
+            // 
+            // lblHPnature
+            // 
+            lblHPnature.AutoSize = true;
+            lblHPnature.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            lblHPnature.Location = new Point(211, 325);
+            lblHPnature.Name = "lblHPnature";
+            lblHPnature.Size = new Size(24, 31);
+            lblHPnature.TabIndex = 109;
+            lblHPnature.Text = "*";
+            lblHPnature.Visible = false;
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveBorder;
+            BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1381, 843);
+            Controls.Add(label22);
+            Controls.Add(lblSPDnature);
+            Controls.Add(lblSPDEFnature);
+            Controls.Add(lblDEFnature);
+            Controls.Add(lblSPATKnature);
+            Controls.Add(lblATKnature);
+            Controls.Add(lblHPnature);
             Controls.Add(lblPower4);
             Controls.Add(lblPP4);
             Controls.Add(lblPP3);
@@ -1035,5 +1127,12 @@
         private Label lblPP2;
         private Label lblPP1;
         private Label lblPower4;
+        private Label label22;
+        private Label lblSPDnature;
+        private Label lblSPDEFnature;
+        private Label lblDEFnature;
+        private Label lblSPATKnature;
+        private Label lblATKnature;
+        private Label lblHPnature;
     }
 }

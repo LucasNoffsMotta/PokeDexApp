@@ -300,7 +300,6 @@ namespace PokeDexApp
                     insertCMD.Parameters.AddWithValue("@spDefEv", copiedPoke.SPDEFEV);
                     insertCMD.Parameters.AddWithValue("@spdEv", copiedPoke.SPDEV);
 
-
                     insertCMD.Parameters.AddWithValue("@hpIv", copiedPoke.HPIV);
                     insertCMD.Parameters.AddWithValue("@atkIv", copiedPoke.ATKIV);
                     insertCMD.Parameters.AddWithValue("@spAtkIv", copiedPoke.SPATKIV);

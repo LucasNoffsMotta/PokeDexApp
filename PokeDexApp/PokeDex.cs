@@ -117,7 +117,7 @@ namespace PokeDexApp
             LoadTops("SPD", topSpd);
             lblCurrentTop.Text = atributes[atributesIndex];
             ConstructTopTable(FindRightArray(lblCurrentTop.Text));
-            BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
+            BackColor = ColorScheme.BackGroundColor(lblTypeOne.Text);
         }
 
         public void UpdatePage()
@@ -134,7 +134,7 @@ namespace PokeDexApp
             lblSPDEF.Text = dexStart.pokemon.baseStats[4];
             lblSPD.Text = dexStart.pokemon.baseStats[5];
             lblTotal.Text = Constructor.GetTotalBaseStats(dexStart.pokemon.baseStats).ToString();
-            BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
+            BackColor = ColorScheme.BackGroundColor(lblTypeOne.Text);
 
         }
 

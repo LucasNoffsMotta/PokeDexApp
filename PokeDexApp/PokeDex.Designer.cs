@@ -59,12 +59,21 @@
             btnAdd = new Button();
             btnMyPokes = new Button();
             label11 = new Label();
-            txtatributeSearch = new ComboBox();
-            btnSearchAtribute = new Button();
-            dataGridView1 = new DataGridView();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            lblCurrentTop = new Label();
+            btnNextTop = new Button();
+            btnPrevTop = new Button();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            btnFirstTop = new Button();
+            btnSecondTop = new Button();
+            btnThirdTop = new Button();
+            btnFourthTop = new Button();
+            btnFifithTop = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lblName
@@ -76,7 +85,6 @@
             lblName.Size = new Size(113, 42);
             lblName.TabIndex = 0;
             lblName.Text = "Name";
-            lblName.Click += lblName_Click;
             // 
             // lblTypeOne
             // 
@@ -87,7 +95,6 @@
             lblTypeOne.Size = new Size(90, 23);
             lblTypeOne.TabIndex = 1;
             lblTypeOne.Text = "TypeOne";
-            lblTypeOne.Click += lblTypeOne_Click;
             // 
             // lblTypeTwo
             // 
@@ -102,7 +109,7 @@
             // btnNext
             // 
             btnNext.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNext.Location = new Point(570, 720);
+            btnNext.Location = new Point(648, 702);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(195, 39);
             btnNext.TabIndex = 3;
@@ -113,7 +120,7 @@
             // btnPrev
             // 
             btnPrev.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrev.Location = new Point(321, 720);
+            btnPrev.Location = new Point(116, 699);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(203, 39);
             btnPrev.TabIndex = 4;
@@ -161,7 +168,6 @@
             label1.Size = new Size(114, 28);
             label1.TabIndex = 8;
             label1.Text = "Base Stats:";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -378,48 +384,164 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(37, 215);
+            label11.Location = new Point(138, 196);
             label11.Name = "label11";
-            label11.Size = new Size(150, 28);
+            label11.Size = new Size(64, 28);
             label11.TabIndex = 31;
-            label11.Text = "Search Top 10:";
+            label11.Text = "Top 5";
             // 
-            // txtatributeSearch
+            // lblCurrentTop
             // 
-            txtatributeSearch.FormattingEnabled = true;
-            txtatributeSearch.Items.AddRange(new object[] { "HP", "ATK", "SPATK", "DEF", "SPDEF", "SPD" });
-            txtatributeSearch.Location = new Point(37, 249);
-            txtatributeSearch.Name = "txtatributeSearch";
-            txtatributeSearch.Size = new Size(236, 28);
-            txtatributeSearch.TabIndex = 32;
+            lblCurrentTop.AutoSize = true;
+            lblCurrentTop.Location = new Point(116, 245);
+            lblCurrentTop.Name = "lblCurrentTop";
+            lblCurrentTop.Size = new Size(15, 20);
+            lblCurrentTop.TabIndex = 32;
+            lblCurrentTop.Text = "*";
             // 
-            // btnSearchAtribute
+            // btnNextTop
             // 
-            btnSearchAtribute.Location = new Point(37, 293);
-            btnSearchAtribute.Name = "btnSearchAtribute";
-            btnSearchAtribute.Size = new Size(94, 29);
-            btnSearchAtribute.TabIndex = 33;
-            btnSearchAtribute.Text = "Search";
-            btnSearchAtribute.UseVisualStyleBackColor = true;
-            btnSearchAtribute.Click += btnSearchAtribute_Click;
+            btnNextTop.Location = new Point(238, 243);
+            btnNextTop.Name = "btnNextTop";
+            btnNextTop.Size = new Size(35, 29);
+            btnNextTop.TabIndex = 33;
+            btnNextTop.Text = ">";
+            btnNextTop.UseVisualStyleBackColor = true;
+            btnNextTop.Click += btnNextTop_Click;
             // 
-            // dataGridView1
+            // btnPrevTop
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(37, 357);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(240, 269);
-            dataGridView1.TabIndex = 34;
+            btnPrevTop.Location = new Point(37, 244);
+            btnPrevTop.Name = "btnPrevTop";
+            btnPrevTop.Size = new Size(35, 29);
+            btnPrevTop.TabIndex = 34;
+            btnPrevTop.Text = "<";
+            btnPrevTop.UseVisualStyleBackColor = true;
+            btnPrevTop.Click += btnPrevTop_Click;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label12.Location = new Point(37, 322);
+            label12.Name = "label12";
+            label12.Size = new Size(27, 20);
+            label12.TabIndex = 35;
+            label12.Text = "1#";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label13.Location = new Point(37, 386);
+            label13.Name = "label13";
+            label13.Size = new Size(27, 20);
+            label13.TabIndex = 36;
+            label13.Text = "2#";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label14.Location = new Point(37, 453);
+            label14.Name = "label14";
+            label14.Size = new Size(27, 20);
+            label14.TabIndex = 37;
+            label14.Text = "3#";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label15.Location = new Point(37, 521);
+            label15.Name = "label15";
+            label15.Size = new Size(27, 20);
+            label15.TabIndex = 38;
+            label15.Text = "4#";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label16.Location = new Point(37, 595);
+            label16.Name = "label16";
+            label16.Size = new Size(27, 20);
+            label16.TabIndex = 39;
+            label16.Text = "5#";
+            // 
+            // btnFirstTop
+            // 
+            btnFirstTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnFirstTop.Location = new Point(87, 318);
+            btnFirstTop.Name = "btnFirstTop";
+            btnFirstTop.Size = new Size(172, 29);
+            btnFirstTop.TabIndex = 45;
+            btnFirstTop.Text = "name";
+            btnFirstTop.UseVisualStyleBackColor = true;
+            btnFirstTop.Click += btnFirstTop_Click;
+            // 
+            // btnSecondTop
+            // 
+            btnSecondTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnSecondTop.Location = new Point(87, 386);
+            btnSecondTop.Name = "btnSecondTop";
+            btnSecondTop.Size = new Size(172, 29);
+            btnSecondTop.TabIndex = 46;
+            btnSecondTop.Text = "name";
+            btnSecondTop.UseVisualStyleBackColor = true;
+            btnSecondTop.Click += btnSecondTop_Click;
+            // 
+            // btnThirdTop
+            // 
+            btnThirdTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnThirdTop.Location = new Point(87, 456);
+            btnThirdTop.Name = "btnThirdTop";
+            btnThirdTop.Size = new Size(172, 29);
+            btnThirdTop.TabIndex = 47;
+            btnThirdTop.Text = "name";
+            btnThirdTop.UseVisualStyleBackColor = true;
+            btnThirdTop.Click += btnThirdTop_Click;
+            // 
+            // btnFourthTop
+            // 
+            btnFourthTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnFourthTop.Location = new Point(87, 521);
+            btnFourthTop.Name = "btnFourthTop";
+            btnFourthTop.Size = new Size(172, 29);
+            btnFourthTop.TabIndex = 48;
+            btnFourthTop.Text = "name";
+            btnFourthTop.UseVisualStyleBackColor = true;
+            btnFourthTop.Click += btnFourthTop_Click;
+            // 
+            // btnFifithTop
+            // 
+            btnFifithTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnFifithTop.Location = new Point(87, 586);
+            btnFifithTop.Name = "btnFifithTop";
+            btnFifithTop.Size = new Size(172, 29);
+            btnFifithTop.TabIndex = 49;
+            btnFifithTop.Text = "name";
+            btnFifithTop.UseVisualStyleBackColor = true;
+            btnFifithTop.Click += btnFifithTop_Click;
             // 
             // PokeDex
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1072, 814);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnSearchAtribute);
-            Controls.Add(txtatributeSearch);
+            Controls.Add(btnFifithTop);
+            Controls.Add(btnFourthTop);
+            Controls.Add(btnThirdTop);
+            Controls.Add(btnSecondTop);
+            Controls.Add(btnFirstTop);
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(btnPrevTop);
+            Controls.Add(btnNextTop);
+            Controls.Add(lblCurrentTop);
             Controls.Add(label11);
             Controls.Add(btnMyPokes);
             Controls.Add(btnAdd);
@@ -455,9 +577,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
-            Paint += PokeDex_Paint;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -495,9 +615,19 @@
         private Button btnAdd;
         private Button btnMyPokes;
         private Label label11;
-        private ComboBox txtatributeSearch;
-        private Button btnSearchAtribute;
-        private DataGridView dataGridView1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label lblCurrentTop;
+        private Button btnNextTop;
+        private Button btnPrevTop;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Button btnFirstTop;
+        private Button btnSecondTop;
+        private Button btnThirdTop;
+        private Button btnFourthTop;
+        private Button btnFifithTop;
     }
 }

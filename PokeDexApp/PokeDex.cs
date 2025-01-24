@@ -15,14 +15,22 @@ namespace PokeDexApp
         public static ListNode[] linkedArray;
         // Cache font instead of recreating font objects each time we paint.
         private Font fnt = new Font("Arial", 10);
-         
-
-
+        private string[] atributes = new string[] {"HP", "Attack", "Defense", "Special Attack",
+            "Special Defense", "Speed"};
+        private int atributesIndex = 0;
+        private Pokemon[] topHp = new Pokemon[5];
+        private Pokemon[] topAtk = new Pokemon[5];
+        private Pokemon[] topSpAtk = new Pokemon[5];
+        private Pokemon[] topDef = new Pokemon[5];
+        private Pokemon[] topSpDef = new Pokemon[5];
+        private Pokemon[] topSpd = new Pokemon[5];
 
         public PokeDex()
         {
             InitializeComponent();
         }
+
+
 
         public void ConstructPages()
         {
@@ -38,6 +46,8 @@ namespace PokeDexApp
                     dexList = new ListNode();
                     dexStart = new ListNode();
                     linkedArray = new ListNode[pokedexSize];
+                    atributesIndex = 0;
+                   
 
                     for (int i = 0; i < pokedexSize; i++)
                     {
@@ -71,9 +81,9 @@ namespace PokeDexApp
             }
         }
 
-        public void LoadTop()
+        public void LoadTops(string atribute, Pokemon[] topArray)
         {
-            string attributeSearch = txtatributeSearch.Text;
+            string attributeSearch = atribute;
             string query = $"SELECT TOP (10) name, HP, ATK, SPATK, DEF, SPDEF, SPD FROM Pokemon ORDER BY {attributeSearch} DESC;";
 
             try
@@ -83,12 +93,10 @@ namespace PokeDexApp
 
                 if (topPokes.Rows.Count > 0)
                 {
-                    dataGridView1.DataSource = topPokes;
-                }
-
-                else
-                {
-                    dataGridView1.DataSource = null;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        topArray[i] = Constructor.SearchOnLinkedList(topPokes.Rows[i]["name"].ToString(), dexStart).pokemon;
+                    }
                 }
             }
 
@@ -98,35 +106,18 @@ namespace PokeDexApp
             }
         }
 
-        //private void pictureBox2_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        //{
-        //    // Create a local version of the graphics object for the PictureBox.
-        //    Graphics g = e.Graphics;
-
-        //    // Draw a string on the PictureBox.
-        //    g.DrawString("This is a diagonal line drawn on the control",
-        //        fnt, Brushes.Blue, new Point(30, 30));
-        //    // Draw a line in the PictureBox.
-        //    g.DrawLine(Pens.Blue, pictureBox2.Left, pictureBox2.Top,
-        //        pictureBox2.Right, pictureBox2.Bottom);
-        //}
-
         private void Form1_Load(object sender, EventArgs e)
         {
             ConstructPages();
-;           BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
-            
-            //pictureBox2.Paint += new PaintEventHandler(this.pictureBox2_Paint);
-        }
-
-        private void lblTypeOne_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
+            LoadTops("HP", topHp);
+            LoadTops("ATK", topAtk);
+            LoadTops("SPATK", topSpAtk);
+            LoadTops("DEF", topDef);
+            LoadTops("SPDEF", topSpDef);
+            LoadTops("SPD", topSpd);
+            lblCurrentTop.Text = atributes[atributesIndex];
+            ConstructTopTable(FindRightArray(lblCurrentTop.Text));
+            BackColor = Constructor.SetBackGroundColor(lblTypeOne.Text);
         }
 
         public void UpdatePage()
@@ -163,16 +154,6 @@ namespace PokeDexApp
                 dexStart = dexStart.prev;
                 UpdatePage();
             }
-        }
-
-        private void pctBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -251,7 +232,7 @@ namespace PokeDexApp
             {
                 MessageBox.Show("Numero maximo de Pokemons no Time, libere algum slot");
             }
-           
+
         }
 
         private void lblHP_Click(object sender, EventArgs e)
@@ -266,14 +247,95 @@ namespace PokeDexApp
             userTeams.Show();
         }
 
-        private void btnSearchAtribute_Click(object sender, EventArgs e)
+        private void ConstructTopTable(Pokemon[] topArray)
         {
-            LoadTop();
+            btnFirstTop.Text = topArray[0].name.ToString();
+            btnSecondTop.Text = topArray[1].name.ToString();
+            btnThirdTop.Text = topArray[2].name.ToString();
+            btnFourthTop.Text = topArray[3].name.ToString();
+            btnFifithTop.Text = topArray[4].name.ToString();
         }
 
-        private void PokeDex_Paint(object sender, PaintEventArgs e)
+        private Pokemon[] FindRightArray(string atribute)
         {
+            Pokemon[] current;
 
+            switch (atribute)
+            {
+                case "HP":
+                    current = topHp;
+                    break;
+                case "Attack":
+                    current = topAtk;
+                    break;
+                case "Special Attack":
+                    current = topSpAtk;
+                    break;
+                case "Defense":
+                    current = topDef;
+                    break;
+                case "Special Defense":
+                    current = topSpDef;
+                    break;
+                case "Speed":
+                    current = topSpd;
+                    break;
+                default:
+                    current = topHp;
+                    break;
+            }
+            return current;
+        }
+
+
+        private void btnNextTop_Click(object sender, EventArgs e)
+        {
+            if (atributesIndex + 1 <= atributes.Length - 1)
+            {
+                atributesIndex++;
+                lblCurrentTop.Text = atributes[atributesIndex];
+                ConstructTopTable(FindRightArray(lblCurrentTop.Text));
+            }
+        }
+
+        private void btnPrevTop_Click(object sender, EventArgs e)
+        {
+            if (atributesIndex - 1 >= 0)
+            {
+                atributesIndex--;
+                lblCurrentTop.Text = atributes[atributesIndex];
+                ConstructTopTable(FindRightArray(lblCurrentTop.Text));
+            }
+        }
+
+        private void btnFirstTop_Click(object sender, EventArgs e)
+        {
+            dexStart = Constructor.SearchOnLinkedList(btnFirstTop.Text, dexStart);
+            UpdatePage();
+        }
+
+        private void btnSecondTop_Click(object sender, EventArgs e)
+        {
+            dexStart = Constructor.SearchOnLinkedList(btnSecondTop.Text, dexStart);
+            UpdatePage();
+        }
+
+        private void btnThirdTop_Click(object sender, EventArgs e)
+        {
+            dexStart = Constructor.SearchOnLinkedList(btnThirdTop.Text, dexStart);
+            UpdatePage();
+        }
+
+        private void btnFourthTop_Click(object sender, EventArgs e)
+        {
+            dexStart = Constructor.SearchOnLinkedList(btnFourthTop.Text, dexStart);
+            UpdatePage();
+        }
+
+        private void btnFifithTop_Click(object sender, EventArgs e)
+        {
+            dexStart = Constructor.SearchOnLinkedList(btnFifithTop.Text, dexStart);
+            UpdatePage();
         }
     }
 }

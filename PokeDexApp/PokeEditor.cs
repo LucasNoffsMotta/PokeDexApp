@@ -42,9 +42,7 @@ namespace PokeDexApp
             lblTypeOne.Text = UserTeams.currentPoke.typeOne.ToString();
             lblTypeTwo.Text = UserTeams.currentPoke.typeTwo.ToString();
             pictureBox1.Image = UserTeams.currentPoke.image;
-
-            BackColor = Constructor.SetBackGroundColor(UserTeams.currentPoke.typeOne.ToString());
-          
+        
             GetMovesData();
             InitializeMoveslist();
             GetBaseStats();
@@ -54,8 +52,23 @@ namespace PokeDexApp
             txtNature.Text = UserTeams.currentPoke.nature.ToString();
             lblTotalEv.Text = totalEv.ToString();
             lblTotal.Text = Constructor.GetTotalBaseStats(UserTeams.currentPoke.baseStats).ToString();
+            UpdateColors();
         }
 
+        private void UpdateColors()
+        {
+            BackColor = ColorScheme.BackGroundColor(UserTeams.currentPoke.typeOne.ToString());
+            ColorScheme.UpdateBtnColors(btnBack, BackColor);
+            ColorScheme.UpdateBtnColors(btnDelete, BackColor);
+            ColorScheme.UpdateBtnColors(btnSave, BackColor);
+            ColorScheme.UpdateTextColor(lblName, BackColor);
+            ColorScheme.UpdateTextColor(lblType1, ColorScheme.BackGroundColor(lblType1.Text));
+            ColorScheme.UpdateTextColor(lblType2, ColorScheme.BackGroundColor(lblType2.Text));
+            ColorScheme.UpdateTextColor(lblType3, ColorScheme.BackGroundColor(lblType1.Text));
+            ColorScheme.UpdateTextColor(lblType4, ColorScheme.BackGroundColor(lblType2.Text));
+            ColorScheme.UpdateTextColor(lblTypeOne, ColorScheme.BackGroundColor(lblTypeOne.Text));
+            ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
+        }
 
         private void GetMovesData()
         {
@@ -171,6 +184,8 @@ namespace PokeDexApp
             GetMoveLabels(currentMoveTwo, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
             GetMoveLabels(currentMoveThree, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
             GetMoveLabels(currentMoveFour, lblType4, lblCat4, lblPower4, lblAcc4, lblPP4);
+
+            txtNickName.Text = UserTeams.currentPoke.nickName;
         }
 
 
@@ -393,7 +408,7 @@ namespace PokeDexApp
                     "SPD_EV = @txtSPDEV, HP_IV = @txtHPIV, ATK_IV = @txtATKIV , " +
                     "SPATK_IV = @txtSPATKIV, DEF_IV = @txtDEFIV, SPDEF_IV = @txtSPDEFIV, SPD_IV= @txtSPDIV," +
                     "id_move_one = @idMoveOne, id_move_two = @idMoveTwo, id_move_three = @idMoveThree, id_move_four = @idMoveFour, " +
-                    "id_nature = @idNature, " + "level = @level" +
+                    "id_nature = @idNature, " + "level = @level," + "nickname = @nickname" +
                     $" WHERE id_key = {poke_id};";
 
                 SqlCommand updateComand = new SqlCommand(query);
@@ -416,9 +431,10 @@ namespace PokeDexApp
                 updateComand.Parameters.AddWithValue("idMoveThree", GetMovesId(txtMoveThree.Text));
                 updateComand.Parameters.AddWithValue("idMoveFour", GetMovesId(txtMoveFour.Text));
 
-                updateComand.Parameters.AddWithValue("level", hp.level);
-
                 updateComand.Parameters.AddWithValue("@idNature", Constructor.EnumerateNatureToInt(txtNature.Text));
+                updateComand.Parameters.AddWithValue("@level", hp.level);
+                updateComand.Parameters.AddWithValue("@nickname", txtNickName.Text);
+
 
                 int affectedRow = conn.executeQuery(updateComand);
 
@@ -485,6 +501,8 @@ namespace PokeDexApp
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveOne.Text);
             GetMoveLabels(selectedMove, lblType1, lblCat1, lblPower1, lblAcc1, lblPP1);
+            ColorScheme.UpdateTextColor(lblType1, ColorScheme.BackGroundColor(lblType1.Text));
+            
         }
 
         private void txtMoveTwo_SelectedIndexChanged(object sender, EventArgs e)
@@ -492,6 +510,7 @@ namespace PokeDexApp
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveTwo.Text);
             GetMoveLabels(selectedMove, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
+            ColorScheme.UpdateTextColor(lblType2, ColorScheme.BackGroundColor(lblType2.Text));
         }
 
         private void txtMoveThree_SelectedIndexChanged(object sender, EventArgs e)
@@ -499,6 +518,7 @@ namespace PokeDexApp
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveThree.Text);
             GetMoveLabels(selectedMove, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
+            ColorScheme.UpdateTextColor(lblType3, ColorScheme.BackGroundColor(lblType3.Text));
         }
 
         private void txtMoveFour_SelectedIndexChanged(object sender, EventArgs e)
@@ -506,6 +526,7 @@ namespace PokeDexApp
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveFour.Text);
             GetMoveLabels(selectedMove, lblType4, lblCat4, lblPower4, lblAcc4, lblPP4);
+            ColorScheme.UpdateTextColor(lblType4, ColorScheme.BackGroundColor(lblType4.Text));
         }
     }
 }

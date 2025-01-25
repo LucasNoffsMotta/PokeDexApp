@@ -47,7 +47,7 @@ namespace PokeDexApp
                     dexStart = new ListNode();
                     linkedArray = new ListNode[pokedexSize];
                     atributesIndex = 0;
-                   
+
 
                     for (int i = 0; i < pokedexSize; i++)
                     {
@@ -120,6 +120,34 @@ namespace PokeDexApp
             BackColor = ColorScheme.BackGroundColor(lblTypeOne.Text);
         }
 
+        public void UpdateColors()
+        {
+            BackColor = ColorScheme.BackGroundColor(lblTypeOne.Text);
+            ColorScheme.UpdateBtnColors(btnFirstTop, BackColor);
+            ColorScheme.UpdateBtnColors(btnSecondTop, BackColor);
+            ColorScheme.UpdateBtnColors(btnThirdTop, BackColor);
+            ColorScheme.UpdateBtnColors(btnFourthTop, BackColor);
+
+            ColorScheme.UpdateBtnColors(btnFifithTop, BackColor);
+            ColorScheme.UpdateBtnColors(btnNext, BackColor);
+            ColorScheme.UpdateBtnColors(btnPrev, BackColor);
+            ColorScheme.UpdateBtnColors(btnAdd, BackColor);
+
+            ColorScheme.UpdateBtnColors(btnMyPokes, BackColor);
+            ColorScheme.UpdateBtnColors(btnLogOut, BackColor);
+            ColorScheme.UpdateBtnColors(btnPrevTop, BackColor);
+            ColorScheme.UpdateBtnColors(btnNextTop, BackColor);
+            ColorScheme.UpdateTextColor(lblName, BackColor);
+
+
+            ColorScheme.UpdateTextColor(lblTypeOne, ColorScheme.BackGroundColor(lblTypeOne.Text));
+
+            if (lblTypeTwo.Text != "")
+            {
+                ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
+            }
+        }
+
         public void UpdatePage()
         {
             lblName.Text = dexStart.pokemon.name.ToString();
@@ -134,7 +162,8 @@ namespace PokeDexApp
             lblSPDEF.Text = dexStart.pokemon.baseStats[4];
             lblSPD.Text = dexStart.pokemon.baseStats[5];
             lblTotal.Text = Constructor.GetTotalBaseStats(dexStart.pokemon.baseStats).ToString();
-            BackColor = ColorScheme.BackGroundColor(lblTypeOne.Text);
+            UpdateColors();
+
 
         }
 
@@ -336,6 +365,11 @@ namespace PokeDexApp
         {
             dexStart = Constructor.SearchOnLinkedList(btnFifithTop.Text, dexStart);
             UpdatePage();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

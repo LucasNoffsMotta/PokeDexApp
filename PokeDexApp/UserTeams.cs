@@ -74,6 +74,7 @@ namespace PokeDexApp
                 poke.idMoveFour = (int)dt.Rows[i]["id_move_four"];
                 poke.nature = Constructor.EnumerateNatureToString((int)dt.Rows[i]["id_nature"]);
                 poke.level = (int)dt.Rows[i]["level"];
+                poke.nickName = dt.Rows[i]["nickname"].ToString();
             }
 
             catch
@@ -93,6 +94,7 @@ namespace PokeDexApp
                 poke.SPDIV = 0;
 
                 poke.level = 1;
+                poke.nickName = "";
             }
             return poke;
         }
@@ -136,6 +138,10 @@ namespace PokeDexApp
                 Label[] pokeNames = new Label[] { lblName1, lblName2, lblName3,
                     lblName4, lblName5, lblName6, lblName7,
                         lblName8, lblName9, lblName10};
+
+                Label[] pokeNicks = new Label []{ lblNick1, lblNick2, lblNick3, lblNick4,
+                    lblNick5, lblNick6, lblNick7, lblNick8,lblNick9, lblNick10};
+
                 PictureBox[] pictures = new PictureBox[] { pictureBox1, pictureBox2,
                     pictureBox3, pictureBox4, pictureBox5,
                         pictureBox6, pictureBox7, pictureBox8, pictureBox9, pictureBox10};
@@ -148,6 +154,7 @@ namespace PokeDexApp
                     for (int i = 0; i < teamSize; i++)
                     {
                         pokeNames[i].Text = pokes.Rows[i]["name"].ToString();
+                        pokeNicks[i].Text = pokes.Rows[i]["nickname"].ToString();
                         ListNode currentNode = Constructor.BinarySearch(PokeDex.linkedArray, Convert.ToInt32(pokes.Rows[i]["id_poke"]));
                         currentPoke = LoadEditedData(currentNode, pokes, i);
                         pictures[i].Image = currentPoke.image;
@@ -260,7 +267,8 @@ namespace PokeDexApp
                     HP_EV, ATK_EV, SPATK_EV, DEF_EV, SPDEF_EV, SPD_EV,
                     HP_IV, ATK_IV, SPATK_IV, DEF_IV, SPDEF_IV, SPD_IV,
                     user_id,
-                    level) 
+                    level,
+                    nickname) 
 
                     VALUES 
                     (@id, @name, @typeOne, @typeTwo,
@@ -270,7 +278,8 @@ namespace PokeDexApp
                     @hpEv, @atkEv, @spAtkEv, @defEv, @spDefEv, @spdEv,
                     @hpIv, @atkIv, @spAtkIv, @defIv, @spDefIv, @spdIv,
                     @userId,
-                    @level);
+                    @level,
+                    @nick);
                 ";
 
                     SqlCommand insertCMD = new SqlCommand(inserQuery, conn.conn);
@@ -308,6 +317,7 @@ namespace PokeDexApp
                     insertCMD.Parameters.AddWithValue("@spdIv", copiedPoke.SPDIV);
 
                     insertCMD.Parameters.AddWithValue("@level", copiedPoke.level);
+                    insertCMD.Parameters.AddWithValue("@nick", copiedPoke.nickName);
                     insertCMD.Parameters.AddWithValue("@userId", pokes.Rows[slotNumber - 1]["user_id"]);
 
                     int affectedRow = conn.executeQuery(insertCMD);
@@ -485,6 +495,11 @@ namespace PokeDexApp
         private void btnCopy10_Click(object sender, EventArgs e)
         {
             CopySlot(10);
+        }
+
+        private void lblNick1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

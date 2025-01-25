@@ -19,6 +19,7 @@ namespace PokeDexApp
         public string[] baseStats;
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV, HPIV, ATKIV, SPATKIV, DEFIV, SPDEFIV, SPDIV;
         public int[] moveSet;
+        public string? nickName;
             
         public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null, int natureValue=19, int level = 1)
         {

@@ -39,5 +39,45 @@ namespace PokeDexApp
             var color = ColorTranslator.FromHtml(colors[type]);
             return color;
         }
-}
+
+        public static Color SubColor(Color mainColor, double correction)
+        {
+            double r = mainColor.R;
+            double g = mainColor.G;
+            double b = mainColor.B;
+
+            //Darken
+            if (correction < 0)
+            {
+                correction = 1 + correction;
+                r *= correction;
+                g *= correction;
+                b *= correction;
+
+            }
+
+            //Lighten
+            else
+            {
+                r = (255 - r) * correction + r; 
+                g = (255 - g) * correction + g;
+                b = (255 - b) * correction + b;
+            }
+
+            return Color.FromArgb(mainColor.A, (byte)r, (byte)g, (byte)b);
+        }
+
+        public static void UpdateBtnColors(Button btn, Color mainColor)
+        {
+            btn.FlatAppearance.BorderColor = ColorScheme.SubColor(mainColor, 0.5);
+            btn.ForeColor = ColorScheme.SubColor(mainColor, -1.0);
+            btn.BackColor = ColorScheme.SubColor(mainColor, 0.5);
+        }
+
+        public static void UpdateTextColor(Label lbl, Color mainColor)
+        {           
+            lbl.ForeColor = ColorScheme.SubColor(mainColor, -1.0);
+            lbl.BackColor = ColorScheme.SubColor(mainColor, 0.5);
+        }
+    }
 }

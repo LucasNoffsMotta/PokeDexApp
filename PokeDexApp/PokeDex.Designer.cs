@@ -152,7 +152,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(530, 79);
+            pictureBox1.Location = new Point(544, 59);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(125, 62);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -362,7 +362,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAdd.Location = new Point(739, 79);
+            btnAdd.Location = new Point(739, 59);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(95, 62);
             btnAdd.TabIndex = 29;

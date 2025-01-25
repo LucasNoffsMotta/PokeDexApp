@@ -114,6 +114,8 @@
             lblSPATKnature = new Label();
             lblATKnature = new Label();
             lblHPnature = new Label();
+            label23 = new Label();
+            txtNickName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -279,7 +281,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(499, 94);
+            pictureBox1.Location = new Point(506, 74);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(125, 62);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -946,12 +948,31 @@
             lblHPnature.Text = "*";
             lblHPnature.Visible = false;
             // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Bodoni MT", 12F);
+            label23.Location = new Point(0, 122);
+            label23.Name = "label23";
+            label23.Size = new Size(102, 24);
+            label23.TabIndex = 116;
+            label23.Text = "Nickname:";
+            // 
+            // txtNickName
+            // 
+            txtNickName.Location = new Point(111, 122);
+            txtNickName.Name = "txtNickName";
+            txtNickName.Size = new Size(151, 27);
+            txtNickName.TabIndex = 117;
+            // 
             // PokeEditor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(1381, 843);
+            Controls.Add(txtNickName);
+            Controls.Add(label23);
             Controls.Add(label22);
             Controls.Add(lblSPDnature);
             Controls.Add(lblSPDEFnature);
@@ -1134,5 +1155,7 @@
         private Label lblSPATKnature;
         private Label lblATKnature;
         private Label lblHPnature;
+        private Label label23;
+        private TextBox txtNickName;
     }
 }

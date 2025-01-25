@@ -93,6 +93,16 @@
             btnCopy9 = new Button();
             btnDelete10 = new Button();
             btnCopy10 = new Button();
+            lblNick1 = new Label();
+            lblNick2 = new Label();
+            lblNick3 = new Label();
+            lblNick4 = new Label();
+            lblNick7 = new Label();
+            lblNick8 = new Label();
+            lblNick9 = new Label();
+            lblNick5 = new Label();
+            lblNick6 = new Label();
+            lblNick10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -120,7 +130,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(161, 12);
+            pictureBox1.Location = new Point(133, 44);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Padding = new Padding(10);
             pictureBox1.Size = new Size(104, 106);
@@ -132,7 +142,7 @@
             // 
             lblSlot.AutoSize = true;
             lblSlot.Font = new Font("Bodoni MT", 12F);
-            lblSlot.Location = new Point(58, 81);
+            lblSlot.Location = new Point(58, 44);
             lblSlot.Name = "lblSlot";
             lblSlot.Size = new Size(60, 24);
             lblSlot.TabIndex = 35;
@@ -143,7 +153,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bodoni MT", 12F);
-            label1.Location = new Point(58, 237);
+            label1.Location = new Point(58, 192);
             label1.Name = "label1";
             label1.Size = new Size(60, 24);
             label1.TabIndex = 36;
@@ -153,7 +163,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Bodoni MT", 12F);
-            label2.Location = new Point(58, 391);
+            label2.Location = new Point(58, 340);
             label2.Name = "label2";
             label2.Size = new Size(60, 24);
             label2.TabIndex = 37;
@@ -163,7 +173,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Bodoni MT", 12F);
-            label3.Location = new Point(58, 535);
+            label3.Location = new Point(58, 475);
             label3.Name = "label3";
             label3.Size = new Size(60, 24);
             label3.TabIndex = 38;
@@ -173,7 +183,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Bodoni MT", 12F);
-            label4.Location = new Point(58, 669);
+            label4.Location = new Point(58, 620);
             label4.Name = "label4";
             label4.Size = new Size(60, 24);
             label4.TabIndex = 39;
@@ -183,7 +193,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Bodoni MT", 12F);
-            label5.Location = new Point(589, 669);
+            label5.Location = new Point(589, 620);
             label5.Name = "label5";
             label5.Size = new Size(70, 24);
             label5.TabIndex = 44;
@@ -193,7 +203,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Bodoni MT", 12F);
-            label6.Location = new Point(589, 532);
+            label6.Location = new Point(589, 475);
             label6.Name = "label6";
             label6.Size = new Size(60, 24);
             label6.TabIndex = 43;
@@ -203,7 +213,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Bodoni MT", 12F);
-            label7.Location = new Point(589, 391);
+            label7.Location = new Point(589, 340);
             label7.Name = "label7";
             label7.Size = new Size(60, 24);
             label7.TabIndex = 42;
@@ -213,7 +223,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Bodoni MT", 12F);
-            label8.Location = new Point(589, 237);
+            label8.Location = new Point(589, 182);
             label8.Name = "label8";
             label8.Size = new Size(60, 24);
             label8.TabIndex = 41;
@@ -223,7 +233,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Bodoni MT", 12F);
-            label9.Location = new Point(589, 81);
+            label9.Location = new Point(589, 39);
             label9.Name = "label9";
             label9.Size = new Size(60, 24);
             label9.TabIndex = 40;
@@ -232,7 +242,7 @@
             // pictureBox2
             // 
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(161, 179);
+            pictureBox2.Location = new Point(133, 192);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(125, 62);
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -242,7 +252,7 @@
             // pictureBox3
             // 
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(161, 323);
+            pictureBox3.Location = new Point(133, 340);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(125, 62);
             pictureBox3.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -252,7 +262,7 @@
             // pictureBox4
             // 
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(161, 463);
+            pictureBox4.Location = new Point(133, 475);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(125, 62);
             pictureBox4.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -262,7 +272,7 @@
             // pictureBox5
             // 
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(161, 601);
+            pictureBox5.Location = new Point(133, 624);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(125, 62);
             pictureBox5.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -272,7 +282,7 @@
             // pictureBox6
             // 
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(718, 12);
+            pictureBox6.Location = new Point(718, 44);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(125, 62);
             pictureBox6.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -282,7 +292,7 @@
             // pictureBox7
             // 
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
-            pictureBox7.Location = new Point(718, 179);
+            pictureBox7.Location = new Point(718, 192);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(125, 62);
             pictureBox7.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -292,7 +302,7 @@
             // pictureBox8
             // 
             pictureBox8.InitialImage = (Image)resources.GetObject("pictureBox8.InitialImage");
-            pictureBox8.Location = new Point(718, 323);
+            pictureBox8.Location = new Point(718, 340);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(125, 62);
             pictureBox8.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -302,7 +312,7 @@
             // pictureBox9
             // 
             pictureBox9.InitialImage = (Image)resources.GetObject("pictureBox9.InitialImage");
-            pictureBox9.Location = new Point(718, 463);
+            pictureBox9.Location = new Point(718, 475);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(125, 62);
             pictureBox9.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -312,7 +322,7 @@
             // pictureBox10
             // 
             pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
-            pictureBox10.Location = new Point(718, 601);
+            pictureBox10.Location = new Point(718, 624);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(125, 62);
             pictureBox10.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -323,7 +333,7 @@
             // 
             lblName1.AutoSize = true;
             lblName1.Font = new Font("Bodoni MT", 7.8F);
-            lblName1.Location = new Point(295, 12);
+            lblName1.Location = new Point(292, 55);
             lblName1.Name = "lblName1";
             lblName1.Size = new Size(47, 17);
             lblName1.TabIndex = 54;
@@ -334,7 +344,7 @@
             // 
             lblName2.AutoSize = true;
             lblName2.Font = new Font("Bodoni MT", 7.8F);
-            lblName2.Location = new Point(295, 198);
+            lblName2.Location = new Point(292, 199);
             lblName2.Name = "lblName2";
             lblName2.Size = new Size(47, 17);
             lblName2.TabIndex = 55;
@@ -344,7 +354,7 @@
             // 
             lblName3.AutoSize = true;
             lblName3.Font = new Font("Bodoni MT", 7.8F);
-            lblName3.Location = new Point(295, 323);
+            lblName3.Location = new Point(295, 340);
             lblName3.Name = "lblName3";
             lblName3.Size = new Size(47, 17);
             lblName3.TabIndex = 56;
@@ -354,7 +364,7 @@
             // 
             lblName4.AutoSize = true;
             lblName4.Font = new Font("Bodoni MT", 7.8F);
-            lblName4.Location = new Point(295, 463);
+            lblName4.Location = new Point(295, 475);
             lblName4.Name = "lblName4";
             lblName4.Size = new Size(47, 17);
             lblName4.TabIndex = 57;
@@ -364,7 +374,7 @@
             // 
             lblName5.AutoSize = true;
             lblName5.Font = new Font("Bodoni MT", 7.8F);
-            lblName5.Location = new Point(293, 597);
+            lblName5.Location = new Point(292, 620);
             lblName5.Name = "lblName5";
             lblName5.Size = new Size(47, 17);
             lblName5.TabIndex = 58;
@@ -374,7 +384,7 @@
             // 
             lblName10.AutoSize = true;
             lblName10.Font = new Font("Bodoni MT", 7.8F);
-            lblName10.Location = new Point(873, 597);
+            lblName10.Location = new Point(873, 620);
             lblName10.Name = "lblName10";
             lblName10.Size = new Size(47, 17);
             lblName10.TabIndex = 63;
@@ -384,7 +394,7 @@
             // 
             lblName9.AutoSize = true;
             lblName9.Font = new Font("Bodoni MT", 7.8F);
-            lblName9.Location = new Point(873, 463);
+            lblName9.Location = new Point(873, 475);
             lblName9.Name = "lblName9";
             lblName9.Size = new Size(47, 17);
             lblName9.TabIndex = 62;
@@ -394,7 +404,7 @@
             // 
             lblName8.AutoSize = true;
             lblName8.Font = new Font("Bodoni MT", 7.8F);
-            lblName8.Location = new Point(873, 323);
+            lblName8.Location = new Point(873, 340);
             lblName8.Name = "lblName8";
             lblName8.Size = new Size(47, 17);
             lblName8.TabIndex = 61;
@@ -404,7 +414,7 @@
             // 
             lblName7.AutoSize = true;
             lblName7.Font = new Font("Bodoni MT", 7.8F);
-            lblName7.Location = new Point(873, 198);
+            lblName7.Location = new Point(873, 199);
             lblName7.Name = "lblName7";
             lblName7.Size = new Size(47, 17);
             lblName7.TabIndex = 60;
@@ -414,7 +424,7 @@
             // 
             lblName6.AutoSize = true;
             lblName6.Font = new Font("Bodoni MT", 7.8F);
-            lblName6.Location = new Point(873, 12);
+            lblName6.Location = new Point(873, 44);
             lblName6.Name = "lblName6";
             lblName6.Size = new Size(47, 17);
             lblName6.TabIndex = 59;
@@ -423,9 +433,9 @@
             // btnpokeOne
             // 
             btnpokeOne.Font = new Font("Segoe UI", 7.8F);
-            btnpokeOne.Location = new Point(293, 48);
+            btnpokeOne.Location = new Point(292, 80);
             btnpokeOne.Name = "btnpokeOne";
-            btnpokeOne.Size = new Size(76, 26);
+            btnpokeOne.Size = new Size(63, 26);
             btnpokeOne.TabIndex = 64;
             btnpokeOne.Text = "Editar";
             btnpokeOne.UseVisualStyleBackColor = true;
@@ -434,9 +444,9 @@
             // btnpokeTwo
             // 
             btnpokeTwo.Font = new Font("Segoe UI", 7.8F);
-            btnpokeTwo.Location = new Point(295, 218);
+            btnpokeTwo.Location = new Point(295, 228);
             btnpokeTwo.Name = "btnpokeTwo";
-            btnpokeTwo.Size = new Size(76, 26);
+            btnpokeTwo.Size = new Size(60, 26);
             btnpokeTwo.TabIndex = 65;
             btnpokeTwo.Text = "Editar";
             btnpokeTwo.UseVisualStyleBackColor = true;
@@ -445,9 +455,9 @@
             // btnpokeThree
             // 
             btnpokeThree.Font = new Font("Segoe UI", 7.8F);
-            btnpokeThree.Location = new Point(293, 343);
+            btnpokeThree.Location = new Point(293, 360);
             btnpokeThree.Name = "btnpokeThree";
-            btnpokeThree.Size = new Size(76, 26);
+            btnpokeThree.Size = new Size(60, 26);
             btnpokeThree.TabIndex = 66;
             btnpokeThree.Text = "Editar";
             btnpokeThree.UseVisualStyleBackColor = true;
@@ -456,9 +466,9 @@
             // btnpokeFour
             // 
             btnpokeFour.Font = new Font("Segoe UI", 7.8F);
-            btnpokeFour.Location = new Point(295, 483);
+            btnpokeFour.Location = new Point(295, 495);
             btnpokeFour.Name = "btnpokeFour";
-            btnpokeFour.Size = new Size(76, 26);
+            btnpokeFour.Size = new Size(62, 26);
             btnpokeFour.TabIndex = 67;
             btnpokeFour.Text = "Editar";
             btnpokeFour.UseVisualStyleBackColor = true;
@@ -467,9 +477,9 @@
             // btnpokeFive
             // 
             btnpokeFive.Font = new Font("Segoe UI", 7.8F);
-            btnpokeFive.Location = new Point(292, 617);
+            btnpokeFive.Location = new Point(292, 640);
             btnpokeFive.Name = "btnpokeFive";
-            btnpokeFive.Size = new Size(76, 26);
+            btnpokeFive.Size = new Size(63, 26);
             btnpokeFive.TabIndex = 68;
             btnpokeFive.Text = "Editar";
             btnpokeFive.UseVisualStyleBackColor = true;
@@ -478,9 +488,9 @@
             // btnpokeTen
             // 
             btnpokeTen.Font = new Font("Segoe UI", 7.8F);
-            btnpokeTen.Location = new Point(873, 617);
+            btnpokeTen.Location = new Point(873, 640);
             btnpokeTen.Name = "btnpokeTen";
-            btnpokeTen.Size = new Size(76, 26);
+            btnpokeTen.Size = new Size(63, 26);
             btnpokeTen.TabIndex = 73;
             btnpokeTen.Text = "Editar";
             btnpokeTen.UseVisualStyleBackColor = true;
@@ -489,9 +499,9 @@
             // btnpokeNine
             // 
             btnpokeNine.Font = new Font("Segoe UI", 7.8F);
-            btnpokeNine.Location = new Point(873, 483);
+            btnpokeNine.Location = new Point(873, 495);
             btnpokeNine.Name = "btnpokeNine";
-            btnpokeNine.Size = new Size(76, 26);
+            btnpokeNine.Size = new Size(63, 26);
             btnpokeNine.TabIndex = 72;
             btnpokeNine.Text = "Editar";
             btnpokeNine.UseVisualStyleBackColor = true;
@@ -500,9 +510,9 @@
             // btnpokeEight
             // 
             btnpokeEight.Font = new Font("Segoe UI", 7.8F);
-            btnpokeEight.Location = new Point(873, 343);
+            btnpokeEight.Location = new Point(873, 360);
             btnpokeEight.Name = "btnpokeEight";
-            btnpokeEight.Size = new Size(76, 26);
+            btnpokeEight.Size = new Size(63, 26);
             btnpokeEight.TabIndex = 71;
             btnpokeEight.Text = "Editar";
             btnpokeEight.UseVisualStyleBackColor = true;
@@ -511,9 +521,9 @@
             // btnpokeSeven
             // 
             btnpokeSeven.Font = new Font("Segoe UI", 7.8F);
-            btnpokeSeven.Location = new Point(873, 218);
+            btnpokeSeven.Location = new Point(873, 231);
             btnpokeSeven.Name = "btnpokeSeven";
-            btnpokeSeven.Size = new Size(76, 26);
+            btnpokeSeven.Size = new Size(63, 26);
             btnpokeSeven.TabIndex = 70;
             btnpokeSeven.Text = "Editar";
             btnpokeSeven.UseVisualStyleBackColor = true;
@@ -522,9 +532,9 @@
             // btnpokeSix
             // 
             btnpokeSix.Font = new Font("Segoe UI", 7.8F);
-            btnpokeSix.Location = new Point(873, 32);
+            btnpokeSix.Location = new Point(873, 64);
             btnpokeSix.Name = "btnpokeSix";
-            btnpokeSix.Size = new Size(76, 26);
+            btnpokeSix.Size = new Size(63, 26);
             btnpokeSix.TabIndex = 69;
             btnpokeSix.Text = "Editar";
             btnpokeSix.UseVisualStyleBackColor = true;
@@ -543,9 +553,9 @@
             // btnCopy1
             // 
             btnCopy1.Font = new Font("Segoe UI", 7.8F);
-            btnCopy1.Location = new Point(295, 79);
+            btnCopy1.Location = new Point(292, 112);
             btnCopy1.Name = "btnCopy1";
-            btnCopy1.Size = new Size(76, 26);
+            btnCopy1.Size = new Size(63, 26);
             btnCopy1.TabIndex = 75;
             btnCopy1.Text = "Copiar";
             btnCopy1.UseVisualStyleBackColor = true;
@@ -554,9 +564,9 @@
             // btnDelete1
             // 
             btnDelete1.Font = new Font("Segoe UI", 7.8F);
-            btnDelete1.Location = new Point(295, 111);
+            btnDelete1.Location = new Point(292, 144);
             btnDelete1.Name = "btnDelete1";
-            btnDelete1.Size = new Size(76, 26);
+            btnDelete1.Size = new Size(63, 26);
             btnDelete1.TabIndex = 76;
             btnDelete1.Text = "Deletar";
             btnDelete1.UseVisualStyleBackColor = true;
@@ -565,9 +575,9 @@
             // btnDelete3
             // 
             btnDelete3.Font = new Font("Segoe UI", 7.8F);
-            btnDelete3.Location = new Point(295, 407);
+            btnDelete3.Location = new Point(295, 424);
             btnDelete3.Name = "btnDelete3";
-            btnDelete3.Size = new Size(76, 26);
+            btnDelete3.Size = new Size(60, 26);
             btnDelete3.TabIndex = 78;
             btnDelete3.Text = "Deletar";
             btnDelete3.UseVisualStyleBackColor = true;
@@ -576,9 +586,9 @@
             // btnCopy3
             // 
             btnCopy3.Font = new Font("Segoe UI", 7.8F);
-            btnCopy3.Location = new Point(295, 375);
+            btnCopy3.Location = new Point(295, 392);
             btnCopy3.Name = "btnCopy3";
-            btnCopy3.Size = new Size(76, 26);
+            btnCopy3.Size = new Size(60, 26);
             btnCopy3.TabIndex = 77;
             btnCopy3.Text = "Copiar";
             btnCopy3.UseVisualStyleBackColor = true;
@@ -587,9 +597,9 @@
             // btnDelete2
             // 
             btnDelete2.Font = new Font("Segoe UI", 7.8F);
-            btnDelete2.Location = new Point(295, 279);
+            btnDelete2.Location = new Point(295, 292);
             btnDelete2.Name = "btnDelete2";
-            btnDelete2.Size = new Size(76, 26);
+            btnDelete2.Size = new Size(60, 26);
             btnDelete2.TabIndex = 80;
             btnDelete2.Text = "Deletar";
             btnDelete2.UseVisualStyleBackColor = true;
@@ -598,9 +608,9 @@
             // btnCopy2
             // 
             btnCopy2.Font = new Font("Segoe UI", 7.8F);
-            btnCopy2.Location = new Point(295, 247);
+            btnCopy2.Location = new Point(295, 260);
             btnCopy2.Name = "btnCopy2";
-            btnCopy2.Size = new Size(76, 26);
+            btnCopy2.Size = new Size(60, 26);
             btnCopy2.TabIndex = 79;
             btnCopy2.Text = "Copiar";
             btnCopy2.UseVisualStyleBackColor = true;
@@ -609,9 +619,9 @@
             // btnDelete4
             // 
             btnDelete4.Font = new Font("Segoe UI", 7.8F);
-            btnDelete4.Location = new Point(293, 547);
+            btnDelete4.Location = new Point(295, 559);
             btnDelete4.Name = "btnDelete4";
-            btnDelete4.Size = new Size(76, 26);
+            btnDelete4.Size = new Size(62, 26);
             btnDelete4.TabIndex = 82;
             btnDelete4.Text = "Deletar";
             btnDelete4.UseVisualStyleBackColor = true;
@@ -620,9 +630,9 @@
             // btnCopy4
             // 
             btnCopy4.Font = new Font("Segoe UI", 7.8F);
-            btnCopy4.Location = new Point(293, 515);
+            btnCopy4.Location = new Point(295, 527);
             btnCopy4.Name = "btnCopy4";
-            btnCopy4.Size = new Size(76, 26);
+            btnCopy4.Size = new Size(62, 26);
             btnCopy4.TabIndex = 81;
             btnCopy4.Text = "Copiar";
             btnCopy4.UseVisualStyleBackColor = true;
@@ -631,9 +641,9 @@
             // btnDelete5
             // 
             btnDelete5.Font = new Font("Segoe UI", 7.8F);
-            btnDelete5.Location = new Point(292, 681);
+            btnDelete5.Location = new Point(292, 704);
             btnDelete5.Name = "btnDelete5";
-            btnDelete5.Size = new Size(76, 26);
+            btnDelete5.Size = new Size(63, 26);
             btnDelete5.TabIndex = 84;
             btnDelete5.Text = "Deletar";
             btnDelete5.UseVisualStyleBackColor = true;
@@ -642,9 +652,9 @@
             // btnCopy5
             // 
             btnCopy5.Font = new Font("Segoe UI", 7.8F);
-            btnCopy5.Location = new Point(292, 649);
+            btnCopy5.Location = new Point(292, 672);
             btnCopy5.Name = "btnCopy5";
-            btnCopy5.Size = new Size(76, 26);
+            btnCopy5.Size = new Size(63, 26);
             btnCopy5.TabIndex = 83;
             btnCopy5.Text = "Copiar";
             btnCopy5.UseVisualStyleBackColor = true;
@@ -653,9 +663,9 @@
             // btnDelete6
             // 
             btnDelete6.Font = new Font("Segoe UI", 7.8F);
-            btnDelete6.Location = new Point(873, 96);
+            btnDelete6.Location = new Point(873, 128);
             btnDelete6.Name = "btnDelete6";
-            btnDelete6.Size = new Size(76, 26);
+            btnDelete6.Size = new Size(63, 26);
             btnDelete6.TabIndex = 86;
             btnDelete6.Text = "Deletar";
             btnDelete6.UseVisualStyleBackColor = true;
@@ -664,9 +674,9 @@
             // btnCopy6
             // 
             btnCopy6.Font = new Font("Segoe UI", 7.8F);
-            btnCopy6.Location = new Point(873, 64);
+            btnCopy6.Location = new Point(873, 96);
             btnCopy6.Name = "btnCopy6";
-            btnCopy6.Size = new Size(76, 26);
+            btnCopy6.Size = new Size(63, 26);
             btnCopy6.TabIndex = 85;
             btnCopy6.Text = "Copiar";
             btnCopy6.UseVisualStyleBackColor = true;
@@ -675,9 +685,9 @@
             // btnDelete7
             // 
             btnDelete7.Font = new Font("Segoe UI", 7.8F);
-            btnDelete7.Location = new Point(873, 279);
+            btnDelete7.Location = new Point(873, 292);
             btnDelete7.Name = "btnDelete7";
-            btnDelete7.Size = new Size(76, 26);
+            btnDelete7.Size = new Size(63, 26);
             btnDelete7.TabIndex = 88;
             btnDelete7.Text = "Deletar";
             btnDelete7.UseVisualStyleBackColor = true;
@@ -686,9 +696,9 @@
             // btnCopy7
             // 
             btnCopy7.Font = new Font("Segoe UI", 7.8F);
-            btnCopy7.Location = new Point(873, 247);
+            btnCopy7.Location = new Point(873, 260);
             btnCopy7.Name = "btnCopy7";
-            btnCopy7.Size = new Size(76, 26);
+            btnCopy7.Size = new Size(63, 26);
             btnCopy7.TabIndex = 87;
             btnCopy7.Text = "Copiar";
             btnCopy7.UseVisualStyleBackColor = true;
@@ -697,9 +707,9 @@
             // btnDelete8
             // 
             btnDelete8.Font = new Font("Segoe UI", 7.8F);
-            btnDelete8.Location = new Point(873, 407);
+            btnDelete8.Location = new Point(873, 424);
             btnDelete8.Name = "btnDelete8";
-            btnDelete8.Size = new Size(76, 26);
+            btnDelete8.Size = new Size(63, 26);
             btnDelete8.TabIndex = 90;
             btnDelete8.Text = "Deletar";
             btnDelete8.UseVisualStyleBackColor = true;
@@ -708,9 +718,9 @@
             // btnCopy8
             // 
             btnCopy8.Font = new Font("Segoe UI", 7.8F);
-            btnCopy8.Location = new Point(873, 375);
+            btnCopy8.Location = new Point(873, 392);
             btnCopy8.Name = "btnCopy8";
-            btnCopy8.Size = new Size(76, 26);
+            btnCopy8.Size = new Size(63, 26);
             btnCopy8.TabIndex = 89;
             btnCopy8.Text = "Copiar";
             btnCopy8.UseVisualStyleBackColor = true;
@@ -719,9 +729,9 @@
             // btnDelete9
             // 
             btnDelete9.Font = new Font("Segoe UI", 7.8F);
-            btnDelete9.Location = new Point(873, 547);
+            btnDelete9.Location = new Point(873, 559);
             btnDelete9.Name = "btnDelete9";
-            btnDelete9.Size = new Size(76, 26);
+            btnDelete9.Size = new Size(63, 26);
             btnDelete9.TabIndex = 92;
             btnDelete9.Text = "Deletar";
             btnDelete9.UseVisualStyleBackColor = true;
@@ -730,9 +740,9 @@
             // btnCopy9
             // 
             btnCopy9.Font = new Font("Segoe UI", 7.8F);
-            btnCopy9.Location = new Point(873, 515);
+            btnCopy9.Location = new Point(873, 527);
             btnCopy9.Name = "btnCopy9";
-            btnCopy9.Size = new Size(76, 26);
+            btnCopy9.Size = new Size(63, 26);
             btnCopy9.TabIndex = 91;
             btnCopy9.Text = "Copiar";
             btnCopy9.UseVisualStyleBackColor = true;
@@ -741,9 +751,9 @@
             // btnDelete10
             // 
             btnDelete10.Font = new Font("Segoe UI", 7.8F);
-            btnDelete10.Location = new Point(873, 681);
+            btnDelete10.Location = new Point(873, 704);
             btnDelete10.Name = "btnDelete10";
-            btnDelete10.Size = new Size(76, 26);
+            btnDelete10.Size = new Size(63, 26);
             btnDelete10.TabIndex = 94;
             btnDelete10.Text = "Deletar";
             btnDelete10.UseVisualStyleBackColor = true;
@@ -752,13 +762,114 @@
             // btnCopy10
             // 
             btnCopy10.Font = new Font("Segoe UI", 7.8F);
-            btnCopy10.Location = new Point(873, 649);
+            btnCopy10.Location = new Point(873, 672);
             btnCopy10.Name = "btnCopy10";
-            btnCopy10.Size = new Size(76, 26);
+            btnCopy10.Size = new Size(63, 26);
             btnCopy10.TabIndex = 93;
             btnCopy10.Text = "Copiar";
             btnCopy10.UseVisualStyleBackColor = true;
             btnCopy10.Click += btnCopy10_Click;
+            // 
+            // lblNick1
+            // 
+            lblNick1.AutoSize = true;
+            lblNick1.Font = new Font("Bodoni MT", 7.8F);
+            lblNick1.Location = new Point(292, 29);
+            lblNick1.Name = "lblNick1";
+            lblNick1.Size = new Size(47, 17);
+            lblNick1.TabIndex = 95;
+            lblNick1.Text = "Empty";
+            lblNick1.Click += lblNick1_Click;
+            // 
+            // lblNick2
+            // 
+            lblNick2.AutoSize = true;
+            lblNick2.Font = new Font("Bodoni MT", 7.8F);
+            lblNick2.Location = new Point(292, 182);
+            lblNick2.Name = "lblNick2";
+            lblNick2.Size = new Size(47, 17);
+            lblNick2.TabIndex = 96;
+            lblNick2.Text = "Empty";
+            // 
+            // lblNick3
+            // 
+            lblNick3.AutoSize = true;
+            lblNick3.Font = new Font("Bodoni MT", 7.8F);
+            lblNick3.Location = new Point(295, 321);
+            lblNick3.Name = "lblNick3";
+            lblNick3.Size = new Size(47, 17);
+            lblNick3.TabIndex = 97;
+            lblNick3.Text = "Empty";
+            // 
+            // lblNick4
+            // 
+            lblNick4.AutoSize = true;
+            lblNick4.Font = new Font("Bodoni MT", 7.8F);
+            lblNick4.Location = new Point(295, 458);
+            lblNick4.Name = "lblNick4";
+            lblNick4.Size = new Size(47, 17);
+            lblNick4.TabIndex = 98;
+            lblNick4.Text = "Empty";
+            // 
+            // lblNick7
+            // 
+            lblNick7.AutoSize = true;
+            lblNick7.Font = new Font("Bodoni MT", 7.8F);
+            lblNick7.Location = new Point(873, 173);
+            lblNick7.Name = "lblNick7";
+            lblNick7.Size = new Size(47, 17);
+            lblNick7.TabIndex = 100;
+            lblNick7.Text = "Empty";
+            // 
+            // lblNick8
+            // 
+            lblNick8.AutoSize = true;
+            lblNick8.Font = new Font("Bodoni MT", 7.8F);
+            lblNick8.Location = new Point(873, 321);
+            lblNick8.Name = "lblNick8";
+            lblNick8.Size = new Size(47, 17);
+            lblNick8.TabIndex = 101;
+            lblNick8.Text = "Empty";
+            // 
+            // lblNick9
+            // 
+            lblNick9.AutoSize = true;
+            lblNick9.Font = new Font("Bodoni MT", 7.8F);
+            lblNick9.Location = new Point(873, 458);
+            lblNick9.Name = "lblNick9";
+            lblNick9.Size = new Size(47, 17);
+            lblNick9.TabIndex = 102;
+            lblNick9.Text = "Empty";
+            // 
+            // lblNick5
+            // 
+            lblNick5.AutoSize = true;
+            lblNick5.Font = new Font("Bodoni MT", 7.8F);
+            lblNick5.Location = new Point(292, 603);
+            lblNick5.Name = "lblNick5";
+            lblNick5.Size = new Size(47, 17);
+            lblNick5.TabIndex = 103;
+            lblNick5.Text = "Empty";
+            // 
+            // lblNick6
+            // 
+            lblNick6.AutoSize = true;
+            lblNick6.Font = new Font("Bodoni MT", 7.8F);
+            lblNick6.Location = new Point(873, 27);
+            lblNick6.Name = "lblNick6";
+            lblNick6.Size = new Size(47, 17);
+            lblNick6.TabIndex = 104;
+            lblNick6.Text = "Empty";
+            // 
+            // lblNick10
+            // 
+            lblNick10.AutoSize = true;
+            lblNick10.Font = new Font("Bodoni MT", 7.8F);
+            lblNick10.Location = new Point(873, 599);
+            lblNick10.Name = "lblNick10";
+            lblNick10.Size = new Size(47, 17);
+            lblNick10.TabIndex = 105;
+            lblNick10.Text = "Empty";
             // 
             // UserTeams
             // 
@@ -766,6 +877,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1073, 871);
+            Controls.Add(lblNick10);
+            Controls.Add(lblNick6);
+            Controls.Add(lblNick5);
+            Controls.Add(lblNick9);
+            Controls.Add(lblNick8);
+            Controls.Add(lblNick7);
+            Controls.Add(lblNick4);
+            Controls.Add(lblNick3);
+            Controls.Add(lblNick2);
+            Controls.Add(lblNick1);
             Controls.Add(btnDelete10);
             Controls.Add(btnCopy10);
             Controls.Add(btnDelete9);
@@ -913,5 +1034,15 @@
         private Button btnCopy9;
         private Button btnDelete10;
         private Button btnCopy10;
+        private Label lblNick1;
+        private Label lblNick2;
+        private Label lblNick3;
+        private Label lblNick4;
+        private Label lblNick7;
+        private Label lblNick8;
+        private Label lblNick9;
+        private Label lblNick5;
+        private Label lblNick6;
+        private Label lblNick10;
     }
 }

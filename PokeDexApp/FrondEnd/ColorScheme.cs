@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeDexApp
+namespace PokeDexApp.FrondEnd
 {
     public static class ColorScheme
     {
@@ -35,8 +35,8 @@ namespace PokeDexApp
         };
 
         public static Color BackGroundColor(string type)
-        {        
-            var color = ColorTranslator.FromHtml(colors[type]);    
+        {
+            var color = ColorTranslator.FromHtml(colors[type]);
             return color;
         }
 
@@ -53,31 +53,29 @@ namespace PokeDexApp
                 r *= correction;
                 g *= correction;
                 b *= correction;
-
             }
 
             //Lighten
             else
             {
-                r = (255 - r) * correction + r; 
+                r = (255 - r) * correction + r;
                 g = (255 - g) * correction + g;
                 b = (255 - b) * correction + b;
             }
-
             return Color.FromArgb(mainColor.A, (byte)r, (byte)g, (byte)b);
         }
 
         public static void UpdateBtnColors(Button btn, Color mainColor)
         {
-            btn.FlatAppearance.BorderColor = ColorScheme.SubColor(mainColor, 0.5);
-            btn.ForeColor = ColorScheme.SubColor(mainColor, -1.0);
-            btn.BackColor = ColorScheme.SubColor(mainColor, 0.5);
+            btn.FlatAppearance.BorderColor = SubColor(mainColor, 0.5);
+            btn.ForeColor = SubColor(mainColor, -1.0);
+            btn.BackColor = SubColor(mainColor, 0.5);
         }
 
         public static void UpdateTextColor(Label lbl, Color mainColor)
-        {           
-            lbl.ForeColor = ColorScheme.SubColor(mainColor, -1.0);
-            lbl.BackColor = ColorScheme.SubColor(mainColor, 0.5);
+        {
+            lbl.ForeColor = SubColor(mainColor, -1.0);
+            lbl.BackColor = SubColor(mainColor, 0.5);
         }
     }
 }

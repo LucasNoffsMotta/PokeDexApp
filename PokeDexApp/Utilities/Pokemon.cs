@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PokeDexApp.Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeDexApp
+namespace PokeDexApp.Utilities
 {
     public class Pokemon
     {
@@ -20,8 +21,8 @@ namespace PokeDexApp
         public int HPEV, ATKEV, SPATKEV, DEFEV, SPDEFEV, SPDEV, HPIV, ATKIV, SPATKIV, DEFIV, SPDEFIV, SPDIV;
         public int[] moveSet;
         public string? nickName;
-            
-        public Pokemon(string name, int id, string typeOne, string typeTwo, Image image=null, string[] baseStats=null, int natureValue=19, int level = 1)
+
+        public Pokemon(string name, int id, string typeOne, string typeTwo, Image image = null, string[] baseStats = null, int natureValue = 19, int level = 1)
         {
             this.name = name;
             this.id = id;
@@ -29,33 +30,33 @@ namespace PokeDexApp
             this.typeTwo = typeTwo;
             this.image = image;
             this.baseStats = baseStats;
-            this.nature = Constructor.EnumerateNatureToString(natureValue);
+            nature = Constructor.EnumerateNatureToString(natureValue);
             this.level = level;
 
 
             //Just for testing:
             if (this.id <= 3)
             {
-                this.moveSet = MovesDataBase.GetMoves(this.name);
+                moveSet = MovesDataBase.GetMoves(this.name);
             }
 
-            this.idMoveOne = -1;
-            this.idMoveTwo = -1;
-            this.idMoveThree = -1;
-            this.idMoveFour = -1;
-            this.HPEV = 0;
-            this.ATKEV = 0;
-            this.SPATKEV = 0;
-            this.DEFEV = 0;
-            this.SPDEFEV = 0;
-            this.SPDEV = 0;
-            
-            this.HPIV = 0;
-            this.ATKIV = 0;
-            this.SPATKIV = 0;
-            this.DEFIV = 0;
-            this.SPDEFIV = 0;
-            this.SPDIV = 0;
+            idMoveOne = -1;
+            idMoveTwo = -1;
+            idMoveThree = -1;
+            idMoveFour = -1;
+            HPEV = 0;
+            ATKEV = 0;
+            SPATKEV = 0;
+            DEFEV = 0;
+            SPDEFEV = 0;
+            SPDEV = 0;
+
+            HPIV = 0;
+            ATKIV = 0;
+            SPATKIV = 0;
+            DEFIV = 0;
+            SPDEFIV = 0;
+            SPDIV = 0;
         }
     }
 }

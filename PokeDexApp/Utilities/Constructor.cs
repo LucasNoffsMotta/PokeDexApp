@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokeDexApp.Connection;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeDexApp
+namespace PokeDexApp.Utilities
 {
     public static class Constructor
     {
@@ -43,7 +44,7 @@ namespace PokeDexApp
         }
 
 
-        public static String[] ConstructDexData(string[] emptyData, DataRow row)
+        public static string[] ConstructDexData(string[] emptyData, DataRow row)
         {
             DataTable type_one = new DataTable();
             string query_one, query_two, nameTypeOne;
@@ -166,15 +167,15 @@ namespace PokeDexApp
 
             return nameType;
         }
-        
+
 
         public static int EnumerateStatsInt(string stat)
         {
             int statNumber;
-            switch(stat)
+            switch (stat)
             {
                 case "HP":
-                    statNumber = 1; 
+                    statNumber = 1;
                     break;
 
                 case "Attack":
@@ -396,7 +397,7 @@ namespace PokeDexApp
         {
             string nature;
 
-            switch(natureValue)
+            switch (natureValue)
             {
                 case 1:
                     nature = "Hardy";
@@ -443,7 +444,7 @@ namespace PokeDexApp
                 case 12:
                     nature = "Hasty";
                     break;
-                
+
                 case 13:
                     nature = "Serious";
                     break;
@@ -598,7 +599,7 @@ namespace PokeDexApp
         {
             int firstIndex = 0;
             int lastIndex = nodesArray.Length - 1;
-            int middleIndex = (int)lastIndex / 2;
+            int middleIndex = lastIndex / 2;
 
             while (firstIndex < lastIndex && nodesArray[middleIndex].pokemon.id != target)
             {
@@ -616,7 +617,7 @@ namespace PokeDexApp
                 {
                     lastIndex = middleIndex - 1;
                 }
-                middleIndex = (int) (firstIndex + lastIndex) / 2;
+                middleIndex = (firstIndex + lastIndex) / 2;
             }
 
             return nodesArray[middleIndex];

@@ -1,3 +1,6 @@
+using PokeDexApp.Connection;
+using PokeDexApp.FrondEnd;
+using PokeDexApp.Utilities;
 using System.Data;
 using System.Data.SqlClient;
 

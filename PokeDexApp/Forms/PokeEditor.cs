@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PokeDexApp.Connection;
+using PokeDexApp.FrondEnd;
+using PokeDexApp.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,8 +70,8 @@ namespace PokeDexApp
             {
                 ColorScheme.UpdateTextColor(lblType1, ColorScheme.BackGroundColor(lblType1.Text));
                 ColorScheme.UpdateTextColor(lblType2, ColorScheme.BackGroundColor(lblType2.Text));
-                ColorScheme.UpdateTextColor(lblType3, ColorScheme.BackGroundColor(lblType1.Text));
-                ColorScheme.UpdateTextColor(lblType4, ColorScheme.BackGroundColor(lblType2.Text));
+                ColorScheme.UpdateTextColor(lblType3, ColorScheme.BackGroundColor(lblType3.Text));
+                ColorScheme.UpdateTextColor(lblType4, ColorScheme.BackGroundColor(lblType4.Text));
                 ColorScheme.UpdateTextColor(lblTypeOne, ColorScheme.BackGroundColor(lblTypeOne.Text));
                 ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
             }
@@ -142,26 +145,6 @@ namespace PokeDexApp
                 txtMoveFour.Items[i] = (moves.Rows[i]["name_move"].ToString());
             }
         }
-
-        //private void IterateOnList(ComboBox list, ComboBox selectedMove)
-        //{
-        //    for (int i = 0; i < list.Items.Count; i++)
-        //    {
-        //        if (list.Items[i].Equals(selectedMove.Text))
-        //        {
-        //            list.Items[i] = " - ";
-        //        }
-        //    }
-        //}
-
-        //private void UpdateMovesList(ComboBox one, ComboBox two, ComboBox three, ComboBox selected)
-        //{
-        //    RebuildMoveslist();
-        //    IterateOnList(one, selected);
-        //    IterateOnList(two, selected);
-        //    IterateOnList(three, selected);
-        //}
-
 
         private int CorrectDuplicatedMoves(string currentMove, ComboBox otherMoveOne, ComboBox otherMoveTwo,
             ComboBox otherMoveThree)

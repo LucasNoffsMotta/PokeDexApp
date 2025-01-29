@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokeDexApp
+namespace PokeDexApp.Utilities
 {
     //Classe utilizada para calcular os atributos na calculadora de stats
     public class Atribute
@@ -30,17 +30,17 @@ namespace PokeDexApp
             //Inicializa as variaveis 
             this.name = name;
             this.baseStat = baseStat;
-            this.level = 50;
-            this.ev = 0;
-            this.iv = 0;
-            this.evTotalDecrease = new int[] { 0, 0 };
-            this.natureBonus = 0;
-            this.evStatAdd = 0;
-            this.ivStatAdd = 0;
-            this.evIncreaseRate = 4;
-            this.ivIncreaseRate = 1;
-            this.maxEv = 255;
-            this.maxIv = 31;
+            level = 50;
+            ev = 0;
+            iv = 0;
+            evTotalDecrease = new int[] { 0, 0 };
+            natureBonus = 0;
+            evStatAdd = 0;
+            ivStatAdd = 0;
+            evIncreaseRate = 4;
+            ivIncreaseRate = 1;
+            maxEv = 255;
+            maxIv = 31;
         }
 
         public int ValidateLevelEntry(TextBox textChanged)
@@ -50,7 +50,7 @@ namespace PokeDexApp
                 level = int.Parse(textChanged.Text);
             }
 
-            catch 
+            catch
             {
                 level = 1;
             }
@@ -106,7 +106,7 @@ namespace PokeDexApp
                     }
                 }
             }
-           
+
             return ev;
         }
 
@@ -162,7 +162,7 @@ namespace PokeDexApp
         //Metodo utilizado para calcular quanto o EV ira adicionar no stat
         public void ChangeEV()
         {
-            evStatAdd = (int)ev / evIncreaseRate;
+            evStatAdd = ev / evIncreaseRate;
         }
 
 
@@ -194,7 +194,7 @@ namespace PokeDexApp
                 symbol.ForeColor = Color.Green;
                 symbol.Visible = true;
             }
-          
+
             else if (natureBonus == 0.9)
             {
                 symbol.Text = "-";
@@ -213,7 +213,7 @@ namespace PokeDexApp
 
         public void ChangeIV()
         {
-            ivStatAdd = (int)iv / ivIncreaseRate;
+            ivStatAdd = iv / ivIncreaseRate;
         }
 
 
@@ -223,7 +223,7 @@ namespace PokeDexApp
 
             if (name.Contains("hp"))
             {
-                int finalStat = (int)((((2 * baseStat + iv + evStatAdd) * level) / 100) + level + 10);
+                int finalStat = (2 * baseStat + iv + evStatAdd) * level / 100 + level + 10;
                 statLabel = finalStat.ToString();
                 return statLabel;
 
@@ -231,7 +231,7 @@ namespace PokeDexApp
 
             else
             {
-                int finalStat = (int)(((((2* baseStat + iv + evStatAdd) * level) / 100) + 5) * natureBonus);
+                int finalStat = (int)(((2 * baseStat + iv + evStatAdd) * level / 100 + 5) * natureBonus);
                 statLabel = finalStat.ToString();
             }
             return statLabel;

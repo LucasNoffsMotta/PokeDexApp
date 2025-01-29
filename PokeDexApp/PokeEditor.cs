@@ -119,6 +119,7 @@ namespace PokeDexApp
             }
         }
 
+
         private void RebuildMoveslist()
         {
             for (int i = 0; i < moves.Rows.Count; i++)
@@ -130,25 +131,38 @@ namespace PokeDexApp
             }
         }
 
-        private void IterateOnList(ComboBox list, ComboBox selectedMove)
+        //private void IterateOnList(ComboBox list, ComboBox selectedMove)
+        //{
+        //    for (int i = 0; i < list.Items.Count; i++)
+        //    {
+        //        if (list.Items[i].Equals(selectedMove.Text))
+        //        {
+        //            list.Items[i] = " - ";
+        //        }
+        //    }
+        //}
+
+        //private void UpdateMovesList(ComboBox one, ComboBox two, ComboBox three, ComboBox selected)
+        //{
+        //    RebuildMoveslist();
+        //    IterateOnList(one, selected);
+        //    IterateOnList(two, selected);
+        //    IterateOnList(three, selected);
+        //}
+
+        private void CorrectDuplicatedMoves(string currentMove, string otherMoveOne, string otherMoveTwo,
+            string otherMoveThree)
         {
-            for (int i = 0; i < list.Items.Count; i++)
+            string[] otherMoves = new string[] { otherMoveOne, otherMoveTwo, otherMoveThree };
+
+            for (int i = 0; i < otherMoves.Length; i++)
             {
-                if (list.Items[i].Equals(selectedMove.Text))
+                if (otherMoves[i].Equals(currentMove))
                 {
-                    list.Items[i] = " - ";
+                    otherMoves[i] = "";
                 }
             }
         }
-
-        private void UpdateMovesList(ComboBox one, ComboBox two, ComboBox three, ComboBox selected)
-        {
-            RebuildMoveslist();
-            IterateOnList(one, selected);
-            IterateOnList(two, selected);
-            IterateOnList(three, selected);
-        }
-
 
 
         private void InitializeEmptyFields()
@@ -471,7 +485,6 @@ namespace PokeDexApp
         {
             DataRow currentRow = moves.Rows[0];
 
-
             for (int i = 0; i < moves.Rows.Count; i++)
             {
                 if ((int)moves.Rows[i]["id_move"] == id)
@@ -479,7 +492,6 @@ namespace PokeDexApp
                     currentRow = moves.Rows[i];
                 }
             }
-
 
             return currentRow;
         }
@@ -500,6 +512,7 @@ namespace PokeDexApp
         {
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveOne.Text);
+            CorrectDuplicatedMoves(selectedMove["name_move"].ToString(), txtMoveTwo.Text, txtMoveThree.Text, txtMoveFour.Text);            
             GetMoveLabels(selectedMove, lblType1, lblCat1, lblPower1, lblAcc1, lblPP1);
             ColorScheme.UpdateTextColor(lblType1, ColorScheme.BackGroundColor(lblType1.Text));
             
@@ -509,7 +522,8 @@ namespace PokeDexApp
         {
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveTwo.Text);
-            GetMoveLabels(selectedMove, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);
+            CorrectDuplicatedMoves(selectedMove["name_move"].ToString(), txtMoveOne.Text, txtMoveThree.Text, txtMoveFour.Text);
+            GetMoveLabels(selectedMove, lblType2, lblCat2, lblPower2, lblAcc2, lblPP2);         
             ColorScheme.UpdateTextColor(lblType2, ColorScheme.BackGroundColor(lblType2.Text));
         }
 
@@ -517,6 +531,7 @@ namespace PokeDexApp
         {
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveThree.Text);
+            CorrectDuplicatedMoves(selectedMove["name_move"].ToString(), txtMoveOne.Text, txtMoveTwo.Text, txtMoveFour.Text);
             GetMoveLabels(selectedMove, lblType3, lblCat3, lblPower3, lblAcc3, lblPP3);
             ColorScheme.UpdateTextColor(lblType3, ColorScheme.BackGroundColor(lblType3.Text));
         }
@@ -525,6 +540,7 @@ namespace PokeDexApp
         {
             DataRow selectedMove;
             selectedMove = GetCurrentMoveByName(txtMoveFour.Text);
+            CorrectDuplicatedMoves(selectedMove["name_move"].ToString(), txtMoveOne.Text, txtMoveThree.Text, txtMoveTwo.Text);
             GetMoveLabels(selectedMove, lblType4, lblCat4, lblPower4, lblAcc4, lblPP4);
             ColorScheme.UpdateTextColor(lblType4, ColorScheme.BackGroundColor(lblType4.Text));
         }

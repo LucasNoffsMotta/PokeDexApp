@@ -371,5 +371,10 @@ namespace PokeDexApp
         {
 
         }
+
+        private void PokeDex_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

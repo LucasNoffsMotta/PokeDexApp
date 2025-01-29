@@ -39,10 +39,10 @@ namespace PokeDexApp
                 this.moveSet = MovesDataBase.GetMoves(this.name);
             }
 
-            this.idMoveOne = 0;
-            this.idMoveTwo = 0;
-            this.idMoveThree = 0;
-            this.idMoveFour = 0;
+            this.idMoveOne = -1;
+            this.idMoveTwo = -1;
+            this.idMoveThree = -1;
+            this.idMoveFour = -1;
             this.HPEV = 0;
             this.ATKEV = 0;
             this.SPATKEV = 0;

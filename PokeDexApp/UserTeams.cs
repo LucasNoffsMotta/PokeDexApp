@@ -295,6 +295,7 @@ namespace PokeDexApp
 
                     insertCMD.Parameters.AddWithValue("@idNature", pokes.Rows[slotNumber - 1]["id_nature"]);
 
+
                     insertCMD.Parameters.AddWithValue("@hp", pokes.Rows[slotNumber - 1]["HP"]);
                     insertCMD.Parameters.AddWithValue("@atk", pokes.Rows[slotNumber - 1]["ATK"]);
                     insertCMD.Parameters.AddWithValue("@spatk", pokes.Rows[slotNumber - 1]["SPATK"]);

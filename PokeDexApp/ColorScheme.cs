@@ -35,8 +35,8 @@ namespace PokeDexApp
         };
 
         public static Color BackGroundColor(string type)
-        {
-            var color = ColorTranslator.FromHtml(colors[type]);
+        {        
+            var color = ColorTranslator.FromHtml(colors[type]);    
             return color;
         }
 

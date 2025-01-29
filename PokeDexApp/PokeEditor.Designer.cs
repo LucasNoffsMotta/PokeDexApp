@@ -680,6 +680,7 @@
             lblType1.Size = new Size(15, 22);
             lblType1.TabIndex = 88;
             lblType1.Text = "-";
+            lblType1.Visible = false;
             // 
             // lblType2
             // 
@@ -690,6 +691,7 @@
             lblType2.Size = new Size(15, 22);
             lblType2.TabIndex = 89;
             lblType2.Text = "-";
+            lblType2.Visible = false;
             // 
             // lblType3
             // 
@@ -700,6 +702,7 @@
             lblType3.Size = new Size(15, 22);
             lblType3.TabIndex = 90;
             lblType3.Text = "-";
+            lblType3.Visible = false;
             // 
             // lblType4
             // 
@@ -710,6 +713,7 @@
             lblType4.Size = new Size(15, 22);
             lblType4.TabIndex = 91;
             lblType4.Text = "-";
+            lblType4.Visible = false;
             // 
             // lblCat4
             // 
@@ -720,6 +724,7 @@
             lblCat4.Size = new Size(15, 22);
             lblCat4.TabIndex = 95;
             lblCat4.Text = "-";
+            lblCat4.Visible = false;
             // 
             // lblCat3
             // 
@@ -730,6 +735,7 @@
             lblCat3.Size = new Size(15, 22);
             lblCat3.TabIndex = 94;
             lblCat3.Text = "-";
+            lblCat3.Visible = false;
             // 
             // lblCat2
             // 
@@ -740,6 +746,7 @@
             lblCat2.Size = new Size(15, 22);
             lblCat2.TabIndex = 93;
             lblCat2.Text = "-";
+            lblCat2.Visible = false;
             // 
             // lblCat1
             // 
@@ -750,6 +757,7 @@
             lblCat1.Size = new Size(15, 22);
             lblCat1.TabIndex = 92;
             lblCat1.Text = "-";
+            lblCat1.Visible = false;
             // 
             // lblPower3
             // 
@@ -760,6 +768,7 @@
             lblPower3.Size = new Size(15, 22);
             lblPower3.TabIndex = 98;
             lblPower3.Text = "-";
+            lblPower3.Visible = false;
             // 
             // lblPower2
             // 
@@ -770,6 +779,7 @@
             lblPower2.Size = new Size(15, 22);
             lblPower2.TabIndex = 97;
             lblPower2.Text = "-";
+            lblPower2.Visible = false;
             // 
             // lblPower1
             // 
@@ -780,6 +790,7 @@
             lblPower1.Size = new Size(15, 22);
             lblPower1.TabIndex = 96;
             lblPower1.Text = "-";
+            lblPower1.Visible = false;
             // 
             // lblAcc4
             // 
@@ -790,6 +801,7 @@
             lblAcc4.Size = new Size(19, 22);
             lblAcc4.TabIndex = 103;
             lblAcc4.Text = "*";
+            lblAcc4.Visible = false;
             // 
             // lblAcc3
             // 
@@ -800,6 +812,7 @@
             lblAcc3.Size = new Size(19, 22);
             lblAcc3.TabIndex = 102;
             lblAcc3.Text = "*";
+            lblAcc3.Visible = false;
             // 
             // lblAcc2
             // 
@@ -810,6 +823,7 @@
             lblAcc2.Size = new Size(19, 22);
             lblAcc2.TabIndex = 101;
             lblAcc2.Text = "*";
+            lblAcc2.Visible = false;
             // 
             // lblAcc1
             // 
@@ -820,6 +834,7 @@
             lblAcc1.Size = new Size(19, 22);
             lblAcc1.TabIndex = 100;
             lblAcc1.Text = "*";
+            lblAcc1.Visible = false;
             // 
             // lblPP4
             // 
@@ -830,6 +845,7 @@
             lblPP4.Size = new Size(19, 22);
             lblPP4.TabIndex = 107;
             lblPP4.Text = "*";
+            lblPP4.Visible = false;
             // 
             // lblPP3
             // 
@@ -840,6 +856,7 @@
             lblPP3.Size = new Size(19, 22);
             lblPP3.TabIndex = 106;
             lblPP3.Text = "*";
+            lblPP3.Visible = false;
             // 
             // lblPP2
             // 
@@ -850,6 +867,7 @@
             lblPP2.Size = new Size(19, 22);
             lblPP2.TabIndex = 105;
             lblPP2.Text = "*";
+            lblPP2.Visible = false;
             // 
             // lblPP1
             // 
@@ -860,6 +878,7 @@
             lblPP1.Size = new Size(19, 22);
             lblPP1.TabIndex = 104;
             lblPP1.Text = "*";
+            lblPP1.Visible = false;
             // 
             // lblPower4
             // 
@@ -870,6 +889,7 @@
             lblPower4.Size = new Size(15, 22);
             lblPower4.TabIndex = 108;
             lblPower4.Text = "-";
+            lblPower4.Visible = false;
             // 
             // label22
             // 

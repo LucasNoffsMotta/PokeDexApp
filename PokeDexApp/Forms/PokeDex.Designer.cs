@@ -60,7 +60,6 @@
             btnMyPokes = new Button();
             label11 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            lblCurrentTop = new Label();
             btnNextTop = new Button();
             btnPrevTop = new Button();
             label12 = new Label();
@@ -73,6 +72,7 @@
             btnThirdTop = new Button();
             btnFourthTop = new Button();
             btnFifithTop = new Button();
+            lblCurrentTop = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -390,15 +390,6 @@
             label11.TabIndex = 31;
             label11.Text = "Top 5";
             // 
-            // lblCurrentTop
-            // 
-            lblCurrentTop.AutoSize = true;
-            lblCurrentTop.Location = new Point(116, 245);
-            lblCurrentTop.Name = "lblCurrentTop";
-            lblCurrentTop.Size = new Size(15, 20);
-            lblCurrentTop.TabIndex = 32;
-            lblCurrentTop.Text = "*";
-            // 
             // btnNextTop
             // 
             btnNextTop.Location = new Point(238, 243);
@@ -524,11 +515,23 @@
             btnFifithTop.UseVisualStyleBackColor = true;
             btnFifithTop.Click += btnFifithTop_Click;
             // 
+            // lblCurrentTop
+            // 
+            lblCurrentTop.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            lblCurrentTop.Location = new Point(78, 242);
+            lblCurrentTop.Name = "lblCurrentTop";
+            lblCurrentTop.Size = new Size(154, 30);
+            lblCurrentTop.TabIndex = 50;
+            lblCurrentTop.Text = "*";
+            lblCurrentTop.UseVisualStyleBackColor = true;
+            lblCurrentTop.Click += lblCurrentTop_Click;
+            // 
             // PokeDex
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1072, 814);
+            Controls.Add(lblCurrentTop);
             Controls.Add(btnFifithTop);
             Controls.Add(btnFourthTop);
             Controls.Add(btnThirdTop);
@@ -541,7 +544,6 @@
             Controls.Add(label12);
             Controls.Add(btnPrevTop);
             Controls.Add(btnNextTop);
-            Controls.Add(lblCurrentTop);
             Controls.Add(label11);
             Controls.Add(btnMyPokes);
             Controls.Add(btnAdd);
@@ -617,7 +619,6 @@
         private Button btnMyPokes;
         private Label label11;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Label lblCurrentTop;
         private Button btnNextTop;
         private Button btnPrevTop;
         private Label label12;
@@ -630,5 +631,6 @@
         private Button btnThirdTop;
         private Button btnFourthTop;
         private Button btnFifithTop;
+        private Button lblCurrentTop;
     }
 }

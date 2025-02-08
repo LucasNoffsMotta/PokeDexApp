@@ -79,10 +79,11 @@ namespace PokeDexApp
             catch
             {
                 ColorScheme.UpdateTextColor(lblTypeOne, ColorScheme.BackGroundColor(lblTypeOne.Text));
-                ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
-            }
-            
-         
+                if (lblTypeTwo.Text != "")
+                {
+                    ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
+                }        
+            }                     
         }
 
         private void GetMovesData()
@@ -134,7 +135,6 @@ namespace PokeDexApp
             }
         }
 
-
         private void RebuildMoveslist()
         {
             for (int i = 0; i < moves.Rows.Count; i++)
@@ -183,7 +183,7 @@ namespace PokeDexApp
             txtSPATKEV.Text = UserTeams.currentPoke.SPATKEV.ToString();
             txtDEFEV.Text = UserTeams.currentPoke.DEFEV.ToString();
             txtSPDEFEV.Text = UserTeams.currentPoke.SPDEFEV.ToString();
-            txtSPDEV.Text = UserTeams.currentPoke.DEFEV.ToString();
+            txtSPDEV.Text = UserTeams.currentPoke.SPDEV.ToString();
 
             txtHPIV.Text = UserTeams.currentPoke.HPIV.ToString();
             txtATKIV.Text = UserTeams.currentPoke.ATKIV.ToString();

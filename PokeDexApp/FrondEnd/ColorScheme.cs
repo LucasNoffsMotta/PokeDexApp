@@ -55,6 +55,7 @@ namespace PokeDexApp.FrondEnd
                 b *= correction;
             }
 
+
             //Lighten
             else
             {
@@ -62,6 +63,7 @@ namespace PokeDexApp.FrondEnd
                 g = (255 - g) * correction + g;
                 b = (255 - b) * correction + b;
             }
+
             return Color.FromArgb(mainColor.A, (byte)r, (byte)g, (byte)b);
         }
 
@@ -77,5 +79,30 @@ namespace PokeDexApp.FrondEnd
             lbl.ForeColor = SubColor(mainColor, -1.0);
             lbl.BackColor = SubColor(mainColor, 0.5);
         }
+
+        public static Color ColorTransition(Color mainColor, Color target, int count)
+        {
+            double r_curr = mainColor.R;
+            double g_curr = mainColor.G;
+            double b_curr = mainColor.B;
+
+            if (mainColor.R < target.R && count == 10000)
+            {
+                r_curr = mainColor.R + 1;
+            }
+
+            if (mainColor.G < target.G && count == 10000)
+            {
+                g_curr = mainColor.G + 1;
+            }
+
+            if (mainColor.B < target.B && count == 10000)
+            {
+                b_curr = mainColor.B + 1;
+            }
+         
+            return Color.FromArgb(mainColor.A, (byte)r_curr, (byte)g_curr, (byte)b_curr);
+        }
     }
 }
+

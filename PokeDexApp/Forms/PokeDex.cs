@@ -27,12 +27,12 @@ namespace PokeDexApp
         private Pokemon[] topDef = new Pokemon[5];
         private Pokemon[] topSpDef = new Pokemon[5];
         private Pokemon[] topSpd = new Pokemon[5];
+        TaskCreationOptions atp = TaskCreationOptions.AttachedToParent;
 
         public PokeDex()
         {
             InitializeComponent();
         }
-
 
 
         public void ConstructPages()
@@ -141,7 +141,7 @@ namespace PokeDexApp
             ColorScheme.UpdateBtnColors(btnPrevTop, BackColor);
             ColorScheme.UpdateBtnColors(btnNextTop, BackColor);
             ColorScheme.UpdateTextColor(lblName, BackColor);
-
+            ColorScheme.UpdateBtnColors(lblCurrentTop, BackColor);
 
             ColorScheme.UpdateTextColor(lblTypeOne, ColorScheme.BackGroundColor(lblTypeOne.Text));
 
@@ -149,6 +149,19 @@ namespace PokeDexApp
             {
                 ColorScheme.UpdateTextColor(lblTypeTwo, ColorScheme.BackGroundColor(lblTypeTwo.Text));
             }
+        }
+
+        private void ColorTransition()
+        {
+            Color target = ColorScheme.SubColor(BackColor, 0.5);
+            int count = 0;
+
+            while (BackColor != target)
+            {
+                BackColor = ColorScheme.ColorTransition(BackColor, target, count);
+                count++;
+            }
+
         }
 
         public void UpdatePage()
@@ -166,9 +179,9 @@ namespace PokeDexApp
             lblSPD.Text = dexStart.pokemon.baseStats[5];
             lblTotal.Text = Constructor.GetTotalBaseStats(dexStart.pokemon.baseStats).ToString();
             UpdateColors();
-
-
         }
+
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -176,6 +189,7 @@ namespace PokeDexApp
             {
                 dexStart = dexStart.next;
                 UpdatePage();
+                //ColorTransition();
             }
         }
 
@@ -185,6 +199,7 @@ namespace PokeDexApp
             {
                 dexStart = dexStart.prev;
                 UpdatePage();
+                //ColorTransition();
             }
         }
 
@@ -344,30 +359,35 @@ namespace PokeDexApp
         {
             dexStart = Constructor.SearchOnLinkedList(btnFirstTop.Text, dexStart);
             UpdatePage();
+            //ColorTransition();
         }
 
         private void btnSecondTop_Click(object sender, EventArgs e)
         {
             dexStart = Constructor.SearchOnLinkedList(btnSecondTop.Text, dexStart);
             UpdatePage();
+            //ColorTransition();
         }
 
         private void btnThirdTop_Click(object sender, EventArgs e)
         {
             dexStart = Constructor.SearchOnLinkedList(btnThirdTop.Text, dexStart);
             UpdatePage();
+            //ColorTransition();
         }
 
         private void btnFourthTop_Click(object sender, EventArgs e)
         {
             dexStart = Constructor.SearchOnLinkedList(btnFourthTop.Text, dexStart);
             UpdatePage();
+            //ColorTransition();
         }
 
         private void btnFifithTop_Click(object sender, EventArgs e)
         {
             dexStart = Constructor.SearchOnLinkedList(btnFifithTop.Text, dexStart);
             UpdatePage();
+            //ColorTransition();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -376,6 +396,11 @@ namespace PokeDexApp
         }
 
         private void PokeDex_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void lblCurrentTop_Click(object sender, EventArgs e)
         {
 
         }

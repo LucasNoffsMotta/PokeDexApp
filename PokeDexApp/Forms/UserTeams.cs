@@ -17,6 +17,7 @@ namespace PokeDexApp
 {
     public partial class UserTeams : Form
     {
+
         public DBConnect conn = new DBConnect();
         public static DataTable pokes = new DataTable();
         public static ListNode currentNode = new ListNode();
@@ -25,6 +26,7 @@ namespace PokeDexApp
         public static int poke_key_id = 0;
         public static int teamLimit = 10;
         public static Pokemon[] teamPokes = new Pokemon[teamLimit];
+
 
         public UserTeams()
         {
@@ -45,14 +47,13 @@ namespace PokeDexApp
         private void btnPoke1_Click(object sender, EventArgs e)
         {
 
-
         }
 
         private Pokemon LoadEditedData(ListNode currentNode, DataTable dt, int i)
         {
             Pokemon poke = new Pokemon(currentNode.pokemon.name, currentNode.pokemon.id,
-                currentNode.pokemon.typeOne, currentNode.pokemon.typeTwo, currentNode.pokemon.image,
-                currentNode.pokemon.baseStats);
+            currentNode.pokemon.typeOne, currentNode.pokemon.typeTwo, currentNode.pokemon.image,
+            currentNode.pokemon.baseStats);
 
             try
             {
@@ -98,6 +99,7 @@ namespace PokeDexApp
                 poke.level = 1;
                 poke.nickName = "";
             }
+
             return poke;
         }
 

@@ -40,9 +40,11 @@ namespace PokeDexApp.Utilities
                 moveSet = MovesDataBase.GetMoves(this.name);
             }
 
-            //Maintenance (still without moves on DB) - Set all to tackle
-            moveSet = new int[4] { 1,1,1,1};
-
+            else
+            {
+                //Maintenance (still without moves on DB) - Set all to tackle
+                moveSet = new int[4] { 1, 1, 1, 1 };
+            }
 
             idMoveOne = moveSet[0];
             idMoveTwo = moveSet[1];

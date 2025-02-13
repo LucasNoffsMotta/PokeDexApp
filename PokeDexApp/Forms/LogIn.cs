@@ -53,7 +53,7 @@ namespace PokeDexApp
                     MessageBox.Show($"Bem vindo, {txtExistentUserName.Text}");
                     userId = (int)userTable.Rows[0]["user_id"];
                     this.Hide();
-                    UserPage userPage = new UserPage();   
+                    UserPage userPage = new UserPage();
                     dex = new PokeDex();
                     dex.ConstructPages();
                     userPage.Show();
@@ -113,6 +113,11 @@ namespace PokeDexApp
         }
 
         private void LogIn_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
